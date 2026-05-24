@@ -3,9 +3,7 @@
     "html_imports": [
       "<link rel='stylesheet' href='@components/{component}/{component}.scss'>"
     ],
-    "scss_imports": [
-      ""
-    ]
+    "scss_imports": [""]
   },
   "path-autocomplete.pathMappings": {
     "@components": "${folder}/src/components",
@@ -16,5 +14,16 @@
     "@video": "${folder}/src/assets/video",
     "@files": "${folder}/src/files",
     "@pug": "${folder}/src/pug"
+  },
+  "editor.snippetSuggestions": "top",
+  "editor.suggest.showSnippets": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
+  "emmet.includeLanguages": {
+    "pug": "html",
+    "html": "html"
   }
 }

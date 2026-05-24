@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    @include adaptiveValue("gap", 56, 15, 0, $containerWidth, 767.98);
+    @include adaptiveValue("gap", 56, 20, 0, $containerWidth, 767.98);
   }
 
   /* .team__head */
@@ -15,6 +15,10 @@
     display: flex;
     gap: 20px;
     justify-content: space-between;
+    @media (max-width: 767.98px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
   &__title,
   &__descr {
@@ -44,7 +48,12 @@
   &__list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    column-gap: 24px;
-    row-gap: 30px;
+    @include adaptiveValue("gap", 20, 16, 0, $containerWidth, 767.98);
+    @media (max-width: 991.98px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 491.98px) {
+      grid-template-columns: 1fr;
+    }
   }
 }

@@ -2,7 +2,7 @@
 .map {
   position: relative;
   z-index: 1;
-  @include adaptiveValue("margin-bottom", 40, 20);
+  @include adaptiveValue("margin-bottom", 100, 80);
 
   &__wrapper {
     position: relative;

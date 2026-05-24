@@ -12,10 +12,19 @@
 }
 .today-tab {
   display: grid;
+  gap: 16px;
   grid-template-columns: 1fr auto;
   grid-template-areas:
     "title nav"
     "content content";
+  @media (max-width: 767.98px) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "nav"
+      "content";
+    gap: 20px;
+  }
 }
 
 .today__title {
@@ -23,8 +32,6 @@
 }
 
 .today-tab__navigation {
-  grid-area: nav;
-  justify-self: end;
 }
 
 .today-tab__content {
@@ -47,11 +54,20 @@
 .today-tab {
   /* .today-tab__navigation */
   &__navigation {
+    grid-area: nav;
     padding: 8px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 20px;
+    justify-content: flex-start;
+    gap: 8px;
     background-color: #1c1c1c;
+    @media (max-width: 991.98px) {
+    }
+    @media (max-width: 767.98px) {
+      justify-self: start;
+      justify-content: center;
+    }
   }
   /* .today-tab__title */
   &__title {
@@ -76,7 +92,10 @@
   &__body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
+    @include adaptiveValue("gap", 40, 20);
+    @media (max-width: 491.98px) {
+      grid-template-columns: 1fr;
+    }
     &[hidden] {
       display: none;
     }

@@ -56,8 +56,10 @@
   }
   // .menu__item
   &__item {
+    border: 1px solid transparent;
     .active {
       color: $accentColor;
+      border: 1px solid $accentColor;
     }
   }
   // .menu__link
@@ -82,6 +84,7 @@
       width: 100%;
     }
     &--active {
+      border-radius: 16px;
       color: $accentColor;
     }
     &--active::after {

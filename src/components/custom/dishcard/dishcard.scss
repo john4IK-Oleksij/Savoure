@@ -5,8 +5,8 @@
   display: grid;
   align-items: center;
   grid-template-columns: clamp(90px, 30%, 156px) 1fr;
-  @include adaptiveValue("gap", 16, 8, 0, $containerWidth, 767.98);
-  @media (max-width: 491.98px) {
+  @include adaptiveValue("gap", 16, 10, 0, $containerWidth, 767.98);
+  @media (max-width: 767.98px) {
     grid-template-columns: 1fr;
   }
 
@@ -30,7 +30,7 @@
   &__content {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
     padding-right: 10px;
   }
 
@@ -39,7 +39,6 @@
   &__label {
     display: inline-flex;
     width: fit-content;
-    padding: 8px 12px;
     border-radius: 20px;
     background-color: #1c1c1c;
     color: $titleColor;

@@ -1,5 +1,6 @@
 // >==================== chefsdishes ==========
 .chefsdishes {
+  @include adaptiveValue("margin-bottom", 100, 80);
   /* .chefsdishes__container */
 
   &__container {

@@ -29,5 +29,5 @@
 git status
 git add .
 git status
-git commit -m ""
+git commit -m "adaptive/small/correct"
 

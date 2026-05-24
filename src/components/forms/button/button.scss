@@ -2,17 +2,41 @@
 // Сніппет (HTML): btn
 .btn {
   display: inline-flex;
+  align-items: center;
+  gap: 10px;
   background-color: $accentColor;
   line-height: 1.2;
   color: $textColor;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
   @include adaptiveValue("padding-top", 14, 12, 0, $containerWidth, 767.98);
   @include adaptiveValue("padding-right", 22, 12, 0, $containerWidth, 767.98);
   @include adaptiveValue("padding-bottom", 14, 12, 0, $containerWidth, 767.98);
   @include adaptiveValue("padding-left", 22, 12, 0, $containerWidth, 767.98);
   @include adaptiveValue("border-radius", 24, 16, 0, $containerWidth, 767.98);
   @include adaptiveValue("font-size", 18, 16, 0, $containerWidth, 767.98);
+  @media (any-hover: hover) {
+    &:hover {
+      color: #000;
+      background-color: $textAccentColor;
+    }
+  }
+  span {
+    display: inline;
+    font-size: 16px;
+  }
+  svg {
+    display: none;
+    color: $accentColor;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    @media (max-width: 491px) {
+      display: block;
+    }
+  }
   .contact__form & {
     justify-content: center; // 🔥 ЦЕ ГОЛОВНЕ
     align-items: center; // (по вертикалі)
@@ -25,23 +49,29 @@
   .subscribe__form & {
     padding: 6px 14px;
   }
-  @media (any-hover: hover) {
-    &:hover {
-      color: #000;
-      background-color: $textAccentColor;
-      transform: translate(1px, 1px);
+  /* .footer__btn */
+
+  &.footer__btn {
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    padding: 6px 14px;
+
+    gap: 4px;
+    @media (max-width: 767.98px) {
+      align-text: center;
     }
-    &:focus-visible {
-      outline: none;
-      box-shadow:
-        0 0 0 2px #000,
-        0 0 0 4px #e5b93d;
+    svg {
+      color: $bgColor;
     }
   }
+  &:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px #000,
+      0 0 0 4px #e5b93d;
+  }
   @media (max-width: 491px) {
-    .header & {
-      display: none;
-    }
     .hero & {
       display: block;
       width: 100%;
@@ -54,7 +84,18 @@
   &.btn--dark {
     background-color: $darkBgColor;
     color: $secondaryTextColor;
-    transition: all 0.3s ease;
+    @media (any-hover: hover) {
+      &:hover {
+        color: $textColor;
+        background-color: $textAccentColor;
+      }
+    }
+    &:focus-visible {
+      outline: none;
+      box-shadow:
+        0 0 0 2px #000,
+        0 0 0 4px #e5b93d;
+    }
     .map & {
       font-size: 14px;
       line-height: 1.5;
@@ -68,48 +109,35 @@
       flex-shrink: 0;
       white-space: nowrap;
     }
-    @media (any-hover: hover) {
-      &:hover {
-        color: #000;
-        background-color: $textAccentColor;
-        transform: scale(1.02);
-      }
-      &:focus-visible {
-        outline: none;
-        box-shadow:
-          0 0 0 2px #000,
-          0 0 0 4px #e5b93d;
-      }
-    }
   }
 }
-.header__reserve-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  svg {
-    display: none;
-    width: 28px;
-    height: 28px;
-    flex-shrink: 0;
-    color: #d3a72d;
-  }
-  span {
-    display: inline;
-  }
-  @media (max-width: 600px) {
-    width: 48px;
-    height: 48px;
-    min-width: 48px;
-    padding: 0;
-    border-radius: 50%;
-    background-color: transparent;
-    span {
-      display: none;
-    }
-    svg {
-      display: block;
-    }
-  }
-}
+// .header__reserve-btn {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   gap: 10px;
+//   svg {
+//     display: none;
+//     width: 28px;
+//     height: 28px;
+//     flex-shrink: 0;
+//     color: #d3a72d;
+//   }
+//   span {
+//     display: inline;
+//   }
+//   @media (max-width: 600px) {
+//     width: 48px;
+//     height: 48px;
+//     min-width: 48px;
+//     padding: 0;
+//     border-radius: 50%;
+//     background-color: transparent;
+//     span {
+//       display: none;
+//     }
+//     svg {
+//       display: block;
+//     }
+//   }
+// }

@@ -13,7 +13,7 @@
   &__top {
     display: grid;
     grid-template-columns: 2fr 0.6fr 1fr;
-    gap: 15px;
+    gap: 20px;
     @media (max-width: 767.98px) {
       grid-template-columns: 1fr;
     }
@@ -36,19 +36,7 @@
     line-height: 1.15;
     color: $titleColor;
     @include adaptiveValue("font-size", 48, 36);
-    @include adaptiveValue("margin-bottom", 32, 10);
-  }
-
-  /* .footer__btn */
-
-  &__btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-    @media (max-width: 767.98px) {
-      align-text: center;
-    }
+    @include adaptiveValue("margin-bottom", 32, 20);
   }
 
   /* .footer__menu */
@@ -118,7 +106,14 @@
     @media (max-width: 767.98px) {
       justify-content: center;
     }
-    span {
+    &-decor {
+      width: 4px;
+      height: 4px;
+      margin: 0 8px;
+      border-radius: 50%;
+      background-color: $secondaryTextColor;
+      align-self: center;
+      flex-shrink: 0;
       margin: 0 8px;
     }
   }
@@ -170,7 +165,7 @@
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
     @media (max-width: 767.98px) {
       align-items: center;
     }

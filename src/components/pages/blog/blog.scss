@@ -23,13 +23,19 @@
   &__head {
     display: flex;
     justify-content: space-between;
-    gap: 40px;
+    @include adaptiveValue("gap", 40, 15);
+    @media (max-width: 991.98px) {
+      flex-direction: column;
+    }
   }
 
   /* .blog__info */
 
   &__info {
     max-width: 57%;
+    @media (max-width: 991.98px) {
+      max-width: 100%;
+    }
   }
 
   /* .blog__title */
@@ -39,7 +45,6 @@
     font-weight: 600;
     color: $titleColor;
     line-height: 1.15;
-    text-wrap: nowrap;
     font-size: 48px;
     @include adaptiveValue("margin-bottom", 24, 10, 0, $containerWidth, 767.98);
   }
@@ -56,6 +61,7 @@
   &__search {
     align-self: flex-end;
     min-width: 300px;
+    max-width: 100%;
     position: relative;
     background-color: #010614;
     border-radius: 24px;
@@ -148,19 +154,12 @@
   &__text {
     font-size: 16px;
     line-height: 1.5;
-    color: #000;
+    color: #ffffff;
   }
 
   /* .subscribe__action */
 
   &__form {
-    padding: 18px;
-    background-color: #010614;
-    border-radius: 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
   }
   &__action {
     display: flex;
