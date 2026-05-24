@@ -1,0 +1,101 @@
+.dishcard {
+  width: 100%;
+  min-width: 0;
+  background-color: transparent;
+  display: grid;
+  align-items: center;
+  grid-template-columns: clamp(90px, 30%, 156px) 1fr;
+  @include adaptiveValue("gap", 16, 8, 0, $containerWidth, 767.98);
+  @media (max-width: 491.98px) {
+    grid-template-columns: 1fr;
+  }
+
+  /* .dishcard__image */
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 28px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      object-position: bottom;
+      object-fit: cover;
+    }
+  }
+
+  /* .dishcard__content */
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-right: 10px;
+  }
+
+  /* .dishcard__label */
+
+  &__label {
+    display: inline-flex;
+    width: fit-content;
+    padding: 8px 12px;
+    border-radius: 20px;
+    background-color: #1c1c1c;
+    color: $titleColor;
+    font-size: 14px;
+    line-height: 1.57;
+  }
+
+  /* .dishcard__head */
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* .dishcard__title */
+
+  &__title {
+    min-width: 0;
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: 500;
+    text-transform: capitalize;
+    display: -webkit-box;
+    // число ліній (line-clamp)
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* .dishcard__line */
+
+  &__line {
+    flex: 1;
+    min-width: 24px;
+    width: 100%;
+    background-color: #242424;
+    height: 2px;
+  }
+
+  /* .dishcard__price */
+
+  &__price {
+    flex: 0 0 auto;
+  }
+
+  /* .dishcard__description */
+
+  &__description {
+    font-size: 14px;
+    line-height: 1.57;
+    display: -webkit-box;
+    // число ліній (line-clamp)
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,241 @@
+.page {
+  &__faq {
+    @include adaptiveValue("margin-bottom", 100, 80);
+  }
+}
+// >============== FAQ ==========
+.faq {
+  position: relative;
+  z-index: 1;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        circle at top left,
+        rgba(255, 255, 255, 0.06),
+        transparent 40%
+      ),
+      radial-gradient(
+        circle at bottom right,
+        rgba(255, 255, 255, 0.04),
+        transparent 45%
+      );
+  }
+  /* .faq__container */
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    @include adaptiveValue("gap", 56, 15);
+  }
+
+  /* .faq__head */
+
+  &__head {
+    position: relative;
+    text-align: center;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-repeat: no-repeat;
+      background-size: contain;
+      @include adaptiveValue("width", 160, 80, 0, $containerWidth, 767.98);
+      @include adaptiveValue("height", 70, 35, 0, $containerWidth, 767.98);
+    }
+
+    // 🔥 лівий декор
+    &::before {
+      background-image: url("../../assets/img/decor-left.png");
+      @include adaptiveValue("left", 100, 0, 0 $containerWidth, 767.98);
+    }
+
+    // 🔥 правий декор
+    &::after {
+      background-image: url("../../assets/img/decor-right.png");
+      @include adaptiveValue("right", 100, 0, 0 $containerWidth, 767.98);
+    }
+  }
+
+  /* .faq__title */
+
+  &__title {
+    text-align: center;
+    text-wrap: balanced;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    line-height: 1.15;
+    color: $titleColor;
+    margin-bottom: 8px;
+    @include adaptiveValue("font-size", 58, 44);
+  }
+
+  /* .faq__text */
+
+  &__text {
+    text-wrap: balance;
+    line-height: 1.44;
+    color: $secondaryTextColor;
+    text-align: center;
+  }
+}
+@media (max-width: 991.98px) {
+  .faq__head::before,
+  .faq__head::after {
+    display: none;
+  }
+}
+.spollers-faq {
+  display: grid;
+  @include adaptiveValue("gap", 16, 8);
+  /* .spollers__item */
+
+  &__item {
+    font-size: toRem(20);
+  }
+
+  /* .spollers__title */
+
+  &__title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
+    line-height: 1.15;
+    color: $secondaryTextColor;
+    @include adaptiveValue("font-size", 32, 24);
+    width: 100%;
+    cursor: default;
+    text-align: left;
+    border-radius: 5px;
+    position: relative;
+    @include adaptiveValue("padding-top", 20, 12, 0, $containerWidth, 767.98);
+    @include adaptiveValue("padding-right", 72, 50, 0, $containerWidth, 767.98);
+    @include adaptiveValue(
+      "padding-bottom",
+      20,
+      12,
+      0,
+      $containerWidth,
+      767.98
+    );
+    @include adaptiveValue("padding-left", 16, 12, 0, $containerWidth, 767.98);
+    .--spoller-init & {
+      cursor: pointer;
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        width: 16px;
+        height: 2px;
+        background-color: $accentColor;
+        transform-origin: center;
+        transition: transform 0.4s ease;
+      }
+      // горизонтальна лінія
+      &::before {
+        transform: translateY(-50%) rotate(0deg);
+      }
+      // вертикальна лінія
+      &::after {
+        transform: translateY(-50%) rotate(90deg);
+      }
+      &.--spoller-active {
+        &::before {
+          transform: translateY(-50%) rotate(0deg);
+        }
+
+        &::after {
+          transform: translateY(0%) rotate(180deg) scaleY(0);
+        }
+      }
+    }
+  }
+
+  /* .spollers__body */
+
+  &__body {
+    padding: 20px;
+    border-radius: 5px;
+    line-height: 1.44;
+    color: $secondaryTextColor;
+    @include adaptiveValue("padding-top", 20, 12, 0, $containerWidth, 767.98);
+    @include adaptiveValue("padding-right", 72, 50, 0, $containerWidth, 767.98);
+    @include adaptiveValue(
+      "padding-bottom",
+      20,
+      12,
+      0,
+      $containerWidth,
+      767.98
+    );
+    @include adaptiveValue("padding-left", 16, 12, 0, $containerWidth, 767.98);
+  }
+}
+// >============== Blog ==========
+.blog {
+  @include adaptiveValue("margin-bottom", 100, 80);
+  /* .blog__container */
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    @include adaptiveValue("gap", 56, 15);
+  }
+
+  /* .blog__head */
+
+  &__head {
+  }
+
+  /* .blog__title */
+
+  &__title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    line-height: 1.2;
+    color: $titleColor;
+    margin-bottom: 8px;
+    @include adaptiveValue("font-size", 56, 44);
+  }
+
+  /* .blog__descr */
+
+  &__descr {
+    line-height: 1.44;
+    color: $secondaryTextColor;
+  }
+
+  /* .blog__main */
+
+  &__main {
+  }
+
+  /* .blog__list */
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: stretch;
+    @include adaptiveValue("gap", 24, 10, 0, $containerWidth, 767.98);
+    @media (max-width: 767.98px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 491.98px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* .blog__item */
+
+  &__item {
+    min-height: 0;
+  }
+}

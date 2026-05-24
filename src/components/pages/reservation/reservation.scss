@@ -1,0 +1,93 @@
+.reservation-success {
+  //   position: fixed;
+  //   inset: 0;
+  //   z-index: 100;
+  //   background: rgba(0, 0, 0, 0.7);
+  margin: 0 auto;
+  width: 100%;
+  max-width: 488px;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  background: #010614;
+  border-radius: 16px;
+  padding: 32px;
+
+  &__icon {
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    margin: 0 auto;
+    background: #dff5e7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    &::before {
+      content: "";
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #1dbf73;
+      position: absolute;
+    }
+    svg {
+      width: 27px;
+      height: 27px;
+      position: relative;
+      z-index: 2;
+    }
+  }
+  &__title {
+    text-align: center;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    color: $titleColor;
+    line-height: 1.15;
+    font-size: 32px;
+    @media (max-width: 767.98px) {
+      // font-size: 36px;
+    }
+  }
+  &__text {
+    font-size: 14px;
+    line-height: 1.57;
+    text-align: center;
+  }
+  &__details {
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    padding-top: 24px;
+  }
+  &__actions {
+    display: flex;
+    gap: 16px;
+  }
+}
+.details-reservation {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  &__title {
+    line-height: 1.33;
+    font-weight: 600;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 14px;
+    line-height: 1.57;
+    span:last-child {
+      color: $titleColor;
+    }
+  }
+}

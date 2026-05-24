@@ -1,0 +1,22 @@
+<template src="@components/templates/detail/detail.html" locals='{
+		"title":"News In Detail", 
+		"lang":"en",
+		"preloader": {
+			"enable":"true",
+			"once":"false"
+		},
+		"keywords":"", 
+		"description":""
+	}'>
+   <block name="header">
+      <include src="@components/layout/header/header.html" locals='{"active":"News"}'></include>
+   </block>
+   <block name="main">
+      <include src="@components/pages/detail/detail.html" locals='{}'></include>
+   </block>
+   <block name="footer">
+      <include src="@components/layout/footer/footer.html" locals='{}'></include>
+   </block>
+   <block name="popup">
+   </block>
+</template>

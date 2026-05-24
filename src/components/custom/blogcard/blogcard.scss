@@ -1,0 +1,87 @@
+.blogcard {
+  min-height: 0;
+  background-color: $darkBgColor;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  padding: 10px;
+  border-radius: 20px;
+  @include adaptiveValue("gap", 16, 10, 0, $containerWidth, 767.98);
+
+  /* .blogcard__image */
+
+  &__image {
+    overflow: hidden;
+    border-radius: 10px;
+    aspect-ratio: 377 / 229;
+    @media (max-width: 600.98px) {
+      border-radius: 16px;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top left;
+      transition: all 0.4s;
+    }
+    @media (any-hover: hover) {
+      &:hover img {
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  /* .blogcard__content */
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    @include adaptiveValue("padding", 14, 10, 0, $containerWidth, 767.98);
+  }
+
+  /* .blogcard__label */
+
+  &__label {
+    text-transform: capitalize;
+    color: $titleColor;
+    font-size: 14px;
+    line-height: 1.57;
+  }
+
+  /* .blogcard__title */
+
+  &__title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 24px;
+    line-height: 1.1;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: $titleColor;
+    transition: color 0.3s;
+    @media (any-hover: hover) {
+      &:hover {
+        // text-decoration: underline;
+        color: $accentColor;
+      }
+    }
+  }
+
+  /* .blogcard__descr */
+
+  &__descr {
+    margin-top: auto;
+    display: -webkit-box;
+    //  /число ліній (line-clamp)
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: $secondaryTextColor;
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.57;
+  }
+}

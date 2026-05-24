@@ -1,0 +1,21 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 150;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition:
+    background-color 0.3s,
+    translate 0.3s;
+  @include adaptiveValue("padding-top", 24, 8);
+  @include adaptiveValue("padding-bottom", 24, 8);
+  /* .header__container */
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+}

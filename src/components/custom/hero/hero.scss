@@ -1,0 +1,106 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: #00152899;
+  }
+  > *:not(.hero__bg) {
+    position: relative;
+    z-index: 2;
+  }
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  &__body {
+    padding: 0 15px;
+    width: 100%;
+    max-width: 1022px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include adaptiveValue("gap", 16, 10);
+  }
+  /* .hero__decor */
+  &__decor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 263 / 75;
+    height: auto;
+    @include adaptiveValue("width", 263, 180);
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  /* .hero__label */
+  &__label {
+    text-align: center;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 48px;
+    line-height: 1.2;
+    color: $secondaryTitleColor;
+    font-weight: 600;
+    @include adaptiveValue("font-size", 48, 24);
+  }
+  /* .hero__descr */
+  &__descr {
+    order: 2;
+    text-align: center;
+    width: 100%;
+    max-width: 798px;
+    line-height: 1.44;
+    color: $secondaryTextColor;
+  }
+  /* .hero__title */
+  &__title {
+    order: 1;
+    width: 100%;
+    max-width: 798px;
+    text-align: center;
+    font-family: "Cormorant Garamond", serif;
+    color: $titleColor;
+    font-weight: 600;
+    @include adaptiveValue("font-size", 92, 48);
+  }
+  /* .hero__action */
+  &__action {
+    order: 3;
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    @media (max-width: 491px) {
+      width: 100%;
+      flex-direction: column;
+    }
+  }
+  @include adaptiveValue("margin-bottom", 100, 80);
+  &.hero--home {
+    .hero__title {
+      order: 2;
+    }
+
+    .hero__descr {
+      order: 1;
+    }
+  }
+}

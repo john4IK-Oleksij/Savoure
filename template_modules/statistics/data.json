@@ -1,0 +1,490 @@
+{
+  "statistics": {
+    "sessions": [
+      {
+        "date": "16.04.2026",
+        "start": 1776327749509,
+        "end": 1776331910682
+      },
+      {
+        "date": "16.04.2026",
+        "start": 1776334005848,
+        "end": 1776338379416
+      },
+      {
+        "date": "16.04.2026",
+        "start": 1776338403826,
+        "end": 1776340589780
+      },
+      {
+        "date": "16.04.2026",
+        "start": 1776355191501,
+        "end": 1776359759550
+      },
+      {
+        "date": "16.04.2026",
+        "start": 1776359788849,
+        "end": 1776361754139
+      },
+      {
+        "date": "16.04.2026",
+        "start": 1776361764007,
+        "end": 1776362413602
+      },
+      {
+        "date": "18.04.2026",
+        "start": 1776497825575,
+        "end": 1776501145397
+      },
+      {
+        "date": "18.04.2026",
+        "start": 1776501958573,
+        "end": 1776502815102
+      },
+      {
+        "date": "18.04.2026",
+        "start": 1776504064092,
+        "end": 1776508567761,
+        "type": "build"
+      },
+      {
+        "date": "18.04.2026",
+        "start": 1776508612217,
+        "end": 1776508612217
+      },
+      {
+        "date": "18.04.2026",
+        "start": 1776512581007,
+        "end": 1776515582269
+      },
+      {
+        "date": "18.04.2026",
+        "start": 1776515652986,
+        "end": 1776516319811
+      },
+      {
+        "date": "18.04.2026",
+        "start": 1776516555026,
+        "end": 1776529400722
+      },
+      {
+        "date": "19.04.2026",
+        "start": 1776581981761,
+        "end": 1776588412807
+      },
+      {
+        "date": "19.04.2026",
+        "start": 1776590082438,
+        "end": 1776602095284
+      },
+      {
+        "date": "19.04.2026",
+        "start": 1776602104467,
+        "end": 1776604244371
+      },
+      {
+        "date": "20.04.2026",
+        "start": 1776693303319,
+        "end": 1776696223766
+      },
+      {
+        "date": "20.04.2026",
+        "start": 1776696255213,
+        "end": 1776696552754
+      },
+      {
+        "date": "20.04.2026",
+        "start": 1776696564367,
+        "end": 1776697664858
+      },
+      {
+        "date": "22.04.2026",
+        "start": 1776867609454,
+        "end": 1776869657037
+      },
+      {
+        "date": "22.04.2026",
+        "start": 1776874429789,
+        "end": 1776877960467
+      },
+      {
+        "date": "22.04.2026",
+        "start": 1776878878382,
+        "end": 1776878878382
+      },
+      {
+        "date": "22.04.2026",
+        "start": 1776880967728,
+        "end": 1776885890643
+      },
+      {
+        "date": "23.04.2026",
+        "start": 1776954653576,
+        "end": 1776961021981
+      },
+      {
+        "date": "23.04.2026",
+        "start": 1776969630677,
+        "end": 1776974493777
+      },
+      {
+        "date": "24.04.2026",
+        "start": 1777045636280,
+        "end": 1777052523021
+      },
+      {
+        "date": "25.04.2026",
+        "start": 1777132215006,
+        "end": 1777136626750
+      },
+      {
+        "date": "26.04.2026",
+        "start": 1777187637307,
+        "end": 1777197399044
+      },
+      {
+        "date": "27.04.2026",
+        "start": 1777297780562,
+        "end": 1777306200269
+      },
+      {
+        "date": "27.04.2026",
+        "start": 1777306318850,
+        "end": 1777309169514
+      },
+      {
+        "date": "28.04.2026",
+        "start": 1777382341038,
+        "end": 1777392518762
+      },
+      {
+        "date": "29.04.2026",
+        "start": 1777472014459,
+        "end": 1777484046937
+      },
+      {
+        "date": "29.04.2026",
+        "start": 1777484175928,
+        "end": 1777487540937
+      },
+      {
+        "date": "30.04.2026",
+        "start": 1777553493035,
+        "end": 1777567131114
+      },
+      {
+        "date": "01.05.2026",
+        "start": 1777621114836,
+        "end": 1777630667618
+      },
+      {
+        "date": "03.05.2026",
+        "start": 1777813415629,
+        "end": 1777819642135
+      },
+      {
+        "date": "03.05.2026",
+        "start": 1777819746934,
+        "end": 1777825726569
+      },
+      {
+        "date": "04.05.2026",
+        "start": 1777888740776,
+        "end": 1777890191275
+      },
+      {
+        "date": "04.05.2026",
+        "start": 1777892849775,
+        "end": 1777893854176
+      },
+      {
+        "date": "04.05.2026",
+        "start": 1777908864884,
+        "end": 1777911482833
+      },
+      {
+        "date": "04.05.2026",
+        "start": 1777912507150,
+        "end": 1777923881876
+      },
+      {
+        "date": "04.05.2026",
+        "start": 1777924049576,
+        "end": 1777924278897
+      },
+      {
+        "date": "05.05.2026",
+        "start": 1777995726768,
+        "end": 1778007092113
+      },
+      {
+        "date": "06.05.2026",
+        "start": 1778071229169,
+        "end": 1778073930006
+      },
+      {
+        "date": "06.05.2026",
+        "start": 1778074044908,
+        "end": 1778076741936
+      },
+      {
+        "date": "06.05.2026",
+        "start": 1778076786272,
+        "end": 1778080091952
+      },
+      {
+        "date": "06.05.2026",
+        "start": 1778080625196,
+        "end": 1778081314529
+      },
+      {
+        "date": "07.05.2026",
+        "start": 1778151024570,
+        "end": 1778154596250
+      },
+      {
+        "date": "07.05.2026",
+        "start": 1778154786423,
+        "end": 1778155430474
+      },
+      {
+        "date": "07.05.2026",
+        "start": 1778155594427,
+        "end": 1778157316901
+      },
+      {
+        "date": "07.05.2026",
+        "start": 1778159263834,
+        "end": 1778167023929
+      },
+      {
+        "date": "08.05.2026",
+        "start": 1778241402867,
+        "end": 1778247305542
+      },
+      {
+        "date": "08.05.2026",
+        "start": 1778251900366,
+        "end": 1778261648434
+      },
+      {
+        "date": "09.05.2026",
+        "start": 1778319558796,
+        "end": 1778329543255
+      },
+      {
+        "date": "09.05.2026",
+        "start": 1778329651834,
+        "end": 1778333847175
+      },
+      {
+        "date": "09.05.2026",
+        "start": 1778333943576,
+        "end": 1778335236365
+      },
+      {
+        "date": "09.05.2026",
+        "start": 1778344299462,
+        "end": 1778347611007
+      },
+      {
+        "date": "09.05.2026",
+        "start": 1778347700367,
+        "end": 1778348032720
+      },
+      {
+        "date": "10.05.2026",
+        "start": 1778401584092,
+        "end": 1778412243507
+      },
+      {
+        "date": "10.05.2026",
+        "start": 1778414552334,
+        "end": 1778415061066
+      },
+      {
+        "date": "10.05.2026",
+        "start": 1778415074776,
+        "end": 1778418904365
+      },
+      {
+        "date": "11.05.2026",
+        "start": 1778514123377,
+        "end": 1778519373835
+      },
+      {
+        "date": "12.05.2026",
+        "start": 1778605543942,
+        "end": 1778609160727
+      },
+      {
+        "date": "12.05.2026",
+        "start": 1778609264734,
+        "end": 1778615202580
+      },
+      {
+        "date": "13.05.2026",
+        "start": 1778686479445,
+        "end": 1778693627967
+      },
+      {
+        "date": "14.05.2026",
+        "start": 1778771470474,
+        "end": 1778771804635
+      },
+      {
+        "date": "14.05.2026",
+        "start": 1778771835424,
+        "end": 1778776309071
+      },
+      {
+        "date": "14.05.2026",
+        "start": 1778778072002,
+        "end": 1778783832781
+      }
+    ],
+    "files": [
+      "index.html",
+      "header.html",
+      "settings.scss",
+      "_components.html",
+      "dishcard.scss",
+      "style.scss",
+      "dishcard.html",
+      "blogcard.html",
+      "blogimage-01.jpg",
+      "blogcard.scss",
+      "button.html",
+      "button.scss",
+      "ripple.scss",
+      "menu.html",
+      "header.scss",
+      "logo.html",
+      "logo.scss",
+      "menu.scss",
+      "hero-bg.jpg",
+      "home.html",
+      "decor.png",
+      "home.scss",
+      "decor.svg",
+      "home.js",
+      "scroll.scss",
+      "about-01.jpg",
+      "about-02.jpg",
+      "dishimage-02.jpg",
+      "dishimage-03.jpg",
+      "dishimage-04.jpg",
+      "dishimage-05.jpg",
+      "dishimage-06.jpg",
+      "slide-01.jpg",
+      "slide-02.jpg",
+      "slide-03.jpg",
+      "slider.js",
+      "next-arrow.svg",
+      "prev-arrow.svg",
+      "slider.scss",
+      "app.js",
+      "EMAIL.svg",
+      "Food Restaurant Website UI Kit - Platieu FREE (Community) (Copy).zip",
+      "main.html",
+      "_settings.js",
+      "map.js",
+      "location.svg",
+      "Food Restaurant Website UI Kit - Platieu FREE (Community) (Copy) (1).zip",
+      "location-arr.svg",
+      "rating.js",
+      "rating.scss",
+      "blogimage-02.jpg",
+      "blogimage-03.jpg",
+      "footer.html",
+      "arrow-btn.svg",
+      "facebook.svg",
+      "instagram.svg",
+      "x-icon.svg",
+      "whatsapp.svg",
+      "footer.scss",
+      "food-bg.jpg",
+      "our-menu.html",
+      "our-menu.js",
+      "feedback.js",
+      "hero.html",
+      "hero.scss",
+      "main.scss",
+      "feedback.scss",
+      "feedback.html",
+      "our-menu.scss",
+      "dishimage-07.jpg",
+      "dishimage-08.jpg",
+      "dishimage-09.jpg",
+      "dishimage-10.jpg",
+      "dishimage-11.jpg",
+      "dishimage-12.jpg",
+      "dishimage-13.jpg",
+      "Не подтвержден 319799.crdownload",
+      "dishimage-14.jpg",
+      "dishimage-15.jpg",
+      "dishimage-16.jpg",
+      "dishimage-17.jpg",
+      "dishimage-18.jpg",
+      "dishimage-19.jpg",
+      "dishimage-20.jpg",
+      "dishimage-21.jpg",
+      "dishimage-22.jpg",
+      "menu.json",
+      "chefsdishes.html",
+      "chefsdishes.js",
+      "chefsdishes.scss",
+      "blogcard.js",
+      "tabs.scss",
+      "Не подтвержден 817967.crdownload",
+      "blogimage-04.jpg",
+      "Не подтвержден 860994.crdownload",
+      "blogimage-05.jpg",
+      "Не подтвержден 791897.crdownload",
+      "blogimage-06.jpg",
+      "Не подтвержден 735851.crdownload",
+      "blog.json",
+      "location.js",
+      "location.scss",
+      "location.html",
+      "findus.html",
+      "contact.js",
+      "branches.html",
+      "branches.scss",
+      "contact.scss",
+      "blog.html",
+      "blog.js",
+      "blog.scss",
+      "search.svg",
+      "subscribe.jpg",
+      "blogimage-07.jpg",
+      "blogimage-08.jpg",
+      "blogimage-09.jpg",
+      "blogimage-10.jpg",
+      "blogimage-11.jpg",
+      "blogimage-12.jpg",
+      "detailsblog.html",
+      "detailsblog-bg.jpg",
+      "image-01.jpg",
+      "image-02.jpg",
+      "image-03.jpg",
+      "detailsblog.js",
+      "detail.html",
+      "detail.js",
+      "detail.scss",
+      "news-bg.jpg",
+      "reservation.html",
+      "reservation.js",
+      "contact.html",
+      "popup.html",
+      "popup.scss",
+      "reservation.scss",
+      "story.html",
+      "about.html",
+      "about.js",
+      "about.scss",
+      "teamcard.html",
+      "teamcard.scss"
+    ]
+  }
+}

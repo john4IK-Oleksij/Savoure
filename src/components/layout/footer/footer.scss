@@ -1,0 +1,212 @@
+.footer {
+  /* .footer__container */
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    @include adaptiveValue("gap", 90, 10);
+    @include adaptiveValue("margin-bottom", 100, 15);
+  }
+
+  /* .footer__top */
+
+  &__top {
+    display: grid;
+    grid-template-columns: 2fr 0.6fr 1fr;
+    gap: 15px;
+    @media (max-width: 767.98px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* .footer__head */
+
+  &__head {
+    @media (max-width: 767.98px) {
+      justify-self: center;
+      text-align: center;
+    }
+  }
+
+  /* .footer__title */
+
+  &__title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    line-height: 1.15;
+    color: $titleColor;
+    @include adaptiveValue("font-size", 48, 36);
+    @include adaptiveValue("margin-bottom", 32, 10);
+  }
+
+  /* .footer__btn */
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    @media (max-width: 767.98px) {
+      align-text: center;
+    }
+  }
+
+  /* .footer__menu */
+
+  &__menu {
+    justify-self: end;
+    @media (max-width: 767.98px) {
+      justify-self: center;
+    }
+  }
+
+  /* .footer__social */
+
+  &__social {
+    justify-self: end;
+    @media (max-width: 767.98px) {
+      justify-self: center;
+    }
+  }
+
+  /* .footer__social-title */
+
+  &__social-title {
+    line-height: 1.55;
+    font-weight: 500;
+    color: $secondaryTextColor;
+    margin-bottom: 24px;
+    @media (max-width: 767.98px) {
+      text-align: center;
+    }
+  }
+
+  /* .footer__social-icons */
+
+  &__social-icons {
+    display: flex;
+    gap: 18px;
+  }
+
+  /* .footer__social-link */
+
+  &__social-link {
+    display: inline-flex;
+    svg {
+      transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+    }
+    @media (any-hover: hover) {
+      &:hover svg {
+        transform: scale(1.15);
+      }
+    }
+  }
+
+  /* .footer__policy */
+
+  &__policy {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    line-height: 1.4;
+    color: $secondaryTextColor;
+    border-bottom: 1px solid #494949;
+    @include adaptiveValue("padding-bottom", 32, 10);
+    @media (max-width: 767.98px) {
+      justify-content: center;
+    }
+    span {
+      margin: 0 8px;
+    }
+  }
+
+  /* .footer__logo-text */
+
+  &__logo-text {
+    color: $accentColor;
+    opacity: 0.7;
+    text-align: center;
+  }
+
+  /* .footer__privacy */
+
+  &__privacy {
+    margin-left: auto;
+    @media (max-width: 767.98px) {
+      margin: 0;
+    }
+  }
+  /* .footer__privacy */
+
+  &__privacy,
+  &__terms {
+    opacity: 0.7;
+    @media (any-hover: hover) {
+      &:hover {
+        color: $accentColor;
+        opacity: 1;
+        text-decoration: underline;
+        text-underline-offset: 6px;
+      }
+    }
+  }
+
+  /* .footer__terms */
+
+  &__terms {
+  }
+
+  /* .footer__bottom */
+
+  &__bottom {
+  }
+}
+.menu-footer {
+  /* .menu-footer__list */
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    @media (max-width: 767.98px) {
+      align-items: center;
+    }
+  }
+
+  /* .menu-footer__item */
+
+  &__item {
+    @media (any-hover: hover) {
+      &:hover .menu-footer__link {
+        color: $accentColor;
+        text-decoration: underline;
+        text-underline-offset: 6px;
+      }
+    }
+  }
+
+  /* .menu-footer__link */
+
+  &__link {
+    font-size: 20px;
+    line-height: 1.4;
+    color: $secondaryTextColor;
+    transition: color 0.4s easy;
+  }
+}
+.footer__bg-title {
+  display: block;
+  text-align: center;
+  max-width: 100%;
+  font-family: "Allura", serif;
+  font-weight: 700;
+  background: url("/food-bg.jpg") center/cover no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  @include adaptiveValue("font-size", 400, 100);
+}

@@ -1,0 +1,32 @@
+<div class="header__menu menu">
+	<button type="button" data-fls-menu class="menu__icon icon-menu"><span></span></button>
+	<nav class="menu__body">
+		<ul class="menu__list">
+			<each loop='item in [
+					{"href": "index.html","ancor": "Home"},
+					{"href": "our-menu.html","ancor": "Menu"},
+					{"href": "findus.html","ancor": "Location"},
+					{"href": "about.html","ancor": "Our Story"},
+					{"href": "blog.html","ancor": "News"}
+				]'>
+				<if condition="'[[active]]' === '[[item.ancor]]'">
+					<li class="menu__item">
+						<span class="menu__link menu__link--active">[[item.ancor]]</span>
+					</li>
+				</if>
+				<else>
+					<li class="menu__item">
+						<a href="[[item.href]]" class="menu__link">[[item.ancor]]</a>
+					</li>
+				</else>
+			</each>
+		</ul>
+	</nav>
+</div>
+
+<!-- 
+<fetch url="@components/layout/menu/menu.json">
+	<each loop='item in response'>
+	</each>
+</fetch>
+-->

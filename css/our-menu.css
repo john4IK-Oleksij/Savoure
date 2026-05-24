@@ -1,0 +1,18 @@
+.today-tab {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "title nav" "content content";
+}
+
+.today__title {
+  grid-area: title;
+}
+
+.today-tab__navigation {
+  grid-area: nav;
+  justify-self: end;
+}
+
+.today-tab__content {
+  grid-area: content;
+}

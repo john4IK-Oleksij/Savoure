@@ -1,0 +1,94 @@
+<section data-fls-contact class="page__reservation contact">
+   <div class="contact__container">
+      <div class="contact__box">
+         <form data-form-type="reservation" id="reservation-form" class="contact__form" action="#" method="POST"
+            novalidate>
+            <h2 class="contact__title">Reservation Form Fields</h2>
+            <div class="contact__field">
+               <input class="contact__input" type="text" id="name" name="name" placeholder="Enter your full name."
+                  required minlength="2" autocomplete="name" />
+               <label class="contact__label" for="name">Full name</label>
+            </div>
+            <div class="contact__phone-mail">
+               <div class="contact__field">
+                  <input class="contact__input" type="email" id="email" name="email"
+                     placeholder="We’ll send your confirmation here." required autocomplete="email" />
+                  <label class="contact__label" for="email">Email</label>
+               </div>
+               <div class="contact__field contact__field--phone">
+                  <div class="contact__phone">
+                     <!-- Custom select -->
+                     <div class="contact__select" id="countrySelect">
+                        <div class="contact__select-head">
+                           <img src="https://flagcdn.com/w20/us.png" alt="">
+                           <span>+1</span>
+                           <div class="arrow"></div>
+                        </div>
+                        <div class="contact__select-dropdown"></div>
+                        <!-- для форми -->
+                        <input type="hidden" name="country_code" value="+1">
+                     </div>
+                     <!-- Phone input -->
+                     <input class="contact__input" type="tel" name="phone" placeholder="So we can reach you if needed."
+                        required pattern="^\+?[0-9\s\-]{7,15}$" autocomplete="tel" />
+                     <label class="contact__label">Phone Number</label>
+                  </div>
+               </div>
+            </div>
+            <div class="contact__date-time">
+               <div class="contact__field">
+                  <input class="contact__input" type="date" id="date" name="date"
+                     placeholder="Select the date of your visit." required />
+                  <label class="contact__label" for="date">
+                     Reservation Date
+                  </label>
+                  <svg class="date-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                     fill="none">
+                     <path
+                        d="M2.5 4.99935V16.666C2.5 17.108 2.67559 17.532 2.98816 17.8445C3.30072 18.1571 3.72464 18.3327 4.16667 18.3327H15.8333C16.2754 18.3327 16.6993 18.1571 17.0118 17.8445C17.3244 17.532 17.5 17.108 17.5 16.666V4.99935C17.5 4.55732 17.3244 4.1334 17.0118 3.82084C16.6993 3.50828 16.2754 3.33268 15.8333 3.33268H14.1667V1.66602H12.5V3.33268H7.5V1.66602H5.83333V3.33268H4.16667C3.72464 3.33268 3.30072 3.50828 2.98816 3.82084C2.67559 4.1334 2.5 4.55732 2.5 4.99935ZM15.8333 16.666H4.16667V6.66602H15.8333V16.666Z"
+                        fill="#EDEDED" />
+                  </svg>
+               </div>
+               <div class="contact__field">
+                  <input class="contact__input" type="time" id="time" name="time"
+                     placeholder="Choose your preferred time." required />
+                  <label class="contact__label" for="time">
+                     Reservation Time
+                  </label>
+                  <svg class="date-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"
+                     fill="none">
+                     <path
+                        d="M2.5 4.99935V16.666C2.5 17.108 2.67559 17.532 2.98816 17.8445C3.30072 18.1571 3.72464 18.3327 4.16667 18.3327H15.8333C16.2754 18.3327 16.6993 18.1571 17.0118 17.8445C17.3244 17.532 17.5 17.108 17.5 16.666V4.99935C17.5 4.55732 17.3244 4.1334 17.0118 3.82084C16.6993 3.50828 16.2754 3.33268 15.8333 3.33268H14.1667V1.66602H12.5V3.33268H7.5V1.66602H5.83333V3.33268H4.16667C3.72464 3.33268 3.30072 3.50828 2.98816 3.82084C2.67559 4.1334 2.5 4.55732 2.5 4.99935ZM15.8333 16.666H4.16667V6.66602H15.8333V16.666Z"
+                        fill="#EDEDED" />
+                  </svg>
+               </div>
+            </div>
+            <div class="contact__field">
+               <input class="contact__input" type="number" id="guests" name="guests" min="1" max="20"
+                  placeholder="Let us know how many are dining." required />
+               <label class="contact__label" for="guests">
+                  Number of Guests
+               </label>
+            </div>
+            <div class="contact__field">
+               <textarea class="contact__textarea" id="message" name="message" placeholder="Input text here" required
+                  rows="4"></textarea>
+               <label class="contact__label" for="message">Special Request</label>
+            </div>
+            <div class="contact__checkbox">
+               <input class="contact__checkbox-input" type="checkbox" id="terms" name="terms" required />
+               <label class="contact__checkbox-label" for="terms">
+                  By checking the box you agree to our
+                  <a href="#">Terms of Service</a>
+                  and
+                  <a href="#">Privacy Policy</a>.
+               </label>
+            </div>
+            <!-- Button -->
+            <button type="submit" data-fls-button data-fls-ripple class="btn">
+               Send Message
+            </button>
+         </form>
+      </div>
+   </div>
+</section>

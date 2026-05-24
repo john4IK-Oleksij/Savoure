@@ -1,0 +1,38 @@
+<template src="@components/templates/home/home.html" locals='{
+		"title":"SAVOURE", 
+		"lang":"en",
+		"preloader": {
+			"enable":"true",
+			"once":"false"
+		},
+		"keywords":"", 
+		"description":""
+	}'>
+	<block name="header">
+		<include src="@components/layout/header/header.html" locals='{"active":"Home"}'></include>
+	</block>
+	<block name="main">
+		<include src="@components/custom/hero/hero.html" locals='{
+	
+	"heroClass": "hero--home",
+    "label": "Welcome to our restaurant",
+    "title": "A Symphony of Flavors in Every Bite",
+    "descr": "Savor exquisite culinary creations prepared with fresh, local ingredients. Each dish celebrates vibrant flavors, presented in an ambiance of sophistication. Join us for an unforgettable dining experience where every bite tells a story.",
+    "buttons": true
+  }'></include>
+		<include src="@components/custom/about/about.html"></include>
+		<include src="@components/custom/chefsdishes/chefsdishes.html"></include>
+		<include src="@components/custom/feedback/feedback.html"></include>
+		<include src="@components/custom/contact/contact.html" locals='{
+    "formType":"contact"
+  }'>
+		</include>
+		<include src="@components/custom/location/location.html"></include>
+		<include src="@components/pages/home/home.html" locals='{}'></include>
+	</block>
+	<block name="footer">
+		<include src="@components/layout/footer/footer.html" locals='{}'></include>
+	</block>
+	<block name="popup">
+	</block>
+</template>

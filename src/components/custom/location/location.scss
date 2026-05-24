@@ -1,0 +1,87 @@
+// >================ maps ============
+.map {
+  position: relative;
+  z-index: 1;
+  @include adaptiveValue("margin-bottom", 40, 20);
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__body {
+    width: 100%;
+    height: 653px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  // Overlay card
+  &__card {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: $bgColor;
+    color: $titleColor;
+    font-size: 14px;
+    line-height: 1.57;
+    font-weight: 300;
+    padding: 16px;
+    border-radius: 16px;
+    max-width: 552px;
+    @media (max-width: 600.98px) {
+    }
+    @media (max-width: 600.98px) {
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 24px); // 🔥 ключ
+      bottom: 16px;
+      flex-direction: column; // 🔥 як у макеті
+      align-items: flex-start;
+      padding: 16px; // не зменшуй
+      gap: 12px;
+    }
+  }
+  &__descr {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    @media (max-width: 491.98px) {
+      gap: 4px;
+    }
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+    opacity: 0.8;
+    margin-bottom: 6px;
+    span {
+      white-space: wrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+  }
+
+  &__rating {
+  }
+}

@@ -1,0 +1,63 @@
+.page {
+  /* .page__blog */
+}
+.blog {
+  /* .blog__container */
+}
+.blog {
+  /* .blog__head */
+}
+.blog {
+  /* .blog__info */
+}
+.blog {
+  /* .blog__title */
+}
+.blog {
+  /* .blog__descr */
+}
+.blog {
+  /* .blog__search */
+}
+.blog__search {
+  position: relative;
+}
+.blog__search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  pointer-events: none;
+}
+.blog__search-input {
+  font-size: 16px;
+  padding: 12px 16px;
+  width: 100%;
+  padding-left: 44px;
+}
+.blog__search-input::-webkit-input-placeholder {
+  font-size: 14px;
+}
+.blog__search-input::-moz-placeholder {
+  font-size: 14px;
+}
+.blog__search-input:-ms-input-placeholder {
+  font-size: 14px;
+}
+.blog__search-input::-ms-input-placeholder {
+  font-size: 14px;
+}
+.blog__search-input::placeholder {
+  font-size: 14px;
+}
+.blog {
+  /* .blog__main */
+}
+.blog {
+  /* .blog__list */
+}
+.search {
+  /* .search__input */
+}

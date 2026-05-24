@@ -1,0 +1,16 @@
+[data-fls-header-scroll].--header-scroll {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 150;
+}
+
+[data-fls-header-scroll-show].--header-scroll {
+  -webkit-transition: translate 0.3s;
+  transition: translate 0.3s;
+  translate: 0px -100%;
+}
+[data-fls-header-scroll-show].--header-show {
+  translate: 0 0;
+}

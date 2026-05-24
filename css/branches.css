@@ -1,0 +1,43 @@
+.branches {
+  position: relative;
+  z-index: 2;
+  /* .branches__container */
+}
+.branches {
+  /* .branches__descr */
+}
+.branches {
+  /* .branches__title */
+}
+.branches {
+  /* .branches__text */
+}
+.branches {
+  /* .branches__box */
+}
+.branches {
+  /* .branches__item */
+}
+.branches__item {
+  cursor: pointer;
+}
+@media (any-hover: hover) {
+  .branches__item:hover {
+    background-color: #a49861;
+  }
+}
+.branches {
+  /* .branches__head */
+}
+.branches {
+  /* .branches__icon */
+}
+.branches {
+  /* .branches__region */
+}
+.branches {
+  /* .branches__address */
+}
+.branches {
+  /* .branches__city */
+}

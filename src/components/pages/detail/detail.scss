@@ -1,0 +1,224 @@
+.page {
+  /* .page__news */
+
+  &__news {
+    @include adaptiveValue("margin-bottom", 100, 80);
+  }
+  /* .page__detail */
+
+  &__detail {
+    @include adaptiveValue("margin-bottom", 100, 80);
+  }
+}
+
+.news {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: #00152899;
+  }
+  //   > *:not(.hero__bg) {
+  //     position: relative;
+  //     z-index: 2;
+  //   }
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* .news__head */
+
+  &__head {
+    position: relative;
+    z-index: 2;
+    padding: 0 15px;
+    width: 100%;
+    max-width: 740px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include adaptiveValue("gap", 16, 10);
+    @include adaptiveValue(
+      "padding-bottom",
+      48,
+      20,
+      0,
+      $containerWidth,
+      767.98
+    );
+  }
+
+  /* .news__title */
+
+  &__title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    color: $titleColor;
+    line-height: 1.15;
+    font-size: 48px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  /* .news__descr */
+
+  &__descr {
+    text-align: center;
+    color: #a5a5a5;
+    font-size: 20px;
+    line-height: 1.4;
+  }
+}
+
+.detail {
+  /* .detail__container */
+
+  &__container {
+    width: 100%;
+    max-width: 720px;
+  }
+  /* .detail__title */
+
+  &__title {
+  }
+
+  /* .detail__descr */
+
+  &__descr {
+  }
+
+  /* .detail__list */
+
+  &__list {
+    @include adaptiveValue("padding-top", 96, 5, 0, $containerWidth, 767.98);
+    @include adaptiveValue("padding-bottom", 96, 5, 0, $containerWidth, 767.98);
+  }
+
+  /* .detail__item */
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    @include adaptiveValue("gap", 20, 10, 0, $containerWidth, 767.98);
+  }
+
+  /* .detail__subtitle */
+
+  &__subtitle {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    color: $titleColor;
+    line-height: 1.15;
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+
+  /* .detail__text */
+
+  &__text {
+    line-height: 1.55;
+  }
+
+  /* .detail__quote */
+
+  &__quote {
+    padding-left: 22px;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    color: $titleColor;
+    line-height: 1.15;
+    font-size: 24px;
+    border-left: 4px solid #ae590f;
+  }
+
+  /* .detail__image */
+
+  &__image {
+    aspect-ratio: 720 / 480;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    @include adaptiveValue("margin-top", 48, 20, 0, $containerWidth, 767.98);
+    @include adaptiveValue("margin-bottom", 48, 20, 0, $containerWidth, 767.98);
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top left;
+    }
+  }
+}
+.latest-news {
+  /* .latest-news__head */
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    @include adaptiveValue("margin-bottom", 56, 15, 0, $containerWidth, 767.98);
+  }
+
+  /* .latest-news__descr */
+
+  &__descr {
+    flex: 1;
+    max-width: 622px;
+  }
+
+  /* .latest-news__subtitle */
+
+  &__subtitle {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    color: $titleColor;
+    line-height: 1.15;
+    font-size: 58px;
+    margin-bottom: 8px;
+  }
+
+  /* .latest-news__text */
+
+  &__text {
+    line-height: 1.55;
+  }
+
+  /* .latest-news__btn */
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* .latest-news__list */
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: stretch;
+    @include adaptiveValue("gap", 24, 10, 0, $containerWidth, 767.98);
+    @media (max-width: 767.98px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 491.98px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="[[lang]]">
+<include src="@components/layout/head/head.html" locals='{
+		"title":"[[title]]", 
+		"preloader": {
+			"enable":"[[preloader.enable]]",
+			"once":"[[preloader.once]]"
+		},
+		"keywords":"[[keywords]]", 
+		"description":"[[description]]"
+	}'>
+</include>
+<script type="module" src="@components/templates/home/home.js"></script>
+<link rel="stylesheet" href="@components/templates/home/home.scss">
+
+<body>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMcx38LpWB2OJC1HDA8h2UI2xPE0Jd24g&loading=async&libraries=marker"></script>
+	<div class="wrapper">
+		<block name="header"></block>
+		<main class="page">
+			<block name="main"></block>
+		</main>
+		<block name="footer"></block>
+	</div>
+	<block name="popup"></block>
+	<!-- <script type="module" src="@js/app.js"></script> -->
+</body>
+<!-- AIzaSyCMcx38LpWB2OJC1HDA8h2UI2xPE0Jd24g -->
+
+</html>

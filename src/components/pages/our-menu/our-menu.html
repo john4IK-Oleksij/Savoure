@@ -1,0 +1,38 @@
+<!-- <include src="@components/custom/dishcard/dishcard.html"></include> -->
+<section class="page__today today">
+   <template id="dishcard-template-menu">
+      <article data-fls-dishcard class="dishcard">
+         <div class="dishcard__image">
+            <img src="" alt="">
+         </div>
+         <div class="dishcard__content">
+            <div class="dishcard__label"></div>
+            <div class="dishcard__head">
+               <h3 class="dishcard__title"></h3>
+               <span class="dishcard__line"></span>
+               <span class="dishcard__price"></span>
+            </div>
+            <p class="dishcard__description"></p>
+         </div>
+      </article>
+   </template>
+   <div class="today__container">
+      <div data-fls-tabs class="today-tab">
+         <h2 class="today__title">Today Menu</h2>
+         <nav data-fls-tabs-titles class="today-tab__navigation">
+            <button data-tab="all" class="today-tab__title --tab-active">All Menu</button>
+            <button data-tab="appetizer" class="today-tab__title">Appetizer</button>
+            <button data-tab="main" class="today-tab__title">Main Course</button>
+            <button data-tab="dessert" class="today-tab__title">Dessert</button>
+            <button data-tab="beverage" class="today-tab__title">Beverage</button>
+         </nav>
+         <div data-fls-tabs-body class="today-tab__content">
+            <div class="today-tab__body" data-tab-content="all"></div>
+            <div class="today-tab__body" data-tab-content="appetizer"></div>
+            <div class="today-tab__body" data-tab-content="main"></div>
+            <div class="today-tab__body" data-tab-content="dessert"></div>
+            <div class="today-tab__body" data-tab-content="beverage"></div>
+         </div>
+      </div>
+   </div>
+</section>

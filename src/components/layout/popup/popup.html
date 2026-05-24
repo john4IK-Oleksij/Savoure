@@ -1,0 +1,96 @@
+<link rel="stylesheet" href="@components/layout/popup/popup.scss">
+<div data-fls-popup="popup" aria-hidden="true" class="popup">
+	<div data-fls-popup-wrapper class="popup__wrapper">
+		<div data-fls-popup-body class="popup__body">
+			<button data-fls-popup-close type="button" class="popup__close"><svg width="23" height="23" viewBox="0 0 23 23"
+					fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path opacity="0.850056" d="M1.73333 1.48883L21.5469 21.0288" stroke="#979797" stroke-linecap="square" />
+					<path opacity="0.850056" d="M21.2667 1.48883L1.45309 21.0288" stroke="#979797" stroke-linecap="square" />
+				</svg></button>
+			<div data-fls-popup-content class="popup__text">
+				<!-- Контент -->
+			</div>
+		</div>
+	</div>
+</div>
+<link rel="stylesheet" href="@components/layout/popup/popup.scss">
+<div data-fls-popup="reservation-link" aria-hidden="true" class="popup">
+	<div data-fls-popup-wrapper class="popup__wrapper">
+		<div data-fls-popup-body class="popup__body">
+			<button data-fls-popup-close type="button" class="popup__close"><svg width="23" height="23" viewBox="0 0 23 23"
+					fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path opacity="1" d="M1.73333 1.48883L21.5469 21.0288" stroke-width="2" stroke="currentColor"
+						stroke-linecap="square" />
+					<path opacity="1" d="M21.2667 1.48883L1.45309 21.0288" stroke-width="2" stroke="currentColor"
+						stroke-linecap="square" />
+				</svg>
+			</button>
+			<div data-fls-popup-content class="popup__text">
+				<!-- Контент -->
+				<div class="reservation-success">
+					<div class="reservation-success__icon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="34" height="27" viewBox="0 0 34 27" fill="none">
+							<path d="M3 17.4L12.5385 27L34 3" stroke="white" stroke-width="6" stroke-linecap="round"
+								stroke-linejoin="round" />
+						</svg>
+					</div>
+					<h2 class="reservation-success__title">
+						Thank You for Your Reservation
+					</h2>
+					<div class="reservation-success__text">
+						<p>Your table has been successfully requested. We’ve received your reservation details along with your
+							deposit proof. Our team will review and send a confirmation email shortly.</p>
+					</div>
+					<div class="reservation-success__details details-reservation">
+						<h3 class="details-reservation__title">
+							Detail Transaction
+						</h3>
+						<div class="details-reservation__list">
+							<div class="details-reservation__item">
+								<span>Transaction ID</span>
+								<span data-reservation-id></span>
+							</div>
+							<div class="details-reservation__item">
+								<span>Customer</span>
+								<span data-reservation-name></span>
+							</div>
+							<div class="details-reservation__item">
+								<span>Email</span>
+								<span data-reservation-email></span>
+							</div>
+							<div class="details-reservation__item">
+								<span>Phone</span>
+								<span data-reservation-phone></span>
+							</div>
+							<div class="details-reservation__item">
+								<span>Date</span>
+								<span data-reservation-date></span>
+							</div>
+							<div class="details-reservation__item">
+								<span>Type Services</span>
+								<span data-reservation-type></span>
+							</div>
+							<div class="details-reservation__item">
+								<span>Guests</span>
+								<span data-reservation-guests></span>
+							</div>
+							<div class="details-reservation__item">
+								<span>Total</span>
+								<span data-reservation-total></span>
+							</div>
+						</div>
+					</div>
+					<div class="reservation-success__actions">
+						<button data-fls-button data-fls-ripple type="submit" class="reservation-success__btn btn">
+							Download Receipt
+						</button>
+						<a href="our-menu.html" data-fls-button data-fls-ripple
+							class="reservation-success__btn btn btn--dark">
+							Explore Our Menu
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

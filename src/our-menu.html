@@ -1,0 +1,30 @@
+<template src="@components/templates/our-menu/our-menu.html" locals='{
+		"title":"Our Menu", 
+		"lang":"en",
+		"preloader": {
+			"enable":"true",
+			"once":"false"
+		},
+		"keywords":"", 
+		"description":""
+	}'>
+   <block name="header">
+      <include src="@components/layout/header/header.html" locals='{"active":"Menu"}'></include>
+   </block>
+   <block name="main">
+      <include src="@components/custom/hero/hero.html" locals='{
+         "heroClass": "",
+          "title": "Discover Our Curated Culinary Selection",
+            "label": "",
+    "descr": "From timeless classics to signature creations, our menu is a celebration of fresh ingredients and refined craftsmanship.",
+    "buttons": false
+  }'></include>
+      <include src="@components/pages/our-menu/our-menu.html" locals='{}'></include>
+      <include src="@components/custom/feedback/feedback.html"></include>
+   </block>
+   <block name="footer">
+      <include src="@components/layout/footer/footer.html" locals='{}'></include>
+   </block>
+   <block name="popup">
+   </block>
+</template>

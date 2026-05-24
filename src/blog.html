@@ -1,0 +1,29 @@
+<template src="@components/templates/blog/blog.html" locals='{
+		"title":"Restaurant blog", 
+		"lang":"en",
+		"preloader": {
+			"enable":"true",
+			"once":"false"
+		},
+		"keywords":"", 
+		"description":""
+	}'>
+   <block name="header">
+      <include src="@components/layout/header/header.html" locals='{"active":"News"}'></include>
+   </block>
+   <block name="main">
+      <include src="@components/custom/hero/hero.html" locals='{
+   "heroClass": "",
+   "title": "Stories from the Kitchen & Beyond",
+   "label": "",
+    "descr": "Stay inspired with the latest from Platieu — from seasonal menu launches and chef spotlights to behind-the-scenes stories and culinary insights.",
+    "buttons": false
+  }'></include>
+      <include src="@components/pages/blog/blog.html" locals='{}'></include>
+   </block>
+   <block name="footer">
+      <include src="@components/layout/footer/footer.html" locals='{}'></include>
+   </block>
+   <block name="popup">
+   </block>
+</template>

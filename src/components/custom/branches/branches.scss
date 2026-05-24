@@ -1,0 +1,97 @@
+.branches {
+  @include adaptiveValue("margin-bottom", 100, 80);
+  /* .branches__container */
+
+  &__container {
+    display: grid;
+    grid-template-columns: 0.33fr 0.66fr;
+    @include adaptiveValue("gap", 64, 15, 0, $containerWidth, 767.98);
+    @include adaptiveValue("padding-top", 20, 10);
+    @include adaptiveValue("padding-bottom", 20, 10);
+    @media (max-width: 767.98px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* .branches__descr */
+
+  &__descr {
+  }
+
+  /* .branches__title */
+
+  &__title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    color: $titleColor;
+    line-height: 1.15;
+    font-size: 48px;
+    margin-bottom: 8px;
+  }
+
+  /* .branches__text */
+
+  &__text {
+    line-height: 1.44;
+  }
+
+  /* .branches__box */
+
+  &__box {
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr;
+    @include adaptiveValue("column-gap", 64, 15, 0, $containerWidth, 767.98);
+    @include adaptiveValue("row-gap", 24, 12);
+    @media (max-width: 767.98px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* .branches__item */
+
+  &__item {
+    cursor: pointer;
+    padding: 4px;
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: #31290e;
+      }
+    }
+  }
+
+  /* .branches__head */
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  /* .branches__icon */
+
+  &__icon {
+  }
+
+  /* .branches__region */
+
+  &__region {
+    font-size: 20px;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+
+  /* .branches__address */
+
+  &__address {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  /* .branches__city */
+
+  &__city {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}

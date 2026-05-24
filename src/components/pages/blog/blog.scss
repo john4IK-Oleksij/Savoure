@@ -1,0 +1,191 @@
+.page {
+  /* .page__blog */
+
+  &__blog {
+    @include adaptiveValue("margin-bottom", 100, 80);
+  } /* .page__subscribe */
+
+  &__subscribe {
+    @include adaptiveValue("margin-bottom", 100, 80);
+  }
+}
+.blog {
+  /* .blog__container */
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    @include adaptiveValue("gap", 56, 15);
+  }
+
+  /* .blog__head */
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  /* .blog__info */
+
+  &__info {
+    max-width: 57%;
+  }
+
+  /* .blog__title */
+
+  &__title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    color: $titleColor;
+    line-height: 1.15;
+    text-wrap: nowrap;
+    font-size: 48px;
+    @include adaptiveValue("margin-bottom", 24, 10, 0, $containerWidth, 767.98);
+  }
+
+  /* .blog__descr */
+
+  &__descr {
+    color: $secondaryTextColor;
+    line-height: 1.4;
+  }
+
+  /* .blog__search */
+
+  &__search {
+    align-self: flex-end;
+    min-width: 300px;
+    position: relative;
+    background-color: #010614;
+    border-radius: 24px;
+    border: solid 1px #242424;
+    &-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    &-input {
+      font-size: 16px;
+      padding: 12px 16px;
+      width: 100%;
+      padding-left: 44px;
+      &::placeholder {
+        color: $titleColor;
+        font-size: 14px;
+      }
+    }
+  }
+
+  /* .blog__main */
+
+  &__main {
+  }
+  /* .blog__list */
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: stretch;
+    @include adaptiveValue("gap", 24, 10, 0, $containerWidth, 767.98);
+    @media (max-width: 767.98px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 491.98px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* .blog__item */
+
+  &__item {
+    min-height: 0;
+  }
+}
+// >=========== subscribe =======
+.subscribe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background: url("@img/blog/subscribe.jpg") center / cover no-repeat;
+  min-height: 500px;
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background: rgba(1, 16, 29, 0.48);
+  }
+
+  /* .subscribe__container */
+
+  &__container {
+    position: relative;
+    z-index: 2;
+    max-width: 670px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    @include adaptiveValue("gap", 40, 20);
+  }
+
+  /* .subscribe__title */
+
+  &__title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    color: $titleColor;
+    line-height: 1.15;
+    @include adaptiveValue("font-size", 58, 48);
+  }
+
+  /* .subscribe__text */
+
+  &__text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #000;
+  }
+
+  /* .subscribe__action */
+
+  &__form {
+    padding: 18px;
+    background-color: #010614;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  &__action {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    &-icon {
+    }
+    &-input {
+      font-size: 16px;
+      width: 100%;
+      &::placeholder {
+        color: $titleColor;
+        font-size: 14px;
+        line-height: 1.57;
+      }
+    }
+  }
+
+  /* .subscribe__input */
+
+  &__input {
+  }
+
+  /* .subscribe__btn */
+
+  &__btn {
+  }
+}

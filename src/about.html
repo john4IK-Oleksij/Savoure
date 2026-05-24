@@ -1,0 +1,30 @@
+<template src="@components/templates/about/about.html" locals='{
+		"title":"Our Story", 
+		"lang":"en",
+		"preloader": {
+			"enable":"true",
+			"once":"false"
+		},
+		"keywords":"", 
+		"description":""
+	}'>
+   <block name="header">
+      <include src="@components/layout/header/header.html" locals='{"active":"Our Story"}'></include>
+   </block>
+   <block name="main">
+      <include src="@components/custom/hero/hero.html" locals='{
+	"heroClass": "",
+    "label": "",
+    "title": "Where Passion Meets the Plate",
+    "descr": "At SAVOURE, every dish begivns with a story—crafted from heart, heritage, and honest ingredients.",
+    "buttons": false
+  }'></include>
+      <include src="@components/custom/about/about.html"></include>
+      <include src="@components/pages/about/about.html" locals='{}'></include>
+   </block>
+   <block name="footer">
+      <include src="@components/layout/footer/footer.html" locals='{}'></include>
+   </block>
+   <block name="popup">
+   </block>
+</template>

@@ -1,0 +1,50 @@
+.team {
+  @include adaptiveValue("margin-bottom", 96, 15, 0, $containerWidth, 767.98);
+  /* .team__container */
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include adaptiveValue("gap", 56, 15, 0, $containerWidth, 767.98);
+  }
+
+  /* .team__head */
+
+  &__head {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+  }
+  &__title,
+  &__descr {
+    flex: 1;
+  }
+  /* .team__title */
+
+  &__title {
+    max-width: 592px;
+    width: 100%;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    color: $titleColor;
+    line-height: 1.15;
+    font-size: 58px;
+  }
+
+  /* .team__descr */
+
+  &__descr {
+    max-width: 580px;
+    line-height: 1.44;
+  }
+
+  /* .team__list */
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 24px;
+    row-gap: 30px;
+  }
+}

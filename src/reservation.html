@@ -1,0 +1,30 @@
+<template src="@components/templates/reservation/reservation.html" locals='{
+		"title":"Reservation", 
+		"lang":"en",
+		"preloader": {
+			"enable":"true",
+			"once":"false"
+		},
+		"keywords":"", 
+		"description":""
+	}'>
+   <block name="header">
+      <include src="@components/layout/header/header.html" locals='{"active":""}'></include>
+   </block>
+   <block name="main">
+      <include src="@components/custom/hero/hero.html" locals='{
+   "heroClass": "",
+   "title": "Reserve Your Table at Savoure",
+   "label": "",
+    "descr": "We’re excited to host you! Kindly fill out the reservation form below to secure your table. To confirm your booking, a deposit of $25 is required. Please upload proof of payment at the end of the form.",
+    "buttons": false
+  }'></include>
+      <include src="@components/pages/reservation/reservation.html" locals='{}'></include>
+   </block>
+   <block name="footer">
+      <include src="@components/layout/footer/footer.html" locals='{}'></include>
+   </block>
+   <block name="popup">
+      <include src="@components/layout/popup/popup.html" locals='{}'></include>
+   </block>
+</template>

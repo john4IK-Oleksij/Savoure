@@ -1,0 +1,58 @@
+// >==================== chefsdishes ==========
+.chefsdishes {
+  /* .chefsdishes__container */
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 56px;
+    @media (max-width: 491.98px) {
+      gap: 40px;
+    }
+  }
+
+  /* .chefsdishes__head */
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* .chefsdishes__title */
+
+  &__title {
+    text-align: center;
+    text-wrap: balanced;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    line-height: 1.15;
+    color: $titleColor;
+    @include adaptiveValue("font-size", 58, 44);
+  }
+
+  /* .chefsdishes__descr */
+
+  &__descr {
+    line-height: 1.44;
+    color: $secondaryTextColor;
+  }
+  /* .chefsdishes__main */
+
+  &__main {
+    width: 100%;
+  }
+
+  /* .chefsdishes__list */
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    @media (max-width: 767.98px) {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+}

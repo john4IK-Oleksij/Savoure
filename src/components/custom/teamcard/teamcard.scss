@@ -1,0 +1,46 @@
+.teamcard {
+  /* .teamcard__image */
+
+  &__image {
+    aspect-ratio: 292 / 347;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 8px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  /* .teamcard__content */
+
+  &__content {
+  }
+
+  /* .teamcard__title */
+
+  &__title {
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    color: $titleColor;
+    line-height: 1.15;
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+
+  /* .teamcard__position */
+
+  &__position {
+    line-height: 1.44;
+    margin-bottom: 16px;
+  }
+
+  /* .teamcard__descr */
+
+  &__descr {
+    line-height: 1.44;
+    margin-bottom: 16px;
+  }
+}

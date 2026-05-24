@@ -1,0 +1,29 @@
+<include src="@components/layout/head/head.html" locals='{
+		"title":"[[title]]", 
+		"preloader": {
+			"enable":"[[preloader.enable]]",
+			"once":"[[preloader.once]]"
+		},
+		"keywords":"[[keywords]]", 
+		"description":"[[description]]"
+	}'>
+</include>
+<script type="module" src="@components/pages/findus/findus.js"></script>
+<link rel="stylesheet" href="@components/templates/findus/findus.scss">
+
+<body>
+   <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMcx38LpWB2OJC1HDA8h2UI2xPE0Jd24g&loading=async&libraries=marker"></script>
+   <div class="wrapper">
+      <block name="header"></block>
+      <div class="inner">
+         <main class="page">
+            <block name="main">
+            </block>
+         </main>
+         <block name="aside"></block>
+      </div>
+      <block name="footer"></block>
+   </div>
+   <block name="popup"></block>
+</body>

@@ -1,0 +1,50 @@
+.logo {
+  position: relative;
+  z-index: 3;
+  /* .header__container */
+
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* .header__logo */
+
+  &__link {
+    display: flex;
+    align-items: center;
+    svg {
+      @include adaptiveValue("width", 85, 40);
+      @include adaptiveValue("height", 85, 40);
+    }
+  }
+
+  /* .header__logo-text */
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* .header__logo-title */
+
+  &__title {
+    color: #f4c73f;
+    font-family: "Great Vibes", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    @include adaptiveValue("font-size", 48, 24);
+  }
+
+  /* .header__logo-subtitle */
+
+  &__subtitle {
+    font-family: "Cinzel", serif;
+    color: #f4c73f;
+    font-weight: 600;
+    letter-spacing: 1px;
+    @include adaptiveValue("font-size", 16, 10);
+  }
+}
