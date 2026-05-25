@@ -60,17 +60,17 @@
     @include adaptiveValue("padding", 24, 5);
 
     &.subscribe__form {
-      padding: 18px;
-      background-color: #010614;
-      border-radius: 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      @media (max-width: 491.98px) {
-        flex-direction: column;
-        align-items: stretch;
-      }
+      // padding: 18px;
+      // background-color: #010614;
+      // border-radius: 30px;
+      // display: flex;
+      // justify-content: space-between;
+      // align-items: center;
+      // gap: 16px;
+      // @media (max-width: 491.98px) {
+      //   // flex-direction: column;
+      //   align-items: stretch;
+      // }
     }
   }
   &__field {

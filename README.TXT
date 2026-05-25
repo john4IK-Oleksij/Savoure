@@ -28,6 +28,6 @@
 "========================
 git status
 git add .
-git status
-git commit -m "adaptive/small/correct"
+git commit -m "form/correct"
+git push
 
