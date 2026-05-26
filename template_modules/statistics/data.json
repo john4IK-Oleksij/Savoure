@@ -351,6 +351,21 @@
         "date": "25.05.2026",
         "start": 1779717745953,
         "end": 1779721784939
+      },
+      {
+        "date": "26.05.2026",
+        "start": 1779804429653,
+        "end": 1779808074798
+      },
+      {
+        "date": "26.05.2026",
+        "start": 1779808177823,
+        "end": 1779808885485
+      },
+      {
+        "date": "26.05.2026",
+        "start": 1779808899582,
+        "end": 1779820191554
       }
     ],
     "files": [
@@ -494,7 +509,10 @@
       "about.js",
       "about.scss",
       "teamcard.html",
-      "teamcard.scss"
+      "teamcard.scss",
+      "privacy.html",
+      "privacy.scss",
+      "privacy.js"
     ]
   }
 }

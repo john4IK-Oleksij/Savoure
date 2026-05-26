@@ -28,6 +28,6 @@
 "========================
 git status
 git add .
-git commit -m "form/correct"
+git commit -m "privacy.html"
 git push
 
