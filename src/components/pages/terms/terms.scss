@@ -1,0 +1,132 @@
+.terms {
+  background-color: #020817;
+  color: #f4f1ea;
+  @include adaptiveValue("padding-top", 173, 73);
+  @include adaptiveValue("padding-bottom", 100, 40);
+
+  &__container {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+
+  &__hero {
+    max-width: 980px;
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    @include adaptiveValue("padding-bottom", 80, 40);
+  }
+
+  &__title {
+    font-family: "Cormorant Garamond";
+    color: $accentColor;
+    line-height: 1;
+    @include adaptiveValue("margin-bottom", 36, 15);
+    @include adaptiveValue("font-size", 64, 40);
+  }
+
+  &__description {
+    max-width: 920px;
+    margin: 0 auto;
+    line-height: 1.5;
+    color: $secondaryTextColor;
+    @include adaptiveValue("margin-bottom", 42, 24);
+    @include adaptiveValue("font-size", 24, 18);
+  }
+
+  &__meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #b3b3b3;
+  }
+
+  &__meta-item {
+  }
+
+  &__meta-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #d3d3d3;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    @include adaptiveValue("padding-top", 80, 40);
+    @include adaptiveValue("gap", 60, 28);
+  }
+
+  &__section {
+    max-width: 1020px;
+  }
+
+  &__heading,
+  &__contact-title {
+    font-family: "Cormorant Garamond";
+    color: $secondaryTitleColor;
+    line-height: 1.05;
+    @include adaptiveValue("margin-bottom", 34, 15);
+    @include adaptiveValue("font-size", 56, 32);
+  }
+
+  &__text {
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.74);
+    @include adaptiveValue("font-size", 20, 18);
+
+    &:not(:last-child) {
+      margin-bottom: 18px;
+    }
+  }
+
+  &__list {
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__item {
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.74);
+    @include adaptiveValue("font-size", 20, 18);
+  }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  &__contact-item {
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.74);
+    @include adaptiveValue("font-size", 20, 18);
+  }
+
+  &__link {
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: opacity 0.3s ease;
+
+    @media (any-hover: hover) {
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  &__accent {
+    font-weight: 600;
+    color: #ffffff;
+  }
+}

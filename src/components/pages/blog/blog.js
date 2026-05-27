@@ -25,8 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
       clone.querySelector(".blogcard__label").textContent = item.date;
       clone.querySelector(".blogcard__title").textContent = item.title;
       clone.querySelector(".blogcard__descr").textContent = item.description;
-      clone.querySelector(".blogcard__image-link").href = url;
-      clone.querySelector(".blogcard__title-link").href = url;
+      const imgLink = clone.querySelector(".blogcard__image-link");
+      const titleLink = clone.querySelector(".blogcard__title-link");
+      imgLink.href = url;
+      titleLink.href = url;
+      // Accessibility: add aria-labels to links
+      imgLink.setAttribute("aria-label", `Open article: ${item.title}`);
+      titleLink.setAttribute("aria-label", `Open article: ${item.title}`);
       list.appendChild(clone);
     });
     if (visible >= data.length) {

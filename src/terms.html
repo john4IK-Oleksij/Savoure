@@ -1,0 +1,22 @@
+<template src="@components/templates/terms/terms.html" locals='{
+		"title":"Terms of Services SAVOURE", 
+		"lang":"en",
+		"preloader": {
+			"enable":"true",
+			"once":"false"
+		},
+		"keywords":"", 
+		"description":""
+	}'>
+   <block name="header">
+      <include src="@components/layout/header/header.html" locals='{"active":""}'></include>
+   </block>
+   <block name="main">
+      <include src="@components/pages/terms/terms.html" locals='{}'></include>
+   </block>
+   <block name="footer">
+      <include src="@components/layout/footer/footer.html" locals='{}'></include>
+   </block>
+   <block name="popup">
+   </block>
+</template>

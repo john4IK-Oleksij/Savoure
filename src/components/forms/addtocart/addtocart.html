@@ -5,11 +5,14 @@
 <div data-fls-addtocart-product class="product">
 	<!-- <img src="@img/favicon.ico" data-fls-addtocart-image alt="Image"> -->
 	<div data-fls-quantity class="quantity">
-		<button data-fls-quantity-minus type="button" class="quantity__button quantity__button--minus"></button>
+		<button data-fls-quantity-minus type="button" class="quantity__button quantity__button--minus"
+			aria-label="Decrease quantity"></button>
 		<div class="quantity__input">
-			<input data-fls-addtocart-quantity data-fls-quantity-value autocomplete="off" type="text" name="form[]" value="1">
+			<input data-fls-addtocart-quantity data-fls-quantity-value autocomplete="off" type="text" name="form[]"
+				value="1">
 		</div>
-		<button data-fls-quantity-plus type="button" class="quantity__button quantity__button--plus"></button>
+		<button data-fls-quantity-plus type="button" class="quantity__button quantity__button--plus"
+			aria-label="Increase quantity"></button>
 	</div>
-	<button data-fls-addtocart-button>Add</button>
+	<button data-fls-addtocart-button aria-label="Add to cart">Add</button>
 </div>

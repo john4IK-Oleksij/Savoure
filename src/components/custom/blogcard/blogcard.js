@@ -10,12 +10,9 @@ import "./blogcard.scss";
 
 // >===== render blogcsrd + click-> perhid na blog.html ===========
 document.addEventListener("DOMContentLoaded", () => {
-  const section = document.querySelector(".latest-news");
+  const section = document.querySelector(".latest-news, .blog");
   if (!section) return;
-  // const list = section.querySelector(".latest-news__list");
-  const list =
-    section.querySelector(".latest-news__list") ||
-    section.querySelector(".blog__list");
+  const list = section.querySelector(".latest-news__list, .blog__list");
   const template = section.querySelector("#blogcard-template");
   const LIMIT = 3;
   fetch("/data/blog.json")
@@ -37,8 +34,13 @@ document.addEventListener("DOMContentLoaded", () => {
         clone.querySelector(".blogcard__label").textContent = formattedDate;
         clone.querySelector(".blogcard__title").textContent = item.title;
         clone.querySelector(".blogcard__descr").textContent = item.description;
-        clone.querySelector(".blogcard__image-link").href = url;
-        clone.querySelector(".blogcard__title-link").href = url;
+        const imgLink = clone.querySelector(".blogcard__image-link");
+        const titleLink = clone.querySelector(".blogcard__title-link");
+        imgLink.href = url;
+        titleLink.href = url;
+        // Accessibility: provide descriptive labels for links
+        imgLink.setAttribute("aria-label", `Open article: ${item.title}`);
+        titleLink.setAttribute("aria-label", `Open article: ${item.title}`);
         list.appendChild(clone);
       });
     });

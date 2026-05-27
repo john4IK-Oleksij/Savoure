@@ -366,6 +366,16 @@
         "date": "26.05.2026",
         "start": 1779808899582,
         "end": 1779820191554
+      },
+      {
+        "date": "27.05.2026",
+        "start": 1779898199866,
+        "end": 1779903642350
+      },
+      {
+        "date": "27.05.2026",
+        "start": 1779907916762,
+        "end": 1779911747537
       }
     ],
     "files": [
@@ -512,7 +522,18 @@
       "teamcard.scss",
       "privacy.html",
       "privacy.scss",
-      "privacy.js"
+      "privacy.js",
+      "terms.html",
+      "terms.js",
+      "terms.scss",
+      "tabs.html",
+      "masonry.html",
+      "addtocart.html",
+      "input.html",
+      "ripple.html",
+      "form.html",
+      "showmore.html",
+      "quantity.html"
     ]
   }
 }

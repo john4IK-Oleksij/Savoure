@@ -28,6 +28,6 @@
 "========================
 git status
 git add .
-git commit -m "privacy.html"
+git commit -m "aria-label+blogcardrender"
 git push
 
