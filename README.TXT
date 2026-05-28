@@ -28,6 +28,6 @@
 "========================
 git status
 git add .
-git commit -m "aria-label+blogcardrender"
+git commit -m "description"
 git push
 
