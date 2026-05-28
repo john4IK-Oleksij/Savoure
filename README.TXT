@@ -28,6 +28,6 @@
 "========================
 git status
 git add .
-git commit -m "description"
+git commit -m "final version"
 git push
 
