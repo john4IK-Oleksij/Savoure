@@ -15,5 +15,8 @@ COPY . .
 # Compile and compress static files via WhiteNoise
 RUN python manage.py collectstatic --noinput
 
-# Start production server
-CMD python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000}
+RUN chmod +x entrypoint.sh
+
+EXPOSE 8000
+
+CMD ["./entrypoint.sh"]
