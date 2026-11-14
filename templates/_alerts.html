@@ -1,0 +1,10 @@
+{% if messages %}
+<div class="alerts-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999; max-width: 400px; display: flex; flex-direction: column; gap: 10px;">
+  {% for message in messages %}
+    <div class="alert alert--{{ message.tags|default:'info' }}" role="alert" style="background: rgba(20, 24, 33, 0.95); border: 1px solid #f4c73f; color: #ededed; padding: 14px 20px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); backdrop-filter: blur(8px); display: flex; justify-content: space-between; align-items: center;">
+      <span>{{ message }}</span>
+      <button type="button" onclick="this.parentElement.remove()" style="background: none; border: none; color: #f4c73f; font-size: 18px; cursor: pointer; margin-left: 12px;" aria-label="Закрити">&times;</button>
+    </div>
+  {% endfor %}
+</div>
+{% endif %}

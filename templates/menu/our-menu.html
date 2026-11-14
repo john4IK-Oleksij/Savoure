@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Our Menu — SAVOURE{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" crossorigin href="{% static 'css/our-menu.min.css' %}">
+{% endblock %}
+
+{% block content %}
+<section data-fls-hero class="page__hero hero">
+   <div class="hero__body">
+      <h1 class="hero__title">Discover Our Curated Culinary Selection</h1>
+      <div class="hero__descr">
+         <p>From timeless classics to signature creations, our menu is a celebration of fresh ingredients and refined craftsmanship.</p>
+      </div>
+   </div>
+</section>
+
+<section class="page__today today">
+   <div class="today__container">
+      <div data-fls-tabs class="today-tab">
+         <h2 class="today__title">Today Menu</h2>
+         <nav data-fls-tabs-titles class="today-tab__navigation">
+            <button data-tab="all" class="today-tab__title --tab-active" aria-label="Show all menu">All Menu</button>
+            <button data-tab="appetizer" class="today-tab__title" aria-label="Show appetizers">Appetizer</button>
+            <button data-tab="main" class="today-tab__title" aria-label="Show main courses">Main Course</button>
+            <button data-tab="dessert" class="today-tab__title" aria-label="Show desserts">Dessert</button>
+            <button data-tab="beverage" class="today-tab__title" aria-label="Show beverages">Beverage</button>
+         </nav>
+         <div data-fls-tabs-body class="today-tab__content">
+            <div class="today-tab__body" data-tab-content="all"></div>
+            <div class="today-tab__body" data-tab-content="appetizer"></div>
+            <div class="today-tab__body" data-tab-content="main"></div>
+            <div class="today-tab__body" data-tab-content="dessert"></div>
+            <div class="today-tab__body" data-tab-content="beverage"></div>
+         </div>
+      </div>
+   </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script type="module" crossorigin src="{% static 'js/our-menu.min.js' %}"></script>
+{% endblock %}

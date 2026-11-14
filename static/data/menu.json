@@ -1,0 +1,200 @@
+[
+  {
+    "title": "Garlic Butter Shrimp",
+    "price": 12,
+    "label": "Appetizer",
+    "description": "Juicy shrimp sautéed in garlic butter with a hint of lemon and herbs. Served sizzling hot with a light drizzle of olive oil. A perfect starter to awaken your appetite.",
+    "image": "/dish-list/dishimage-01.jpg",
+    "category": "appetizer",
+    "featured": false
+  },
+  {
+    "title": "Bruschetta Trio",
+    "price": 9,
+    "label": "Appetizer",
+    "description": "A selection of toasted bread topped with tomato, basil, and olive oil. Finished with a touch of balsamic glaze for extra depth. Light, fresh, and full of Mediterranean flavor.",
+    "image": "/dish-list/dishimage-02.jpg",
+    "category": "appetizer",
+    "featured": true
+  },
+  {
+    "title": "Grilled Ribeye Steak",
+    "price": 28,
+    "label": "Main Course",
+    "description": "Premium ribeye steak grilled to perfection with a smoky crust. Served with roasted vegetables and creamy mashed potatoes. Rich, tender, and packed with bold flavor.",
+    "image": "/dish-list/dishimage-03.jpg",
+    "category": "main",
+    "featured": false
+  },
+  {
+    "title": "Lemon Herb Salmon",
+    "price": 22,
+    "label": "Main Course",
+    "description": "Fresh salmon fillet seasoned with lemon and aromatic herbs. Pan-seared for a crispy exterior and juicy center. Served with seasonal greens and light sauce.",
+    "image": "/dish-list/dishimage-04.jpg",
+    "category": "main",
+    "featured": false
+  },
+  {
+    "title": "Chocolate Lava Cake",
+    "price": 8,
+    "label": "Dessert",
+    "description": "Warm chocolate cake with a molten center that flows with every bite. Served with vanilla ice cream for a perfect balance. A must-have treat for chocolate lovers.",
+    "image": "/dish-list/dishimage-05.jpg",
+    "category": "dessert",
+    "featured": false
+  },
+  {
+    "title": "Strawberry Cheesecake",
+    "price": 7,
+    "label": "Dessert",
+    "description": "Creamy cheesecake layered over a buttery biscuit base. Topped with fresh strawberries and sweet glaze. Smooth, rich, and delightfully refreshing.",
+    "image": "/dish-list/dishimage-06.jpg",
+    "category": "dessert",
+    "featured": false
+  },
+  {
+    "title": "Fresh Orange Juice",
+    "price": 5,
+    "label": "Beverage",
+    "description": "Freshly squeezed oranges blended into a vibrant juice. Naturally sweet with a refreshing citrus kick. Perfect to complement any meal.",
+    "image": "/dish-list/dishimage-07.jpg",
+    "category": "beverage",
+    "featured": true
+  },
+  {
+    "title": "Classic Mojito",
+    "price": 10,
+    "label": "Beverage",
+    "description": "A refreshing mix of mint leaves, lime, and sparkling soda. Lightly sweetened and served over ice for a cooling effect. A timeless drink with a crisp finish.",
+    "image": "/dish-list/dishimage-08.jpg",
+    "category": "beverage",
+    "featured": true
+  },
+  {
+    "title": "Crispy Calamari",
+    "price": 11,
+    "label": "Appetizer",
+    "description": "Lightly breaded calamari fried until golden and crispy. Served with a zesty garlic aioli dipping sauce. A crunchy and flavorful seafood starter.",
+    "image": "/dish-list/dishimage-09.jpg",
+    "category": "appetizer",
+    "featured": false
+  },
+  {
+    "title": "Caprese Salad",
+    "price": 10,
+    "label": "Appetizer",
+    "description": "Fresh mozzarella paired with ripe tomatoes and basil leaves. Drizzled with olive oil and balsamic reduction. A simple yet elegant Italian classic.",
+    "image": "/dish-list/dishimage-10.jpg",
+    "category": "appetizer",
+    "featured": false
+  },
+  {
+    "title": "Chicken Alfredo Pasta",
+    "price": 18,
+    "label": "Main Course",
+    "description": "Creamy Alfredo pasta tossed with tender grilled chicken. Finished with parmesan cheese and fresh herbs. Rich, comforting, and full of flavor.",
+    "image": "/dish-list/dishimage-11.jpg",
+    "category": "main",
+    "featured": false
+  },
+  {
+    "title": "Beef Burger Deluxe",
+    "price": 16,
+    "label": "Main Course",
+    "description": "Juicy beef patty served in a toasted bun with fresh vegetables. Topped with cheese, house sauce, and crispy onions. A hearty and satisfying classic.",
+    "image": "/dish-list/dishimage-12.jpg",
+    "category": "main",
+    "featured": false
+  },
+  {
+    "title": "Tiramisu",
+    "price": 9,
+    "label": "Dessert",
+    "description": "Layers of coffee-soaked ladyfingers and creamy mascarpone. Lightly dusted with cocoa powder for a rich finish. A timeless Italian dessert with bold flavor.",
+    "image": "/dish-list/dishimage-13.jpg",
+    "category": "dessert",
+    "featured": true
+  },
+  {
+    "title": "Vanilla Panna Cotta",
+    "price": 8,
+    "label": "Dessert",
+    "description": "Smooth and creamy panna cotta infused with vanilla. Served with a berry coulis for a fruity contrast. Light, silky, and perfectly balanced.",
+    "image": "/dish-list/dishimage-14.jpg",
+    "category": "dessert",
+    "featured": false
+  },
+  {
+    "title": "Iced Latte",
+    "price": 6,
+    "label": "Beverage",
+    "description": "Chilled espresso combined with cold milk and ice. Smooth and refreshing with a rich coffee taste. Perfect for a quick energy boost.",
+    "image": "/dish-list/dishimage-15.jpg",
+    "category": "beverage",
+    "featured": false
+  },
+  {
+    "title": "Berry Smoothie",
+    "price": 7,
+    "label": "Beverage",
+    "description": "A blend of fresh berries, yogurt, and natural sweeteners. Creamy texture with a vibrant fruity flavor. A healthy and refreshing drink option.",
+    "image": "/dish-list/dishimage-16.jpg",
+    "category": "beverage",
+    "featured": true
+  },
+  {
+    "title": "Spicy Tuna Tartare",
+    "price": 14,
+    "label": "Appetizer",
+    "description": "Fresh tuna finely chopped and mixed with spicy sauce. Served with avocado and crispy chips for texture. A bold and refreshing starter with a modern twist.",
+    "image": "/dish-list/dishimage-17.jpg",
+    "category": "appetizer",
+    "featured": false
+  },
+  {
+    "title": "French Onion Soup",
+    "price": 9,
+    "label": "Appetizer",
+    "description": "Slow-cooked caramelized onions in a rich beef broth. Topped with toasted bread and melted cheese. Warm, comforting, and deeply flavorful.",
+    "image": "/dish-list/dishimage-18.jpg",
+    "category": "appetizer",
+    "featured": false
+  },
+  {
+    "title": "BBQ Pork Ribs",
+    "price": 24,
+    "label": "Main Course",
+    "description": "Tender pork ribs glazed with smoky barbecue sauce. Slow-cooked until juicy and fall-off-the-bone soft. Served with fries and house coleslaw.",
+    "image": "/dish-list/dishimage-19.jpg",
+    "category": "main",
+    "featured": true
+  },
+  {
+    "title": "Mango Sorbet",
+    "price": 6,
+    "label": "Dessert",
+    "description": "Refreshing sorbet made from ripe mangoes and natural ingredients. Light and fruity with a smooth texture. A perfect finish after a rich meal.",
+    "image": "/dish-list/dishimage-20.jpg",
+    "category": "dessert",
+    "featured": false
+  },
+  {
+    "title": "Espresso",
+    "price": 4,
+    "label": "Beverage",
+    "description": "Strong and aromatic espresso brewed from premium beans. Served hot with a rich crema on top. A classic choice for coffee lovers.",
+    "image": "/dish-list/dishimage-21.jpg",
+    "category": "beverage",
+    "featured": false
+  },
+  {
+    "title": "Green Detox Juice",
+    "price": 7,
+    "label": "Beverage",
+    "description": "A healthy blend of green vegetables and fresh fruits. Packed with vitamins and natural energy. Clean, refreshing, and revitalizing.",
+    "image": "/dish-list/dishimage-22.jpg",
+    "category": "beverage",
+    "featured": false
+  }
+]

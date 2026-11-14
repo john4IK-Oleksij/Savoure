@@ -1,0 +1,98 @@
+[
+  {
+    "title": "Tips for Choosing the Right Dinner Menu at the Restaurant",
+    "date": "2025-04-14",
+    "description": "Confused about what to order when visiting the Restaurant? This article will help you choose the best dishes based on your taste, mood, or even the weather.",
+    "image": "/blog-list/blogimage-01.jpg",
+    "featured": true,
+    "slug": "tips-dinner-menu"
+  },
+  {
+    "title": "How We Support Local Farmers and Ingredients",
+    "date": "2025-04-21",
+    "description": "We take pride in using local ingredients as part of our commitment to sustainability and quality, supporting nearby farms and communities.",
+    "image": "/blog-list/blogimage-02.jpg",
+    "featured": true,
+    "slug": "local-farmers-ingredients"
+  },
+  {
+    "title": "Behind the Dish: The Story of Our Signature Beef Wellington",
+    "date": "2025-05-02",
+    "description": "Beef Wellington is not just a dish — it’s a symbol of our dedication to quality and flavor. In this article, we explore its story and craftsmanship.",
+    "image": "/blog-list/blogimage-07.jpg",
+    "featured": false,
+    "slug": "beef-wellington-story"
+  },
+  {
+    "title": "5 Fresh Ingredients We Use Daily — and Why They Matter",
+    "date": "2025-05-11",
+    "description": "We believe that food quality starts with the ingredients. Discover five fresh ingredients that define our daily cooking philosophy.",
+    "image": "/blog-list/blogimage-08.jpg",
+    "featured": false,
+    "slug": "fresh-ingredients-daily"
+  },
+  {
+    "title": "The Secret Behind Our Best-Selling Lava Cake",
+    "date": "2025-05-19",
+    "description": "Soft on the outside, molten on the inside — our lava cake has become a guest favorite. Learn what makes it so special.",
+    "image": "/blog-list/blogimage-09.jpg",
+    "featured": false,
+    "slug": "lava-cake-secret"
+  },
+  {
+    "title": "Refreshing Drink Pairings for Every Meal",
+    "date": "2025-03-10",
+    "description": "The right drink can transform your dining experience. We share recommendations for refreshing pairings with your favorite dishes.",
+    "image": "/blog-list/blogimage-10.jpg",
+    "featured": false,
+    "slug": "drink-pairings-meal"
+  },
+  {
+    "title": "A Day in Our Kitchen: Meet the Chefs Behind the Magic",
+    "date": "2025-02-25",
+    "description": "Meet our dedicated chefs and step into the rhythm of our kitchen as dinner service preparations begin.",
+    "image": "/blog-list/blogimage-11.jpg",
+    "featured": false,
+    "slug": "day-in-kitchen-chefs"
+  },
+  {
+    "title": "Homemade Bread: Why We Bake It Fresh Every Morning",
+    "date": "2025-03-05",
+    "description": "The aroma of warm bread in the morning is part of our restaurant’s identity. Discover why we bake it fresh every day.",
+    "image": "/blog-list/blogimage-12.jpg",
+    "featured": false,
+    "slug": "homemade-bread-morning"
+  },
+  {
+    "title": "Hosting Events at the Restaurant: What You Need to Know",
+    "date": "2024-12-09",
+    "description": "From intimate dinners to corporate gatherings, discover tips and key information before making a reservation at our restaurant.",
+    "image": "/blog-list/blogimage-03.jpg",
+    "featured": true,
+    "slug": "hosting-events-restaurant"
+  },
+  {
+    "title": "Seasonal Menu: What’s Fresh This Spring",
+    "date": "2025-08-29",
+    "description": "Explore our seasonal menu featuring fresh spring ingredients, vibrant flavors, and carefully crafted dishes inspired by the season.",
+    "image": "/blog-list/blogimage-04.jpg",
+    "featured": true,
+    "slug": "seasonal-menu-spring"
+  },
+  {
+    "title": "Behind the Scenes: A Day in Our Kitchen",
+    "date": "2026-04-14",
+    "description": "Take a look behind the scenes and see how our chefs prepare each dish with precision, passion, and attention to detail.",
+    "image": "/blog-list/blogimage-05.jpg",
+    "featured": true,
+    "slug": "behind-the-scenes-kitchen"
+  },
+  {
+    "title": "Wine Pairing Basics for Every Meal",
+    "date": "2024-11-12",
+    "description": "Learn the basics of wine pairing to enhance your dining experience and complement the flavors of your favorite dishes.",
+    "image": "/blog-list/blogimage-06.jpg",
+    "featured": true,
+    "slug": "wine-pairing-basics"
+  }
+]

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Reserve a Seat — SAVOURE{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" crossorigin href="{% static 'css/reservation.min.css' %}">
+{% endblock %}
+
+{% block content %}
+<section data-fls-hero class="page__hero hero">
+   <div class="hero__body">
+      <h1 class="hero__title">Reserve Your Table at Savoure</h1>
+      <div class="hero__descr">
+         <p>We’re excited to host you! Kindly fill out the reservation form below to secure your table.</p>
+      </div>
+   </div>
+</section>
+
+<section data-fls-contact class="page__reservation contact">
+   <div class="contact__container">
+      <div class="contact__box">
+         <form id="reservation-form" class="contact__form" action="{% url 'reservations:reserve' %}" method="POST" novalidate>
+            {% csrf_token %}
+            <h2 class="contact__title">Table Reservation</h2>
+            
+            <div class="contact__field">
+               <input class="contact__input" type="text" id="name" name="name" placeholder="Enter your full name." required minlength="2" autocomplete="name" />
+               <label class="contact__label" for="name">Full name</label>
+            </div>
+            
+            <div class="contact__phone-mail">
+               <div class="contact__field">
+                  <input class="contact__input" type="email" id="email" name="email" placeholder="Confirmation will be sent here." required autocomplete="email" />
+                  <label class="contact__label" for="email">Email</label>
+               </div>
+               <div class="contact__field contact__field--phone">
+                  <div class="contact__phone">
+                     <input class="contact__input" type="tel" name="phone" placeholder="+1 234 567 890" required pattern="^\+?[0-9\s\-]{7,15}$" autocomplete="tel" />
+                     <label class="contact__label">Phone Number</label>
+                  </div>
+               </div>
+            </div>
+
+            <div class="contact__date-time" style="display: flex; gap: 15px;">
+               <div class="contact__field" style="flex: 1;">
+                  <input class="contact__input" type="date" id="date" name="date" required />
+                  <label class="contact__label" for="date">Reservation Date</label>
+               </div>
+               <div class="contact__field" style="flex: 1;">
+                  <input class="contact__input" type="time" id="time" name="time" required />
+                  <label class="contact__label" for="time">Time</label>
+               </div>
+            </div>
+
+            <div class="contact__field">
+               <input class="contact__input" type="number" id="guests" name="guests" min="1" max="20" value="2" required />
+               <label class="contact__label" for="guests">Number of Guests</label>
+            </div>
+
+            <div class="contact__field">
+               <textarea class="contact__textarea" id="notes" name="notes" placeholder="Special requests, seating preferences, dietary restrictions..." rows="3"></textarea>
+               <label class="contact__label" for="notes">Special Requests</label>
+            </div>
+
+            <button data-fls-button data-fls-ripple class="btn" type="submit" aria-label="Confirm Reservation">
+               Confirm Reservation
+            </button>
+         </form>
+      </div>
+   </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script type="module" crossorigin src="{% static 'js/reservation.min.js' %}"></script>
+{% endblock %}

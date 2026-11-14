@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "name": "Marie Dupont",
+    "position": "Head Chef",
+    "description": "With over 10 years of experience in international kitchens, Chef Marie leads the culinary vision of Savoure.",
+    "image": "/team/chef-01.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Luc Moreau",
+    "position": "Pastry Chef",
+    "description": "Chef Luc specializes in elegant French desserts and handcrafted pastries with modern presentation.",
+    "image": "/team/chef-02.jpg"
+  },
+  {
+    "id": 3,
+    "name": "André Dubois",
+    "position": "Sous Chef",
+    "description": "Chef André brings precision and creativity from years of experience in Michelin-inspired restaurants.",
+    "image": "/team/chef-03.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Aïcha Laurent",
+    "position": "Vegetarian Chef",
+    "description": "Chef Aïcha creates vibrant plant-based dishes focused on fresh ingredients and bold flavors.",
+    "image": "/team/chef-04.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Marc Lefevre",
+    "position": "Grill Master",
+    "description": "Chef Marc is known for perfectly grilled meats, signature marinades, and open-fire cooking techniques.",
+    "image": "/team/chef-05.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Nikolai Petrov",
+    "position": "Bakery Chef",
+    "description": "Chef Nikolai prepares artisan breads and traditional baked specialties fresh every morning.",
+    "image": "/team/chef-06.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Luca Romano",
+    "position": "Seafood Chef",
+    "description": "Chef Luca focuses on Mediterranean seafood dishes with refined textures and balanced seasoning.",
+    "image": "/team/chef-07.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Sofia Mendes",
+    "position": "Dessert Specialist",
+    "description": "Chef Sofia combines artistic plating with rich flavors to craft memorable dessert experiences.",
+    "image": "/team/chef-08.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Marc Lefevre",
+    "position": "Grill Master",
+    "description": "Chef Marc is known for perfectly grilled meats, signature marinades, and open-fire cooking techniques.",
+    "image": "/team/chef-02.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Nikolai Petrov",
+    "position": "Bakery Chef",
+    "description": "Chef Nikolai prepares artisan breads and traditional baked specialties fresh every morning.",
+    "image": "/team/chef-06.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Luca Romano",
+    "position": "Seafood Chef",
+    "description": "Chef Luca focuses on Mediterranean seafood dishes with refined textures and balanced seasoning.",
+    "image": "/team/chef-04.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Luca Romano",
+    "position": "Seafood Chef",
+    "description": "Chef Luca focuses on Mediterranean seafood dishes with refined textures and balanced seasoning.",
+    "image": "/team/chef-01.jpg"
+  }
+]

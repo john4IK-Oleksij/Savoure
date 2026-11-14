@@ -1,0 +1,42 @@
+{% load static %}
+<!doctype html>
+<html lang="uk">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="{% static 'assets/img/favicon.ico' %}" type="image/x-icon">
+	<meta name="theme-color" content="#ffffff">
+	
+	<meta name="keywords" content="{% block meta_keywords %}French restaurant Paris, fine dining, luxury French cuisine, gourmet restaurant, Savoure restaurant{% endblock %}">
+	<meta name="description" content="{% block meta_description %}Experience refined French cuisine at Savoure — an elegant fine dining restaurant offering seasonal menus, curated wines, and unforgettable culinary moments.{% endblock %}">
+	
+	<title>{% block title %}SAVOURE — Art de Goût{% endblock %}</title>
+
+	<!-- Global Stylesheets -->
+	<link rel="stylesheet" crossorigin href="{% static 'css/logo.min.css' %}">
+	<link rel="stylesheet" crossorigin href="{% static 'css/hero.min.css' %}">
+	<link rel="stylesheet" crossorigin href="{% static 'css/feedback.min.css' %}">
+	<link rel="stylesheet" crossorigin href="{% static 'css/contact.min.css' %}">
+	<link rel="stylesheet" crossorigin href="{% static 'css/location.min.css' %}">
+	<link rel="stylesheet" crossorigin href="{% static 'css/index.min.css' %}">
+
+	{% block extra_css %}{% endblock %}
+</head>
+
+<body>
+	<div class="wrapper">
+		{% include "_navbar.html" %}
+		{% include "_alerts.html" %}
+
+		<main class="page">
+			{% block content %}{% endblock %}
+		</main>
+
+		{% include "_footer.html" %}
+	</div>
+
+	<!-- Global Scripts -->
+	<script type="module" crossorigin src="{% static 'js/index.min.js' %}"></script>
+	{% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,260 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}SAVOURE — A Symphony of Flavors in Every Bite{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section data-fls-hero data-fls-scrollto-header class="page__hero hero hero--home">
+   <img class="hero__bg" src="{% static 'uploads/hero-bg.jpg' %}" alt="Savoure Restaurant Ambiance" aria-hidden="true">
+   <div class="hero__body">
+      <div class="hero__decor">
+         <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="263px" height="75px" viewBox="0 0 263 75" preserveAspectRatio="xMidYMid meet">
+            <g fill="#deb34e">
+               <path d="M260.60 73.48 c-9.55 -3.48 -21.31 -5.37 -37.19 -5.96 -5.26 -0.19 -18.27 -0.08 -22.81 0.21 -7.99 0.51 -14.52 1.29 -24.04 2.89 -9.49 1.60 -16.22 2.22 -22.33 2.08 -4.73 -0.12 -7.93 -0.51 -11.60 -1.41 -3.68 -0.90 -7.75 -2.63 -9.97 -4.23 -0.60 -0.42 -1.15 -0.81 -1.23 -0.84 -0.07 -0.03 -0.56 0.26 -1.10 0.64 -6.03 4.40 -15.94 6.44 -27.81 5.74 -4.44 -0.26 -7.73 -0.68 -17.67 -2.25 -13.15 -2.08 -20.57 -2.74 -32.53 -2.90 -17.18 -0.25 -31.86 1.05 -42.76 3.79 -2.38 0.59 -6.22 1.74 -7.62 2.26 -0.49 0.18 -0.92 0.32 -0.95 0.27 -0.25 -0.23 2.78 -1.95 5.64 -3.19 6.75 -2.93 17.68 -5.52 27.05 -6.40 1.25 -0.12 2.95 -0.27 3.77 -0.36 7.23 -0.68 16.52 -0.84 23.97 -0.40 8.94 0.52 14.93 1.44 24.45 3.77 4.89 1.21 8.15 1.90 11.14 2.38 12.30 2 21.81 1.26 29.23 -2.27 1.25 -0.60 4.34 -2.56 4.68 -2.99 0.29 -0.34 0.49 -0.27 1.70 0.64 5.19 3.97 12.79 5.92 22.15 5.67 6.86 -0.18 11.55 -0.90 21.78 -3.36 7.27 -1.75 10.78 -2.42 15.62 -3.03 6.27 -0.78 10.70 -1.03 18.42 -1.03 8.12 0 13.08 0.27 19.79 1.08 12.41 1.52 23.66 4.75 30.38 8.75 0.84 0.51 1.53 0.95 1.53 0.97 0 0.04 -0.01 0.07 -0.03 0.05 -0.03 0 -0.78 -0.27 -1.68 -0.62z" />
+            </g>
+         </svg>
+      </div>
+      <div class="hero__label">Welcome to our restaurant</div>
+      <div class="hero__descr">
+         <p>Savor exquisite culinary creations prepared with fresh, local ingredients. Each dish celebrates vibrant flavors, presented in an ambiance of sophistication. Join us for an unforgettable dining experience where every bite tells a story.</p>
+      </div>
+      <h1 class="hero__title">A Symphony of Flavors in Every Bite</h1>
+      <div class="hero__action">
+         <a href="{% url 'menu:dish_list' %}" class="btn btn--dark" aria-label="Our Menu">
+            <span>Our Menu</span>
+         </a>
+         <a href="{% url 'reservations:reserve' %}" data-fls-button data-fls-ripple class="btn" aria-label="Reserve a Seat">
+            <span>Reserve a Seat</span>
+         </a>
+      </div>
+   </div>
+</section>
+
+<!-- About Section -->
+<section data-fls-about class="about">
+   <div class="about__container">
+      <h2 class="about__title">Our Company</h2>
+      <div class="about__main">
+         <div class="about__descr">
+            <p>Since its opening, Savoure has become a sanctuary where taste, quality, and dining experience unite in harmony. We are driven by a passion for serving delicious food crafted from the finest seasonal ingredients, enriched with creative mastery from our kitchen.</p>
+            <p>We believe that food is not merely nourishment, but a celebration of happiness, elegance, and togetherness. That’s why every dish at Savoure is prepared with meticulous care to create unforgettable memories for you and your guests.</p>
+         </div>
+         <div data-fls-watcher class="about__stat stat">
+            <div class="stat__block">
+               <div class="stat__top">
+                  <span data-fls-digcounter data-fls-digcounter-speed="1500" class="stat__item">10</span>
+                  <span class="stat__label">+ years</span>
+               </div>
+               <p class="stat__text">of Culinary Excellence</p>
+            </div>
+            <div class="stat__block">
+               <div class="stat__top">
+                  <span data-fls-digcounter data-fls-digcounter-speed="2000" class="stat__item">5</span>
+                  <span class="stat__label">awards</span>
+               </div>
+               <p class="stat__text">Winning Chefs</p>
+            </div>
+            <div class="stat__block">
+               <div class="stat__top">
+                  <span class="stat__item">4.9/5</span>
+               </div>
+               <p class="stat__text">Customer Rating on Average</p>
+            </div>
+         </div>
+         <div class="about__image">
+            <img class="about__image-left" src="{% static 'dish-list/dishimage-01.jpg' %}" alt="Savoure restaurant dish presentation">
+            <img class="about__image-right" src="{% static 'dish-list/dishimage-02.jpg' %}" alt="Savoure culinary craft">
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- Chef's Favorites Section -->
+<section data-fls-chefsdishes class="page__chefsdishes chefsdishes">
+   <div class="chefsdishes__container">
+      <div class="chefsdishes__head">
+         <h2 class="chefsdishes__title">Chef’s Favorites</h2>
+         <p class="chefsdishes__descr">
+            The dishes our chef can’t stop thinking about, and neither will you.
+         </p>
+      </div>
+      <div class="chefsdishes__main">
+         <ul class="chefsdishes__list">
+            <!-- Initial static featured items (will be dynamic in Iteration 3-5) -->
+            <li class="dishcard">
+               <div class="dishcard__image">
+                  <img src="{% static 'dish-list/dishimage-01.jpg' %}" alt="Bruschetta Trio">
+               </div>
+               <div class="dishcard__content">
+                  <div class="dishcard__label">Appetizer</div>
+                  <div class="dishcard__head">
+                     <h3 class="dishcard__title">Bruschetta Trio</h3>
+                     <span class="dishcard__line"></span>
+                     <span class="dishcard__price">$9</span>
+                  </div>
+                  <p class="dishcard__description">Toasted bread topped with fresh tomato, basil, and extra virgin olive oil with a touch of balsamic glaze.</p>
+               </div>
+            </li>
+            <li class="dishcard">
+               <div class="dishcard__image">
+                  <img src="{% static 'dish-list/dishimage-02.jpg' %}" alt="Fresh Orange Juice">
+               </div>
+               <div class="dishcard__content">
+                  <div class="dishcard__label">Beverage</div>
+                  <div class="dishcard__head">
+                     <h3 class="dishcard__title">Fresh Orange Juice</h3>
+                     <span class="dishcard__line"></span>
+                     <span class="dishcard__price">$5</span>
+                  </div>
+                  <p class="dishcard__description">Freshly squeezed sweet oranges blended into a vibrant, naturally refreshing citrus juice.</p>
+               </div>
+            </li>
+            <li class="dishcard">
+               <div class="dishcard__image">
+                  <img src="{% static 'dish-list/dishimage-03.jpg' %}" alt="Classic Mojito">
+               </div>
+               <div class="dishcard__content">
+                  <div class="dishcard__label">Beverage</div>
+                  <div class="dishcard__head">
+                     <h3 class="dishcard__title">Classic Mojito</h3>
+                     <span class="dishcard__line"></span>
+                     <span class="dishcard__price">$10</span>
+                  </div>
+                  <p class="dishcard__description">Mint leaves, fresh lime, and sparkling soda served chilled over crushed ice for a crisp finish.</p>
+               </div>
+            </li>
+            <li class="dishcard">
+               <div class="dishcard__image">
+                  <img src="{% static 'dish-list/dishimage-04.jpg' %}" alt="Tiramisu">
+               </div>
+               <div class="dishcard__content">
+                  <div class="dishcard__label">Dessert</div>
+                  <div class="dishcard__head">
+                     <h3 class="dishcard__title">Tiramisu</h3>
+                     <span class="dishcard__line"></span>
+                     <span class="dishcard__price">$9</span>
+                  </div>
+                  <p class="dishcard__description">Layers of espresso-soaked ladyfingers and creamy mascarpone, lightly dusted with rich dark cocoa.</p>
+               </div>
+            </li>
+         </ul>
+      </div>
+      <a href="{% url 'menu:dish_list' %}" data-fls-button data-fls-ripple class="chefsdishes__btn btn" aria-label="Explore Our Menu">Explore Our Menu</a>
+   </div>
+</section>
+
+<!-- Contact Section -->
+<section data-fls-contact class="page__contact contact">
+   <div class="contact__container">
+      <div class="contact__box">
+         <form class="contact__form" action="#" method="POST" novalidate>
+            {% csrf_token %}
+            <h2 class="contact__title">Contact Us</h2>
+            <div class="contact__field">
+               <input class="contact__input" type="text" id="name" name="name" placeholder="Input text here" required minlength="2" autocomplete="name" />
+               <label class="contact__label" for="name">Full name</label>
+            </div>
+            <div class="contact__field contact__field--phone">
+               <div class="contact__phone">
+                  <input class="contact__input" type="tel" name="phone" placeholder="+1 234 567 890" required pattern="^\+?[0-9\s\-]{7,15}$" autocomplete="tel" />
+                  <label class="contact__label">Phone Number</label>
+               </div>
+            </div>
+            <div class="contact__field">
+               <input class="contact__input" type="email" id="email" name="email" placeholder="Input text here" required autocomplete="email" />
+               <label class="contact__label" for="email">Email</label>
+            </div>
+            <div class="contact__field">
+               <textarea class="contact__textarea" id="message" name="message" placeholder="Input text here" required rows="4"></textarea>
+               <label class="contact__label" for="message">Special Request</label>
+            </div>
+            <div class="contact__checkbox">
+               <input class="contact__checkbox-input" type="checkbox" id="terms" name="terms" required checked />
+               <label class="contact__checkbox-label" for="terms">
+                  By checking the box you agree to our
+                  <a href="{% url 'core:terms' %}" aria-label="Terms of Service">Terms of Service</a>
+                  and
+                  <a href="{% url 'core:privacy' %}" aria-label="Privacy Policy">Privacy Policy</a>.
+               </label>
+            </div>
+            <button data-fls-button data-fls-ripple class="btn" type="submit" aria-label="Send Message">
+               Send Message
+            </button>
+         </form>
+      </div>
+      <div class="contact__details detail-contact">
+         <h2 class="detail-contact__title">Craving Something Delicious?</h2>
+         <div class="detail-contact__label">
+            <p>From savory bites to sweet delights, your cravings end here.</p>
+         </div>
+         <div class="detail-contact__main">
+            <div class="detail-contact__item location">
+               <h3 class="detail-contact__subtitle">Our Location</h3>
+               <div class="detail-contact__descr">
+                  <div class="detail-contact__text">
+                     <p>21 Rue des Lilas 75001 Paris, France</p>
+                  </div>
+               </div>
+            </div>
+            <div class="detail-contact__item phone">
+               <h3 class="detail-contact__subtitle">Phone Number</h3>
+               <div class="detail-contact__descr">
+                  <div class="detail-contact__text">
+                     <p>+33 6 12 34 56 78</p>
+                  </div>
+               </div>
+            </div>
+            <div class="detail-contact__item email">
+               <h3 class="detail-contact__subtitle">Email Address</h3>
+               <div class="detail-contact__descr">
+                  <div class="detail-contact__text">
+                     <p>hello@savoure.com</p>
+                  </div>
+               </div>
+            </div>
+            <div class="detail-contact__item hours">
+               <h3 class="detail-contact__subtitle">Opening Hours</h3>
+               <div class="detail-contact__descr">
+                  <div class="detail-contact__text">
+                     <p>Monday - Friday: 12:00 PM - 2:30 PM &amp; 7:00 PM - 10:30 PM</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="page__faq faq">
+   <div class="faq__container">
+      <div class="faq__head">
+         <h2 class="faq__title">What’s on Your Mind?</h2>
+         <div class="faq__text">
+            <p>We’ve answered the questions you didn’t know you had.</p>
+         </div>
+      </div>
+      <div data-fls-spollers data-fls-spollers-one class="faq__spollers spollers-faq">
+         <details class="spollers-faq__item" open>
+            <summary data-fls-spollers-close class="spollers-faq__title">What are the restaurant's hours of operation?</summary>
+            <div class="spollers-faq__body">
+               Our restaurant is open daily from 12:00 PM to 10:30 PM. We strive to provide a welcoming atmosphere throughout the entire day, whether you're joining us for lunch or dinner.
+            </div>
+         </details>
+         <details class="spollers-faq__item">
+            <summary data-fls-spollers-close class="spollers-faq__title">Do I need to make a reservation before coming?</summary>
+            <div class="spollers-faq__body">
+               Reservations are not strictly required, but they are highly recommended during peak evening hours and weekends to guarantee your table.
+            </div>
+         </details>
+         <details class="spollers-faq__item">
+            <summary data-fls-spollers-close class="spollers-faq__title">Is there a vegetarian or vegan menu available?</summary>
+            <div class="spollers-faq__body">
+               Yes, our seasonal menu features dedicated vegetarian and plant-forward gourmet creations prepared with the same artistry as our classic French repertoire.
+            </div>
+         </details>
+      </div>
+   </div>
+</section>
+{% endblock %}

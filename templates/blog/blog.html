@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}News &amp; Stories — SAVOURE{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" crossorigin href="{% static 'css/blog.min.css' %}">
+{% endblock %}
+
+{% block content %}
+<section data-fls-hero class="page__hero hero">
+   <div class="hero__body">
+      <h1 class="hero__title">From Our Kitchen to Your Screen</h1>
+      <div class="hero__descr">
+         <p>Dive into seasonal recipes, behind-the-scenes stories, and culinary craftsmanship from Savoure.</p>
+      </div>
+   </div>
+</section>
+
+<section class="blog" style="padding: 60px 0;">
+   <div class="blog__container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+      <div class="blog__list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+         <article class="blogcard" style="background: #141821; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06);">
+            <div class="blogcard__image" style="height: 220px; overflow: hidden;">
+               <img src="{% static 'blog-list/blogimage-01.jpg' %}" alt="Kitchen Life" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="blogcard__body" style="padding: 24px;">
+               <span class="blogcard__label" style="color: #f4c73f; font-size: 13px; text-transform: uppercase;">April 14, 2026</span>
+               <h3 class="blogcard__title" style="margin: 10px 0 14px; font-size: 20px; color: #fff;">Behind The Scenes: A Day In Our Kitchen</h3>
+               <p class="blogcard__descr" style="color: #a0a6b1; font-size: 15px; line-height: 1.6;">Take a look behind the scenes and see how our chefs prepare each dish with precision, passion, and elegance.</p>
+            </div>
+         </article>
+         <article class="blogcard" style="background: #141821; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06);">
+            <div class="blogcard__image" style="height: 220px; overflow: hidden;">
+               <img src="{% static 'blog-list/blogimage-02.jpg' %}" alt="Seasonal Menu" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="blogcard__body" style="padding: 24px;">
+               <span class="blogcard__label" style="color: #f4c73f; font-size: 13px; text-transform: uppercase;">August 29, 2025</span>
+               <h3 class="blogcard__title" style="margin: 10px 0 14px; font-size: 20px; color: #fff;">Seasonal Menu: What's Fresh This Spring</h3>
+               <p class="blogcard__descr" style="color: #a0a6b1; font-size: 15px; line-height: 1.6;">Explore our seasonal menu featuring fresh spring ingredients, vibrant flavors, and carefully crafted specialties.</p>
+            </div>
+         </article>
+         <article class="blogcard" style="background: #141821; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06);">
+            <div class="blogcard__image" style="height: 220px; overflow: hidden;">
+               <img src="{% static 'blog-list/blogimage-03.jpg' %}" alt="Lava Cake" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div class="blogcard__body" style="padding: 24px;">
+               <span class="blogcard__label" style="color: #f4c73f; font-size: 13px; text-transform: uppercase;">May 19, 2025</span>
+               <h3 class="blogcard__title" style="margin: 10px 0 14px; font-size: 20px; color: #fff;">The Secret Behind Our Best-Selling Lava Cake</h3>
+               <p class="blogcard__descr" style="color: #a0a6b1; font-size: 15px; line-height: 1.6;">Soft on the outside, molten on the inside — discover how our pastry chef perfects this decadent chocolate dessert.</p>
+            </div>
+         </article>
+      </div>
+   </div>
+</section>
+{% endblock %}

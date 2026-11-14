@@ -23,8 +23,10 @@ SECRET_KEY: str = os.getenv(
 
 DEBUG: bool = os.getenv("DEBUG", "True").lower() in ("true", "1", "yes")
 
-_allowed_hosts: str = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1")
+_allowed_hosts: str = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1,testserver")
 ALLOWED_HOSTS: list[str] = [h.strip() for h in _allowed_hosts.split(",") if h.strip()]
+if DEBUG and "testserver" not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append("testserver")
 
 
 # Application definition

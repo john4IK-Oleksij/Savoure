@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Find Us — SAVOURE{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" crossorigin href="{% static 'css/findus.min.css' %}">
+{% endblock %}
+
+{% block content %}
+<section data-fls-hero class="page__hero hero">
+   <div class="hero__body">
+      <h1 class="hero__title">Visit Our Restaurant</h1>
+      <div class="hero__descr">
+         <p>Located in the heart of Paris, an intimate sanctuary of French gastronomy awaits you.</p>
+      </div>
+   </div>
+</section>
+
+<section class="findus" style="padding: 60px 0;">
+   <div class="findus__container" style="max-width: 900px; margin: 0 auto; text-align: center;">
+      <h2 style="color: #f4c73f; font-size: 28px; margin-bottom: 20px;">Savoure Paris</h2>
+      <p style="font-size: 18px; margin-bottom: 10px;">📍 21 Rue des Lilas, 75001 Paris, France</p>
+      <p style="font-size: 18px; margin-bottom: 10px;">📞 Phone: +33 6 12 34 56 78</p>
+      <p style="font-size: 18px; margin-bottom: 30px;">✉️ Email: hello@savoure.com</p>
+      <a href="{% url 'reservations:reserve' %}" class="btn" style="display: inline-block;">Reserve a Table</a>
+   </div>
+</section>
+{% endblock %}
