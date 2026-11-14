@@ -31,6 +31,3 @@ git add .
 git commit -m "final version"
 git push
 
-alex_admin AnJgFn%(w839_
-chef_oleksii  4sbWRP25zdZ
-manager_marina  Q5J6k95xqCdU
