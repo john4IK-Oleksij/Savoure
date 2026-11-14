@@ -1,12 +1,51 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Privacy Policy — SAVOURE{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" crossorigin href="{% static 'css/privacy.min.css' %}">
+{% endblock %}
+
 {% block content %}
-<section style="padding: 120px 20px 60px; max-width: 800px; margin: 0 auto; color: #ededed;">
-   <h1 style="color: #f4c73f; font-size: 32px; margin-bottom: 24px;">Privacy Policy</h1>
-   <p style="line-height: 1.7; margin-bottom: 16px;">At Savoure, your privacy and peace of mind are paramount. This Policy explains how we collect and safeguard your information when you make reservations or communicate with us.</p>
-   <h2 style="color: #f4c73f; font-size: 22px; margin: 24px 0 12px;">Information We Collect</h2>
-   <p style="line-height: 1.7; margin-bottom: 16px;">We only collect essential details needed to confirm and honor table reservations: your full name, email address, phone number, and any special dining preferences you choose to share.</p>
+<section class="privacy">
+   <div class="privacy__container">
+      <div class="privacy__hero">
+         <p class="privacy__label">Legal Information</p>
+         <h1 class="privacy__title">Privacy Policy</h1>
+         <p class="privacy__description">
+            At SAVOURE, we respect the privacy of our guests, reservation clients, and website visitors.
+            This Privacy Policy explains how personal information is collected, processed, and protected
+            when interacting with our restaurant and digital services.
+         </p>
+         <div class="privacy__meta">
+            <span>Updated</span>
+            <span class="privacy__dot"></span>
+            <span>Effective Date: 30 May 2026</span>
+            <span class="privacy__dot"></span>
+            <span>SAVOURE Restaurant</span>
+         </div>
+      </div>
+      <div class="privacy__body">
+         <article class="privacy__article">
+            <h2 class="privacy__heading">1. Introduction</h2>
+            <div class="privacy__content">
+               <p>
+                  This Privacy Policy applies to all guests and visitors interacting with SAVOURE through
+                  our website, reservation system, or customer care channels.
+               </p>
+            </div>
+         </article>
+         <article class="privacy__article">
+            <h2 class="privacy__heading">2. Information We Collect</h2>
+            <div class="privacy__content">
+               <p>
+                  To secure your dining experience, we collect essential booking information including your
+                  full name, contact telephone number, email address, and any specific culinary preferences.
+               </p>
+            </div>
+         </article>
+      </div>
+   </div>
 </section>
 {% endblock %}

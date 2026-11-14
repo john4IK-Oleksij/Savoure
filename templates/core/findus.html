@@ -11,20 +11,56 @@
 <section data-fls-hero class="page__hero hero">
    <img class="hero__bg" src="{% static 'uploads/hero-bg.jpg' %}" alt="Find Us" aria-hidden="true">
    <div class="hero__body">
-      <h1 class="hero__title">Visit Our Restaurant</h1>
+      <h1 class="hero__title">We’d Love to Hear From You</h1>
       <div class="hero__descr">
-         <p>Located in the heart of Paris, an intimate sanctuary of French gastronomy awaits you.</p>
+         <p>Whether you have a question, special request, or simply want to say hello, our team is here to help.</p>
       </div>
    </div>
 </section>
 
-<section class="findus" style="padding: 60px 0;">
-   <div class="findus__container" style="max-width: 900px; margin: 0 auto; text-align: center;">
-      <h2 style="color: #f4c73f; font-size: 28px; margin-bottom: 20px;">Savoure Paris</h2>
-      <p style="font-size: 18px; margin-bottom: 10px;">📍 21 Rue des Lilas, 75001 Paris, France</p>
-      <p style="font-size: 18px; margin-bottom: 10px;">📞 Phone: +33 6 12 34 56 78</p>
-      <p style="font-size: 18px; margin-bottom: 30px;">✉️ Email: hello@savoure.com</p>
-      <a href="{% url 'reservations:reserve' %}" class="btn" style="display: inline-block;">Reserve a Table</a>
+<!-- Location Details Section -->
+<section data-fls-contact class="page__contact contact">
+   <div class="contact__container">
+      <div class="contact__details detail-contact">
+         <h2 class="detail-contact__title">Our Restaurant Location</h2>
+         <div class="detail-contact__label">
+            <p>An intimate haven of culinary indulgence in central Paris.</p>
+         </div>
+         <div class="detail-contact__main">
+            <div class="detail-contact__item location">
+               <h3 class="detail-contact__subtitle">Our Location</h3>
+               <div class="detail-contact__descr">
+                  <div class="detail-contact__text">
+                     <p>21 Rue des Lilas 75001 Paris, France</p>
+                  </div>
+               </div>
+            </div>
+            <div class="detail-contact__item phone">
+               <h3 class="detail-contact__subtitle">Phone Number</h3>
+               <div class="detail-contact__descr">
+                  <div class="detail-contact__text">
+                     <p>+33 6 12 34 56 78</p>
+                  </div>
+               </div>
+            </div>
+            <div class="detail-contact__item email">
+               <h3 class="detail-contact__subtitle">Email Address</h3>
+               <div class="detail-contact__descr">
+                  <div class="detail-contact__text">
+                     <p>hello@savoure.com</p>
+                  </div>
+               </div>
+            </div>
+            <div class="detail-contact__item hours">
+               <h3 class="detail-contact__subtitle">Opening Hours</h3>
+               <div class="detail-contact__descr">
+                  <div class="detail-contact__text">
+                     <p>Monday - Friday: 12:00 PM - 2:30 PM &amp; 7:00 PM - 10:30 PM</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
    </div>
 </section>
 {% endblock %}

@@ -1,12 +1,62 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}Terms of Service — SAVOURE{% endblock %}
+{% block title %}Terms of Services — SAVOURE{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" crossorigin href="{% static 'css/terms.min.css' %}">
+{% endblock %}
 
 {% block content %}
-<section style="padding: 120px 20px 60px; max-width: 800px; margin: 0 auto; color: #ededed;">
-   <h1 style="color: #f4c73f; font-size: 32px; margin-bottom: 24px;">Terms of Service</h1>
-   <p style="line-height: 1.7; margin-bottom: 16px;">Welcome to Savoure. By using our website and reservation services, you agree to the following terms and guidelines.</p>
-   <h2 style="color: #f4c73f; font-size: 22px; margin: 24px 0 12px;">Reservations &amp; Cancellations</h2>
-   <p style="line-height: 1.7; margin-bottom: 16px;">Table reservations are held for 15 minutes past the scheduled time. If you need to cancel or modify your reservation, please notify our maître d’ at least 3 hours in advance.</p>
+<section class="terms">
+   <div class="terms__container">
+      <div class="terms__hero">
+         <h1 class="terms__title">Terms of Use</h1>
+         <p class="terms__description">
+            These Terms of Use ("Terms") govern your access to and use of the
+            Savoure website, reservation services, dining experiences, and related
+            offerings. By accessing our website or making a reservation, you agree
+            to comply with these Terms.
+         </p>
+         <div class="terms__meta">
+            <span class="terms__meta-item">Updated</span>
+            <span class="terms__meta-dot"></span>
+            <span class="terms__meta-item">Effective Date: 30 May 2026</span>
+            <span class="terms__meta-dot"></span>
+            <span class="terms__meta-item">10:45 PM</span>
+         </div>
+      </div>
+
+      <div class="terms__body">
+         <div class="terms__section">
+            <h2 class="terms__heading">1. Reservation Eligibility</h2>
+            <p class="terms__text">
+               Guests must be at least 18 years old to complete online reservations
+               or submit reservation requests through the Savoure platform.
+            </p>
+         </div>
+
+         <div class="terms__section">
+            <h2 class="terms__heading">2. Reservations &amp; Seating Policy</h2>
+            <p class="terms__text">
+               Tables are held for 15 minutes past the scheduled arrival time. If your party
+               is delayed, please notify our reception team promptly.
+            </p>
+            <p class="terms__text">
+               Reservation confirmations are delivered to your provided email address upon
+               successful booking review by our maître d'.
+            </p>
+         </div>
+
+         <div class="terms__section">
+            <h2 class="terms__heading">3. Dietary Preferences &amp; Allergies</h2>
+            <p class="terms__text">
+               Savoure takes pride in accommodating diverse dietary needs. Please declare any
+               severe allergies or restrictions when completing the reservation form so that our
+               kitchen brigade can prepare tailored adjustments in advance.
+            </p>
+         </div>
+      </div>
+   </div>
 </section>
 {% endblock %}
