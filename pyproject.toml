@@ -11,3 +11,13 @@ dev = [
     "python-dotenv>=1.2.4",
     "ruff>=0.17.5",
 ]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["*/migrations/*", "node_modules", "dist"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003"]
+
