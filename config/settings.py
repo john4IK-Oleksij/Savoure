@@ -5,29 +5,30 @@ Production-ready template aligned with senior engineering roadmap.
 
 import os
 from pathlib import Path
+from typing import Any
 
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR: Path = Path(__file__).resolve().parent.parent
 
 # Load environment variables from .env file
 load_dotenv(BASE_DIR / ".env")
 
 # Security settings
-SECRET_KEY = os.getenv(
+SECRET_KEY: str = os.getenv(
     "SECRET_KEY",
     "django-insecure-savoure-restaurant-secret-key-development-2026",
 )
 
-DEBUG = os.getenv("DEBUG", "True").lower() in ("true", "1", "yes")
+DEBUG: bool = os.getenv("DEBUG", "True").lower() in ("true", "1", "yes")
 
-_allowed_hosts = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1")
-ALLOWED_HOSTS = [h.strip() for h in _allowed_hosts.split(",") if h.strip()]
+_allowed_hosts: str = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1")
+ALLOWED_HOSTS: list[str] = [h.strip() for h in _allowed_hosts.split(",") if h.strip()]
 
 
 # Application definition
-INSTALLED_APPS = [
+INSTALLED_APPS: list[str] = [
     # Django core apps
     "django.contrib.admin",
     "django.contrib.auth",
@@ -42,7 +43,7 @@ INSTALLED_APPS = [
     "blog.apps.BlogConfig",
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE: list[str] = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -52,9 +53,9 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "config.urls"
+ROOT_URLCONF: str = "config.urls"
 
-TEMPLATES = [
+TEMPLATES: list[dict[str, Any]] = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [BASE_DIR / "templates"],
@@ -69,12 +70,12 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "config.wsgi.application"
+WSGI_APPLICATION: str = "config.wsgi.application"
 
 
 # Database
 # Using SQLite for fast development; ready for PostgreSQL swap
-DATABASES = {
+DATABASES: dict[str, dict[str, Any]] = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
@@ -83,7 +84,7 @@ DATABASES = {
 
 
 # Password validation
-AUTH_PASSWORD_VALIDATORS = [
+AUTH_PASSWORD_VALIDATORS: list[dict[str, str]] = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
@@ -100,20 +101,20 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization & Localization
-LANGUAGE_CODE = "uk"
-TIME_ZONE = "Europe/Kyiv"
-USE_I18N = True
-USE_TZ = True
+LANGUAGE_CODE: str = "uk"
+TIME_ZONE: str = "Europe/Kyiv"
+USE_I18N: bool = True
+USE_TZ: bool = True
 
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR / "static"]
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_URL: str = "static/"
+STATICFILES_DIRS: list[Path] = [BASE_DIR / "static"]
+STATIC_ROOT: Path = BASE_DIR / "staticfiles"
 
 # Media files (User & Admin uploads)
-MEDIA_URL = "media/"
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL: str = "media/"
+MEDIA_ROOT: Path = BASE_DIR / "media"
 
 # Default primary key field type
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+DEFAULT_AUTO_FIELD: str = "django.db.models.BigAutoField"
