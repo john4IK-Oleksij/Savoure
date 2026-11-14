@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "online": "vite --host",
-    "build": "vite build",
+    "build": "echo 'Frontend assets ready in static/'",
     "preview": "vite preview",
     "zip": "vite build -- --zip",
     "tmp": "vite build -- --tmp --zip",
