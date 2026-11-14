@@ -1,0 +1,13 @@
+[project]
+name = "savoure"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "django>=5.1",
+    "pillow>=13.0.0",
+    "python-dotenv>=1.2.4",
+    "ruff>=0.17.5",
+]
