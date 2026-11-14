@@ -28,6 +28,11 @@ ALLOWED_HOSTS: list[str] = [h.strip() for h in _allowed_hosts.split(",") if h.st
 if DEBUG and "testserver" not in ALLOWED_HOSTS:
     ALLOWED_HOSTS.append("testserver")
 
+_csrf_trusted: str = os.getenv("CSRF_TRUSTED_ORIGINS", "")
+CSRF_TRUSTED_ORIGINS: list[str] = [
+    origin.strip() for origin in _csrf_trusted.split(",") if origin.strip()
+]
+
 
 # Application definition
 INSTALLED_APPS: list[str] = [
@@ -37,6 +42,7 @@ INSTALLED_APPS: list[str] = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
     # Savoure domain apps
     "core.apps.CoreConfig",
@@ -47,6 +53,7 @@ INSTALLED_APPS: list[str] = [
 
 MIDDLEWARE: list[str] = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -76,7 +83,7 @@ WSGI_APPLICATION: str = "config.wsgi.application"
 
 
 # Database
-# Using SQLite for fast development; ready for PostgreSQL swap
+# Using SQLite for fast development; ready for PostgreSQL swap via DATABASE_URL
 DATABASES: dict[str, dict[str, Any]] = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -114,9 +121,30 @@ STATIC_URL: str = "static/"
 STATICFILES_DIRS: list[Path] = [BASE_DIR / "static"]
 STATIC_ROOT: Path = BASE_DIR / "staticfiles"
 
+STORAGES: dict[str, dict[str, Any]] = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+    },
+}
+WHITENOISE_MANIFEST_STRICT: bool = False
+
 # Media files (User & Admin uploads)
 MEDIA_URL: str = "media/"
 MEDIA_ROOT: Path = BASE_DIR / "media"
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD: str = "django.db.models.BigAutoField"
+
+# Production security headers
+if not DEBUG:
+    SECURE_PROXY_SSL_HEADER: tuple[str, str] = ("HTTP_X_FORWARDED_PROTO", "https")
+    SECURE_BROWSER_XSS_FILTER: bool = True
+    SECURE_CONTENT_TYPE_NOSNIFF: bool = True
+    X_FRAME_OPTIONS: str = "DENY"
+    SESSION_COOKIE_SECURE: bool = True
+    CSRF_COOKIE_SECURE: bool = True
+    SESSION_COOKIE_SAMESITE: str = "Lax"
+    CSRF_COOKIE_SAMESITE: str = "Lax"
