@@ -625,7 +625,17 @@ body {
   background-color: #ededed;
   align-self: center;
   flex-shrink: 0;
-  margin: 0 8px;
+}
+.footer__staff {
+  color: #ededed;
+  opacity: 0.35;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+.footer__staff:hover {
+  opacity: 1;
+  color: #f4c73f;
 }
 .footer {
   /* .footer__logo-text */
