@@ -431,3 +431,17 @@
 .detail-contact {
   /* .detail-contact__openhours */
 }
+
+/* Calendar & Clock Picker Icons in Darkorange / Gold */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(65%) sepia(85%) saturate(550%) hue-rotate(360deg) brightness(95%) contrast(90%);
+  opacity: 0.9;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover,
+input[type="time"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}

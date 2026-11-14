@@ -21,7 +21,7 @@
 <section data-fls-contact class="page__reservation contact">
    <div class="contact__container">
       <div class="contact__box">
-         <form id="reservation-form" class="contact__form" action="{% url 'reservations:reserve' %}" method="POST">
+         <form id="reservation-form" class="contact__form" action="{% url 'reservations:reserve' %}" method="POST" autocomplete="on">
             {% csrf_token %}
             <h2 class="contact__title">Table Reservation</h2>
             
@@ -37,8 +37,8 @@
                </div>
                <div class="contact__field contact__field--phone">
                   <div class="contact__phone">
-                     <input class="contact__input" type="tel" name="phone" placeholder="+1 234 567 890" required pattern="^\+?[0-9\s\-]{7,15}$" autocomplete="tel" />
-                     <label class="contact__label">Phone Number</label>
+                     <input class="contact__input" type="tel" id="phone" name="phone" placeholder="+1 234 567 890" required pattern="^\+?[0-9\s\-]{7,15}$" autocomplete="tel" />
+                     <label class="contact__label" for="phone">Phone Number</label>
                   </div>
                </div>
             </div>
