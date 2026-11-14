@@ -4,7 +4,7 @@ from blog.models import BlogPost
 
 
 @admin.register(BlogPost)
-class BlogPostAdmin(admin.ModelAdmin):
+class BlogPostAdmin(admin.ModelAdmin[BlogPost]):
     list_display = ("title", "published_at", "is_published", "created_at")
     list_editable = ("is_published",)
     list_filter = ("is_published", "published_at")

@@ -8,7 +8,7 @@ from menu.models import Category, Dish, Tag
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(admin.ModelAdmin[Category]):
     list_display = ("order", "name", "slug")
     list_display_links = ("name",)
     list_editable = ("order",)
@@ -17,13 +17,13 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 @admin.register(Tag)
-class TagAdmin(admin.ModelAdmin):
+class TagAdmin(admin.ModelAdmin[Tag]):
     list_display = ("name", "badge_color")
     search_fields = ("name",)
 
 
 @admin.register(Dish)
-class DishAdmin(admin.ModelAdmin):
+class DishAdmin(admin.ModelAdmin[Dish]):
     list_display = (
         "title",
         "category",

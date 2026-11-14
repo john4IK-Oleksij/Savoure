@@ -6,7 +6,7 @@ from reservations.models import ContactMessage, NewsletterSubscriber, Reservatio
 
 
 @admin.register(Reservation)
-class ReservationAdmin(admin.ModelAdmin):
+class ReservationAdmin(admin.ModelAdmin[Reservation]):
     list_display = (
         "name",
         "phone",
@@ -43,7 +43,7 @@ class ReservationAdmin(admin.ModelAdmin):
 
 
 @admin.register(ContactMessage)
-class ContactMessageAdmin(admin.ModelAdmin):
+class ContactMessageAdmin(admin.ModelAdmin[ContactMessage]):
     list_display = ("name", "email", "phone", "is_processed", "created_at")
     list_editable = ("is_processed",)
     list_filter = ("is_processed", "created_at")
@@ -52,7 +52,7 @@ class ContactMessageAdmin(admin.ModelAdmin):
 
 
 @admin.register(NewsletterSubscriber)
-class NewsletterSubscriberAdmin(admin.ModelAdmin):
+class NewsletterSubscriberAdmin(admin.ModelAdmin[NewsletterSubscriber]):
     list_display = ("email", "subscribed_at")
     search_fields = ("email",)
     readonly_fields = ("subscribed_at",)
