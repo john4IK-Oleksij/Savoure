@@ -19,5 +19,5 @@ extend-exclude = ["*/migrations/*", "node_modules", "dist"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "RUF"]
-ignore = ["RUF001", "RUF002", "RUF003"]
+ignore = ["RUF001", "RUF002", "RUF003", "RUF012"]
 
