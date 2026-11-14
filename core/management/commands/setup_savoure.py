@@ -4,7 +4,7 @@ from decimal import Decimal
 from typing import Any
 
 from django.conf import settings
-from django.contrib.auth.models import Group, Permission, User
+from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
 from django.core.management.base import BaseCommand
 from django.utils.text import slugify
@@ -16,21 +16,21 @@ from reservations.models import ContactMessage, NewsletterSubscriber, Reservatio
 
 class Command(BaseCommand):
     help = (
-        "Initializes Savoure database: creates RBAC roles, staff users, "
-        "and seeds initial menu/blog data."
+        "Initializes Savoure database: sets up RBAC permission groups (Chef & Manager) "
+        "and seeds initial menu/blog data. Does NOT create users or store credentials."
     )
 
     def handle(self, *args: Any, **options: Any) -> None:
         self.stdout.write(self.style.NOTICE("🚀 Starting Savoure initial setup..."))
 
-        self._setup_roles_and_users()
+        self._setup_roles()
         self._seed_menu_data()
         self._seed_blog_data()
 
         self.stdout.write(self.style.SUCCESS("✨ Setup completed successfully!"))
 
-    def _setup_roles_and_users(self) -> None:
-        self.stdout.write("👤 Setting up RBAC roles (Chef & Manager)...")
+    def _setup_roles(self) -> None:
+        self.stdout.write("👤 Setting up RBAC permission groups (Chef & Manager)...")
 
         # 1. Chef Group
         chef_group, _ = Group.objects.get_or_create(name="Chef")
@@ -38,6 +38,7 @@ class Command(BaseCommand):
         cat_ct = ContentType.objects.get_for_model(Category)
         chef_perms = Permission.objects.filter(content_type__in=[menu_ct, cat_ct])
         chef_group.permissions.set(chef_perms)
+        self.stdout.write(self.style.SUCCESS("  [+] Chef group permissions configured."))
 
         # 2. Manager Group
         manager_group, _ = Group.objects.get_or_create(name="Manager")
@@ -46,43 +47,7 @@ class Command(BaseCommand):
         sub_ct = ContentType.objects.get_for_model(NewsletterSubscriber)
         manager_perms = Permission.objects.filter(content_type__in=[res_ct, msg_ct, sub_ct])
         manager_group.permissions.set(manager_perms)
-
-        # 3. Superuser (Admin)
-        if not User.objects.filter(username="admin").exists():
-            User.objects.create_superuser(
-                username="admin",
-                email="admin@savoure.com",
-                password="admin12345",
-            )
-            self.stdout.write(self.style.SUCCESS("  [+] Superuser created: admin / admin12345"))
-        else:
-            self.stdout.write("  [*] Superuser 'admin' already exists.")
-
-        # 4. Chef User
-        if not User.objects.filter(username="chef_julien").exists():
-            chef_user = User.objects.create_user(
-                username="chef_julien",
-                email="chef@savoure.com",
-                password="chef12345",
-                is_staff=True,
-            )
-            chef_user.groups.add(chef_group)
-            self.stdout.write(
-                self.style.SUCCESS("  [+] Chef user created: chef_julien / chef12345")
-            )
-
-        # 5. Manager User
-        if not User.objects.filter(username="manager_claire").exists():
-            manager_user = User.objects.create_user(
-                username="manager_claire",
-                email="manager@savoure.com",
-                password="manager12345",
-                is_staff=True,
-            )
-            manager_user.groups.add(manager_group)
-            self.stdout.write(
-                self.style.SUCCESS("  [+] Manager user created: manager_claire / manager12345")
-            )
+        self.stdout.write(self.style.SUCCESS("  [+] Manager group permissions configured."))
 
     def _seed_menu_data(self) -> None:
         self.stdout.write("🍽️  Seeding Categories and Dishes...")
