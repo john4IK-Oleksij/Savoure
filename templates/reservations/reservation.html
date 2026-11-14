@@ -21,7 +21,7 @@
 <section data-fls-contact class="page__reservation contact">
    <div class="contact__container">
       <div class="contact__box">
-         <form id="reservation-form" class="contact__form" action="{% url 'reservations:reserve' %}" method="POST" novalidate>
+         <form id="reservation-form" class="contact__form" action="{% url 'reservations:reserve' %}" method="POST">
             {% csrf_token %}
             <h2 class="contact__title">Table Reservation</h2>
             
@@ -60,8 +60,8 @@
             </div>
 
             <div class="contact__field">
-               <textarea class="contact__textarea" id="notes" name="notes" placeholder="Special requests, seating preferences, dietary restrictions..." rows="3"></textarea>
-               <label class="contact__label" for="notes">Special Requests</label>
+               <textarea class="contact__textarea" id="special_request" name="special_request" placeholder="Special requests, seating preferences, dietary restrictions..." rows="3"></textarea>
+               <label class="contact__label" for="special_request">Special Requests</label>
             </div>
 
             <button data-fls-button data-fls-ripple class="btn" type="submit" aria-label="Confirm Reservation">

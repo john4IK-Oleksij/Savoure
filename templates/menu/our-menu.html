@@ -30,11 +30,41 @@
             <button data-tab="beverage" class="today-tab__title" aria-label="Show beverages">Beverage</button>
          </nav>
          <div data-fls-tabs-body class="today-tab__content">
-            <div class="today-tab__body" data-tab-content="all"></div>
-            <div class="today-tab__body" data-tab-content="appetizer"></div>
-            <div class="today-tab__body" data-tab-content="main"></div>
-            <div class="today-tab__body" data-tab-content="dessert"></div>
-            <div class="today-tab__body" data-tab-content="beverage"></div>
+            <div class="today-tab__body" data-tab-content="all">
+               {% for dish in all_dishes %}
+                  {% include "menu/_dish_card.html" with dish=dish %}
+               {% empty %}
+                  <p>No dishes currently available.</p>
+               {% endfor %}
+            </div>
+            <div class="today-tab__body" data-tab-content="appetizer" hidden>
+               {% for dish in appetizers %}
+                  {% include "menu/_dish_card.html" with dish=dish %}
+               {% empty %}
+                  <p>No appetizers currently available.</p>
+               {% endfor %}
+            </div>
+            <div class="today-tab__body" data-tab-content="main" hidden>
+               {% for dish in main_courses %}
+                  {% include "menu/_dish_card.html" with dish=dish %}
+               {% empty %}
+                  <p>No main courses currently available.</p>
+               {% endfor %}
+            </div>
+            <div class="today-tab__body" data-tab-content="dessert" hidden>
+               {% for dish in desserts %}
+                  {% include "menu/_dish_card.html" with dish=dish %}
+               {% empty %}
+                  <p>No desserts currently available.</p>
+               {% endfor %}
+            </div>
+            <div class="today-tab__body" data-tab-content="beverage" hidden>
+               {% for dish in beverages %}
+                  {% include "menu/_dish_card.html" with dish=dish %}
+               {% empty %}
+                  <p>No beverages currently available.</p>
+               {% endfor %}
+            </div>
          </div>
       </div>
    </div>

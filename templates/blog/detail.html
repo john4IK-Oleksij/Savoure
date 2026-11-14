@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Story Detail — SAVOURE{% endblock %}
+{% block title %}{{ post.title }} — SAVOURE{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" crossorigin href="{% static 'css/detail.min.css' %}">
@@ -9,40 +9,38 @@
 
 {% block content %}
 <section class="page__news news">
-   <img class="news__bg" src="{% static 'uploads/news-bg.jpg' %}" alt="News header background" aria-hidden="true">
+   <img class="news__bg" src="{% static 'uploads/news-bg.jpg' %}" alt="{{ post.title }}" aria-hidden="true">
    <div class="news__head">
-      <h1 class="news__title">
-         A Day in Our Kitchen: Meet the Chefs Behind the Magic
-      </h1>
+      <h1 class="news__title">{{ post.title }}</h1>
       <div class="news__descr">
-         <p>Many people come to the restaurant to enjoy the flavors. Few know the amazing craftspeople behind each dish served. Dive into a day in our kitchen and get to know the chefs who create flavor magic every day.</p>
+         <p>{{ post.description }}</p>
       </div>
    </div>
 </section>
 
 <section class="page__detail detail">
    <div class="detail__container">
-      <ul class="detail__list">
-         <li class="detail__item">
-            <h2 class="detail__subtitle">6 AM: A Quiet Yet Busy Start</h2>
-            <div class="detail__text">
-               <p>While the city is still asleep, our kitchen is already coming to life. Chef Dion, our head chef, begins his day with an inspection of the ingredients — ensuring everything is fresh and ready to be prepared. The prep team starts chopping, weighing, and meticulously crafting the bases for sauces and broths.</p>
-            </div>
-            <q class="detail__quote">"We believe that a disciplined morning yields honest flavors," says Chef Dion as he prepares the stock that has been a staple of Savoure since day one.</q>
+      <article class="detail__body">
+         {% if post.image %}
             <div class="detail__image">
-               <img src="{% static 'blog-list/blogimage-01.jpg' %}" alt="Kitchen Morning Prep">
+               <img src="{{ post.image.url }}" alt="{{ post.title }}">
             </div>
-         </li>
-         <li class="detail__item">
-            <h2 class="detail__subtitle">12 PM: The Symphony of Service</h2>
-            <div class="detail__text">
-               <p>As lunchtime arrives, the kitchen transforms into pure focus. The sounds of stoves, grills, and orders echo in harmony. Everything operates like a symphony where each chef moves with precision, grace, and calmness.</p>
-            </div>
-            <div class="detail__image">
-               <img src="{% static 'blog-list/blogimage-02.jpg' %}" alt="Chef Plating">
-            </div>
-         </li>
-      </ul>
+         {% endif %}
+         <div class="detail__text">
+            {{ post.content|linebreaks }}
+         </div>
+      </article>
+
+      {% if recent_posts %}
+         <div class="detail__related">
+            <h2 class="detail__subtitle">More Stories From Savoure</h2>
+            <ul class="chefsdishes__list">
+               {% for recent in recent_posts %}
+                  {% include "blog/_blog_card.html" with post=recent %}
+               {% endfor %}
+            </ul>
+         </div>
+      {% endif %}
    </div>
 </section>
 {% endblock %}

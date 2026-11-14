@@ -1,0 +1,19 @@
+{% load static %}
+<div class="dishcard">
+   <div class="dishcard__image">
+      {% if dish.image %}
+         <img src="{{ dish.image.url }}" alt="{{ dish.title }}" loading="lazy">
+      {% else %}
+         <img src="{% static 'dish-list/dishimage-01.jpg' %}" alt="{{ dish.title }}" loading="lazy">
+      {% endif %}
+   </div>
+   <div class="dishcard__content">
+      <div class="dishcard__label">{{ dish.category.name }}</div>
+      <div class="dishcard__head">
+         <h3 class="dishcard__title">{{ dish.title }}</h3>
+         <span class="dishcard__line"></span>
+         <span class="dishcard__price">${{ dish.price|floatformat:0 }}</span>
+      </div>
+      <p class="dishcard__description">{{ dish.description }}</p>
+   </div>
+</div>

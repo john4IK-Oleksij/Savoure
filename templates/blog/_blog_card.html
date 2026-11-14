@@ -1,0 +1,21 @@
+{% load static %}
+<li class="blog__item">
+   <article class="blogcard">
+      <a class="blogcard__image-link" href="{% url 'blog:detail' post.slug %}" aria-label="{{ post.title }}">
+         <div class="blogcard__image">
+            {% if post.image %}
+               <img src="{{ post.image.url }}" alt="{{ post.title }}" loading="lazy">
+            {% else %}
+               <img src="{% static 'blog-list/blogimage-01.jpg' %}" alt="{{ post.title }}" loading="lazy">
+            {% endif %}
+         </div>
+      </a>
+      <div class="blogcard__content">
+         <div class="blogcard__label">{{ post.published_at|date:"F d, Y" }}</div>
+         <a class="blogcard__title-link" href="{% url 'blog:detail' post.slug %}" aria-label="{{ post.title }}">
+            <h3 class="blogcard__title">{{ post.title }}</h3>
+         </a>
+         <p class="blogcard__descr">{{ post.excerpt|default:post.description }}</p>
+      </div>
+   </article>
+</li>

@@ -81,63 +81,13 @@
       </div>
       <div class="chefsdishes__main">
          <ul class="chefsdishes__list">
-            <!-- Initial static featured items (will be dynamic in Iteration 3-5) -->
-            <li class="dishcard">
-               <div class="dishcard__image">
-                  <img src="{% static 'dish-list/dishimage-01.jpg' %}" alt="Bruschetta Trio">
-               </div>
-               <div class="dishcard__content">
-                  <div class="dishcard__label">Appetizer</div>
-                  <div class="dishcard__head">
-                     <h3 class="dishcard__title">Bruschetta Trio</h3>
-                     <span class="dishcard__line"></span>
-                     <span class="dishcard__price">$9</span>
-                  </div>
-                  <p class="dishcard__description">Toasted bread topped with fresh tomato, basil, and extra virgin olive oil with a touch of balsamic glaze.</p>
-               </div>
-            </li>
-            <li class="dishcard">
-               <div class="dishcard__image">
-                  <img src="{% static 'dish-list/dishimage-02.jpg' %}" alt="Fresh Orange Juice">
-               </div>
-               <div class="dishcard__content">
-                  <div class="dishcard__label">Beverage</div>
-                  <div class="dishcard__head">
-                     <h3 class="dishcard__title">Fresh Orange Juice</h3>
-                     <span class="dishcard__line"></span>
-                     <span class="dishcard__price">$5</span>
-                  </div>
-                  <p class="dishcard__description">Freshly squeezed sweet oranges blended into a vibrant, naturally refreshing citrus juice.</p>
-               </div>
-            </li>
-            <li class="dishcard">
-               <div class="dishcard__image">
-                  <img src="{% static 'dish-list/dishimage-03.jpg' %}" alt="Classic Mojito">
-               </div>
-               <div class="dishcard__content">
-                  <div class="dishcard__label">Beverage</div>
-                  <div class="dishcard__head">
-                     <h3 class="dishcard__title">Classic Mojito</h3>
-                     <span class="dishcard__line"></span>
-                     <span class="dishcard__price">$10</span>
-                  </div>
-                  <p class="dishcard__description">Mint leaves, fresh lime, and sparkling soda served chilled over crushed ice for a crisp finish.</p>
-               </div>
-            </li>
-            <li class="dishcard">
-               <div class="dishcard__image">
-                  <img src="{% static 'dish-list/dishimage-04.jpg' %}" alt="Tiramisu">
-               </div>
-               <div class="dishcard__content">
-                  <div class="dishcard__label">Dessert</div>
-                  <div class="dishcard__head">
-                     <h3 class="dishcard__title">Tiramisu</h3>
-                     <span class="dishcard__line"></span>
-                     <span class="dishcard__price">$9</span>
-                  </div>
-                  <p class="dishcard__description">Layers of espresso-soaked ladyfingers and creamy mascarpone, lightly dusted with rich dark cocoa.</p>
-               </div>
-            </li>
+            {% for dish in chef_favorites %}
+               <li class="chefsdishes__item">
+                  {% include "menu/_dish_card.html" with dish=dish %}
+               </li>
+            {% empty %}
+               <li class="dishcard"><p>No specials currently available.</p></li>
+            {% endfor %}
          </ul>
       </div>
       <a href="{% url 'menu:dish_list' %}" data-fls-button data-fls-ripple class="chefsdishes__btn btn" aria-label="Explore Our Menu">Explore Our Menu</a>
@@ -148,7 +98,7 @@
 <section data-fls-contact class="page__contact contact">
    <div class="contact__container">
       <div class="contact__box">
-         <form class="contact__form" action="#" method="POST" novalidate>
+         <form class="contact__form" action="{% url 'reservations:contact_submit' %}" method="POST">
             {% csrf_token %}
             <h2 class="contact__title">Contact Us</h2>
             <div class="contact__field">
@@ -255,6 +205,26 @@
             </div>
          </details>
       </div>
+   </div>
+</section>
+
+<!-- From Our Kitchen to Your Screen (Blog Section) -->
+<section class="page__blog blog">
+   <div class="blog__container">
+      <div class="blog__head">
+         <h2 class="blog__title">From Our Kitchen to Your Screen</h2>
+         <div class="blog__descr">
+            <p>Dive into recipes, behind the scenes, and tasty tales.</p>
+         </div>
+      </div>
+      <div class="blog__main">
+         <ul class="blog__list">
+            {% for post in latest_posts %}
+               {% include "blog/_blog_card.html" with post=post %}
+            {% endfor %}
+         </ul>
+      </div>
+      <a data-fls-ripple href="{% url 'blog:list' %}" class="btn__blog btn" aria-label="View all blog posts">View All</a>
    </div>
 </section>
 {% endblock %}
