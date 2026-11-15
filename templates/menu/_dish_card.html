@@ -8,7 +8,20 @@
       {% endif %}
    </div>
    <div class="dishcard__content">
-      <div class="dishcard__label">{{ dish.category.name }}</div>
+      <div class="dishcard__labels">
+         <span class="dishcard__label">{{ dish.category.name }}</span>
+         {% if dish.is_chef_special %}
+            <span class="dishcard__badge dishcard__badge--special">⭐ Chef's Choice</span>
+         {% endif %}
+         {% if dish.spiciness == 1 %}
+            <span class="dishcard__badge dishcard__badge--mild">🌶️ Mild</span>
+         {% elif dish.spiciness == 2 %}
+            <span class="dishcard__badge dishcard__badge--hot">🌶️🌶️ Hot</span>
+         {% endif %}
+         {% for tag in dish.tags.all %}
+            <span class="dishcard__badge dishcard__badge--tag">{{ tag.name }}</span>
+         {% endfor %}
+      </div>
       <div class="dishcard__head">
          <h3 class="dishcard__title">{{ dish.title }}</h3>
          <span class="dishcard__line"></span>
