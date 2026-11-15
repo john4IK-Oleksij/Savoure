@@ -46,6 +46,21 @@
                </div>
             {% endfor %}
          </div>
+
+         <!-- Delicate Menu Pagination -->
+         <nav class="menu-pagination" id="menu-pagination" aria-label="Навігація по стравах" style="display: none;">
+            <button type="button" class="menu-pagination__arrow menu-pagination__arrow--prev" id="menu-prev-page" aria-label="Попередня сторінка">
+               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+               </svg>
+            </button>
+            <div class="menu-pagination__pages" id="menu-pages"></div>
+            <button type="button" class="menu-pagination__arrow menu-pagination__arrow--next" id="menu-next-page" aria-label="Наступна сторінка">
+               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+               </svg>
+            </button>
+         </nav>
       </div>
    </div>
 </section>
@@ -53,4 +68,130 @@
 
 {% block extra_js %}
 <script type="module" crossorigin src="{% static 'js/our-menu.min.js' %}"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+   const ITEMS_PER_PAGE = 8;
+   const paginationNav = document.getElementById("menu-pagination");
+   const prevBtn = document.getElementById("menu-prev-page");
+   const nextBtn = document.getElementById("menu-next-page");
+   const pagesContainer = document.getElementById("menu-pages");
+   const tabTitles = document.querySelectorAll(".today-tab__title");
+   const tabBodies = document.querySelectorAll(".today-tab__body");
+
+   let currentPage = 1;
+   let totalPages = 1;
+
+   function getActiveBody() {
+      for (const body of tabBodies) {
+         if (!body.hidden && window.getComputedStyle(body).display !== "none") {
+            return body;
+         }
+      }
+      return tabBodies[0];
+   }
+
+   function updatePagination() {
+      const activeBody = getActiveBody();
+      if (!activeBody) return;
+
+      const cards = Array.from(activeBody.querySelectorAll(".dishcard"));
+      const totalItems = cards.length;
+      totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+
+      if (totalPages <= 1) {
+         if (paginationNav) paginationNav.style.display = "none";
+         cards.forEach(card => card.style.display = "");
+         return;
+      }
+
+      if (paginationNav) paginationNav.style.display = "flex";
+
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const startIdx = (currentPage - 1) * ITEMS_PER_PAGE;
+      const endIdx = startIdx + ITEMS_PER_PAGE;
+
+      cards.forEach((card, index) => {
+         if (index >= startIdx && index < endIdx) {
+            card.style.display = "";
+            card.classList.add("dishcard--fadein");
+         } else {
+            card.style.display = "none";
+            card.classList.remove("dishcard--fadein");
+         }
+      });
+
+      if (prevBtn) {
+         prevBtn.disabled = currentPage === 1;
+         prevBtn.classList.toggle("is-disabled", currentPage === 1);
+      }
+      if (nextBtn) {
+         nextBtn.disabled = currentPage === totalPages;
+         nextBtn.classList.toggle("is-disabled", currentPage === totalPages);
+      }
+
+      if (pagesContainer) {
+         pagesContainer.innerHTML = "";
+         for (let i = 1; i <= totalPages; i++) {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = `menu-pagination__num ${i === currentPage ? "is-active" : ""}`;
+            btn.textContent = String(i);
+            btn.setAttribute("aria-label", `Сторінка ${i}`);
+            btn.addEventListener("click", () => {
+               currentPage = i;
+               updatePagination();
+               scrollToTopMenu();
+            });
+            pagesContainer.appendChild(btn);
+         }
+      }
+   }
+
+   function scrollToTopMenu() {
+      const target = document.querySelector(".today-tab__content");
+      if (target) {
+         const top = target.getBoundingClientRect().top + window.pageYOffset - 100;
+         window.scrollTo({ top, behavior: "smooth" });
+      }
+   }
+
+   if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+         if (currentPage > 1) {
+            currentPage--;
+            updatePagination();
+            scrollToTopMenu();
+         }
+      });
+   }
+
+   if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+         if (currentPage < totalPages) {
+            currentPage++;
+            updatePagination();
+            scrollToTopMenu();
+         }
+      });
+   }
+
+   tabTitles.forEach(title => {
+      title.addEventListener("click", () => {
+         currentPage = 1;
+         setTimeout(updatePagination, 50);
+      });
+   });
+
+   const observer = new MutationObserver(() => {
+      updatePagination();
+   });
+   tabBodies.forEach(body => {
+      observer.observe(body, { attributes: true, attributeFilter: ["hidden", "style", "class"] });
+   });
+
+   updatePagination();
+});
+</script>
 {% endblock %}

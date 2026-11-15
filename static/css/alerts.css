@@ -240,6 +240,113 @@
   font-weight: 600;
 }
 
+/* ==========================================================================
+   Savoure Delicate Menu Pagination (8 items per page)
+   ========================================================================== */
+
+.menu-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 40px auto 10px;
+  padding: 8px 16px;
+  width: fit-content;
+  background: rgba(14, 21, 30, 0.75);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 40px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.menu-pagination__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: #f5d372;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-pagination__arrow:hover:not(:disabled) {
+  background: rgba(245, 211, 114, 0.2);
+  border-color: #f5d372;
+  color: #ffffff;
+  transform: scale(1.08);
+  box-shadow: 0 0 14px rgba(245, 211, 114, 0.45);
+}
+
+.menu-pagination__arrow:disabled,
+.menu-pagination__arrow.is-disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  transform: none;
+  box-shadow: none;
+}
+
+.menu-pagination__pages {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.menu-pagination__num {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 8px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #cbd5e1;
+  font-family: "Cinzel", "Playfair Display", serif, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-pagination__num:hover:not(.is-active) {
+  background: rgba(255, 255, 255, 0.06);
+  color: #f5d372;
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.menu-pagination__num.is-active {
+  background: radial-gradient(circle, #f5d372 0%, #d4af37 100%);
+  color: #0c1015;
+  font-weight: 700;
+  border-color: #f5d372;
+  box-shadow: 0 0 14px rgba(245, 211, 114, 0.5);
+  cursor: default;
+}
+
+.dishcard--fadein {
+  animation: dishcardFadeIn 0.35s ease forwards;
+}
+
+@keyframes dishcardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Neutral Placeholder when no image is uploaded */
 .dishcard__placeholder {
   width: 100%;
