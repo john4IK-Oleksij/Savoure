@@ -461,25 +461,75 @@
 .window-label { fill: #93c5fd; font-family: 'Cinzel', serif, sans-serif; font-size: 13px; letter-spacing: 3px; }
 .arch-label { fill: #64748b; font-family: sans-serif; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; }
 
+/* Table Group - Completely static geometry, zero jumping/twitching */
 .table-group {
   cursor: pointer;
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
 }
 
-.table-group:hover {
-  transform: scale(1.05);
+/* Fixed Bounding Frame around each table */
+.table-frame {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 1.5;
+  transition: all 0.25s ease;
+  pointer-events: all;
+}
+
+/* Checkbox badge on the frame */
+.table-chk-box {
+  fill: rgba(20, 28, 38, 0.9);
+  stroke: rgba(212, 175, 55, 0.45);
+  stroke-width: 1.2;
+  transition: all 0.25s ease;
+  opacity: 0.5;
+}
+
+.table-chk-mark {
+  stroke: #0a0e14;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* HOVER: Soft preview dashed frame, NO transform/scaling, NO movement */
+.table-group:hover .table-frame {
+  fill: rgba(245, 211, 114, 0.05);
+  stroke: rgba(245, 211, 114, 0.45);
+  stroke-dasharray: 4 3;
 }
 
 .table-group:hover .table-surface {
   stroke: #f5d372 !important;
-  stroke-width: 3 !important;
-  filter: url(#goldGlow);
+  stroke-width: 2.5 !important;
 }
 
-.table-group:hover .table-num {
+.table-group:hover .table-chk-box {
+  opacity: 1;
+  stroke: #f5d372;
+}
+
+/* SELECTED: Fixed gold frame locked securely around the table */
+.table-group.selected .table-frame {
+  fill: rgba(245, 211, 114, 0.12) !important;
+  stroke: #f5d372 !important;
+  stroke-width: 2.5 !important;
+  stroke-dasharray: none !important;
+  filter: drop-shadow(0 0 10px rgba(245, 211, 114, 0.4));
+}
+
+.table-group.selected .table-chk-box {
   fill: #f5d372 !important;
-  font-weight: bold;
+  stroke: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.table-group.selected .table-chk-mark {
+  opacity: 1 !important;
+  stroke: #0a0e14 !important;
 }
 
 .table-group.selected .table-surface {

@@ -143,10 +143,13 @@ document.addEventListener("DOMContentLoaded", () => {
    tableGroups.forEach(group => {
       group.addEventListener("click", () => {
          const tableId = group.getAttribute("data-table");
-         if (tableSelect) {
-            tableSelect.value = tableId;
+         if (tableSelect && tableSelect.value === tableId) {
+            tableSelect.value = "";
+            highlightTable("");
+         } else {
+            if (tableSelect) tableSelect.value = tableId;
+            highlightTable(tableId);
          }
-         highlightTable(tableId);
       });
 
       group.addEventListener("keydown", (e) => {
