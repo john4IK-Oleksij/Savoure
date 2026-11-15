@@ -5,30 +5,52 @@
 <details class="admin-floorplan-panel" id="admin-floorplan-details" open style="margin-bottom: 22px; background: radial-gradient(circle at 50% 20%, #151f2d 0%, #0d141e 100%); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 12px; padding: 14px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
     <summary style="cursor: pointer; font-weight: 600; color: #f5d372; font-size: 15px; outline: none; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; user-select: none;">
         <div style="display: flex; align-items: center; gap: 10px;">
-            <span>🗺️ Схема зали ресторану (12 столиків) — оперативне керування</span>
-            <span style="font-size: 12px; color: #94a3b8; font-weight: normal;">— статус столиків на обрану дату</span>
+            {% include "_eiffel_icon.html" with icon_size="17px" icon_fill="#f5d372" %}
+            <span>Схема зали ресторану (12 столиків) — оперативне керування</span>
         </div>
-        <div style="display: flex; align-items: center; gap: 12px; font-size: 12px;">
-            <span style="display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 6px; background: rgba(34, 197, 94, 0.16); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.4);">
-                🟢 Вільні: <strong id="admin-map-count-free">12</strong>
-            </span>
-            <span style="display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 6px; background: rgba(239, 68, 68, 0.16); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4);">
-                🔴 Зайняті: <strong id="admin-map-count-booked">0</strong>
-            </span>
-            <span style="display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 6px; background: rgba(212, 175, 55, 0.16); color: #f5d372; border: 1px solid rgba(212, 175, 55, 0.4);">
-                ⚠️ Без столика: <strong id="admin-map-count-unassigned">0</strong>
-            </span>
+        <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <!-- Date Filter Dropdown for Floor Plan -->
+            <div style="display: flex; align-items: center; gap: 6px; background: rgba(15, 23, 42, 0.7); padding: 2px 8px; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                <span style="font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px;">Дата зали:</span>
+                <select id="admin-floorplan-date-select" style="background: transparent; color: #f5d372; border: none; font-size: 12px; font-weight: 600; cursor: pointer; outline: none;">
+                    <option value="all">Усі дати списку</option>
+                </select>
+            </div>
+            <!-- Live Date-Specific Counters -->
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 12px;">
+                <span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px; border-radius: 6px; background: rgba(34, 197, 94, 0.16); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.4);">
+                    <span class="status-indicator-dot dot-free"></span>
+                    Вільні: <strong id="admin-map-count-free">12</strong>
+                </span>
+                <span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px; border-radius: 6px; background: rgba(239, 68, 68, 0.16); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4);">
+                    <span class="status-indicator-dot dot-booked"></span>
+                    Зайняті: <strong id="admin-map-count-booked">0</strong>
+                </span>
+                <span style="display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px; border-radius: 6px; background: rgba(212, 175, 55, 0.16); color: #f5d372; border: 1px solid rgba(212, 175, 55, 0.4);">
+                    <span class="status-indicator-dot dot-unassigned"></span>
+                    Без столика: <strong id="admin-map-count-unassigned">0</strong>
+                </span>
+            </div>
         </div>
     </summary>
 
     <div style="margin-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 14px;">
         <!-- Interactive Helper Toolbar -->
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; padding: 8px 12px; border-radius: 8px; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.06); font-size: 13px;">
-            <div style="color: #cbd5e1; display: flex; align-items: center; gap: 8px;">
-                <span>🎯 Цільове бронювання:</span>
-                <span id="admin-active-target-label" style="color: #f5d372; font-weight: 600;">оберіть рядок гостя нижче або клікніть столик для призначення першому вільному</span>
+            <div style="color: #cbd5e1; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                {% include "_eiffel_icon.html" with icon_size="13px" icon_fill="#f5d372" %}
+                <span style="font-weight: 500;">Цільове бронювання:</span>
+                <span id="admin-active-target-label" style="color: #f5d372; font-weight: 600;">оберіть рядок гостя у таблиці нижче</span>
+                <button type="button" id="btn-cancel-target-row" style="display: none; background: transparent; border: 1px solid rgba(255, 255, 255, 0.2); color: #94a3b8; font-size: 11px; padding: 2px 8px; border-radius: 4px; cursor: pointer;">
+                    Скасувати вибір
+                </button>
             </div>
-            <div id="admin-map-toast" style="display: none; padding: 3px 10px; border-radius: 6px; background: #059669; color: #fff; font-weight: 600; font-size: 12px; box-shadow: 0 2px 10px rgba(5, 150, 105, 0.4);">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <button type="button" id="btn-reset-changes-top" style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.2); color: #cbd5e1; padding: 4px 12px; border-radius: 6px; font-size: 12px; cursor: pointer; font-weight: 500; transition: all 0.2s ease;">
+                    Скасувати незбережені зміни
+                </button>
+                <div id="admin-map-toast" style="display: none; padding: 4px 12px; border-radius: 6px; background: #059669; color: #fff; font-weight: 600; font-size: 12px; box-shadow: 0 2px 10px rgba(5, 150, 105, 0.4);">
+                </div>
             </div>
         </div>
 
@@ -41,29 +63,41 @@
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 12px; padding: 0 4px; font-size: 12px; color: #94a3b8;">
             <div style="display: flex; align-items: center; gap: 16px;">
                 <span style="display: inline-flex; align-items: center; gap: 6px;">
-                    <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #22c55e;"></span>
-                    Вільний (клікніть, щоб призначити)
+                    <span class="status-indicator-dot dot-free"></span>
+                    Вільний на обрану дату
                 </span>
                 <span style="display: inline-flex; align-items: center; gap: 6px;">
-                    <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ef4444;"></span>
-                    Зайнятий (наведіть для деталей)
+                    <span class="status-indicator-dot dot-booked"></span>
+                    Зайнятий на обрану дату
                 </span>
                 <span style="display: inline-flex; align-items: center; gap: 6px;">
-                    <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #f5d372;"></span>
+                    <span class="status-indicator-dot dot-selected"></span>
                     Обраний столик
                 </span>
             </div>
             <div>
-                💡 Після призначення столика натисніть синю кнопку <strong>«Зберегти»</strong> внизу таблиці.
+                Після призначення столика натисніть кнопку <strong>«Зберегти»</strong> внизу таблиці.
             </div>
         </div>
     </div>
 </details>
 
 <style>
+/* Clean status dots */
+.status-indicator-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+.dot-free { background: #22c55e; box-shadow: 0 0 6px rgba(34, 197, 94, 0.5); }
+.dot-booked { background: #ef4444; box-shadow: 0 0 6px rgba(239, 68, 68, 0.5); }
+.dot-unassigned { background: #f5d372; box-shadow: 0 0 6px rgba(245, 211, 114, 0.5); }
+.dot-selected { background: #f5d372; border: 1px solid #ffffff; }
+
 /* Active row highlight in admin table */
 #result_list tbody tr.active-assign-row {
-    background: rgba(212, 175, 55, 0.15) !important;
+    background: rgba(212, 175, 55, 0.18) !important;
     border-left: 3px solid #f5d372 !important;
 }
 #result_list tbody tr {
@@ -77,22 +111,42 @@
 .row-just-assigned {
     animation: flashAssignedRow 1.2s ease-out;
 }
+#btn-reset-changes-top:hover, #btn-reset-changes-bottom:hover {
+    background: rgba(239, 68, 68, 0.18) !important;
+    border-color: rgba(239, 68, 68, 0.5) !important;
+    color: #fca5a5 !important;
+}
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const svg = document.getElementById('restaurant-map');
     const tableEl = document.getElementById('result_list');
+    const dateSelect = document.getElementById('admin-floorplan-date-select');
     const countFreeEl = document.getElementById('admin-map-count-free');
     const countBookedEl = document.getElementById('admin-map-count-booked');
     const countUnassignedEl = document.getElementById('admin-map-count-unassigned');
     const targetLabel = document.getElementById('admin-active-target-label');
+    const btnCancelTarget = document.getElementById('btn-cancel-target-row');
+    const btnResetTop = document.getElementById('btn-reset-changes-top');
     const toastEl = document.getElementById('admin-map-toast');
     const detailsEl = document.getElementById('admin-floorplan-details');
 
     if (!svg || !tableEl) return;
 
-    // Preserve open/collapsed state of floorplan
+    // Add a reset button next to the bottom "Зберегти" button if present
+    const paginatorEl = document.querySelector('.paginator');
+    let btnResetBottom = null;
+    if (paginatorEl) {
+        btnResetBottom = document.createElement('button');
+        btnResetBottom.type = 'button';
+        btnResetBottom.id = 'btn-reset-changes-bottom';
+        btnResetBottom.textContent = 'Скасувати незбережені зміни';
+        btnResetBottom.style.cssText = 'background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); color: #cbd5e1; padding: 5px 14px; border-radius: 4px; font-size: 13px; cursor: pointer; margin-left: 10px; vertical-align: middle; transition: all 0.2s ease;';
+        paginatorEl.appendChild(btnResetBottom);
+    }
+
+    // Remember floorplan collapsed/open state
     if (detailsEl) {
         const savedState = localStorage.getItem('savoure_admin_floorplan_open');
         if (savedState !== null) {
@@ -103,39 +157,123 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Save initial field values for the "Undo / Reset" feature
+    const rows = Array.from(tableEl.querySelectorAll('tbody tr'));
+    rows.forEach(tr => {
+        tr.querySelectorAll('select, input').forEach(input => {
+            if (input.type === 'checkbox') {
+                input.setAttribute('data-initial-checked', input.checked ? 'true' : 'false');
+            } else {
+                input.setAttribute('data-initial-val', input.value);
+            }
+        });
+    });
+
     let activeRow = null;
 
-    function showToast(msg) {
+    function showToast(msg, isSuccess = true) {
         if (!toastEl) return;
         toastEl.textContent = msg;
+        toastEl.style.background = isSuccess ? '#059669' : '#b91c1c';
         toastEl.style.display = 'inline-block';
         clearTimeout(toastEl._timer);
         toastEl._timer = setTimeout(() => {
             toastEl.style.display = 'none';
-        }, 4000);
+        }, 4500);
     }
 
+    // Reset all changes
+    function resetAllChanges() {
+        rows.forEach(tr => {
+            tr.querySelectorAll('select, input').forEach(input => {
+                if (input.type === 'checkbox') {
+                    const initChecked = input.getAttribute('data-initial-checked');
+                    if (initChecked !== null) input.checked = (initChecked === 'true');
+                } else {
+                    const initVal = input.getAttribute('data-initial-val');
+                    if (initVal !== null) input.value = initVal;
+                }
+            });
+        });
+        setActiveRow(null);
+        syncState();
+        showToast('Усі незбережені зміни скасовано');
+    }
+
+    if (btnResetTop) btnResetTop.addEventListener('click', resetAllChanges);
+    if (btnResetBottom) btnResetBottom.addEventListener('click', resetAllChanges);
+
+    // Build Date Filter options from unique dates in the table
+    const dateCounts = new Map();
+    rows.forEach(tr => {
+        const dateEl = tr.querySelector('.field-display_date');
+        const dStr = dateEl ? dateEl.textContent.trim() : '';
+        if (dStr) {
+            dateCounts.set(dStr, (dateCounts.get(dStr) || 0) + 1);
+        }
+    });
+
+    if (dateSelect) {
+        // Clear and populate
+        dateSelect.innerHTML = '';
+        if (dateCounts.size > 0) {
+            dateCounts.forEach((count, d) => {
+                const opt = document.createElement('option');
+                opt.value = d;
+                opt.textContent = `${d} (${count} бр.)`;
+                dateSelect.appendChild(opt);
+            });
+            const optAll = document.createElement('option');
+            optAll.value = 'all';
+            optAll.textContent = 'Усі дати списку';
+            dateSelect.appendChild(optAll);
+        } else {
+            const optNone = document.createElement('option');
+            optNone.value = 'all';
+            optNone.textContent = 'Немає бронювань';
+            dateSelect.appendChild(optNone);
+        }
+
+        dateSelect.addEventListener('change', function() {
+            syncState();
+        });
+    }
+
+    // Core Sync Function: evaluates bookings FOR THE SELECTED DATE
     function syncState() {
-        const rows = Array.from(tableEl.querySelectorAll('tbody tr'));
-        const bookedTables = new Map(); // tableId -> {name, time, guests, status, tr}
+        const selectedDate = dateSelect ? dateSelect.value : 'all';
+        const bookedTables = new Map(); // tableId -> {name, dateTime, guests, status, tr}
         let unassignedCount = 0;
 
         rows.forEach(tr => {
+            const dateEl = tr.querySelector('.field-display_date');
+            const rowDate = dateEl ? dateEl.textContent.trim() : '';
+
+            // Filter strictly by the chosen date unless "all" is explicitly chosen
+            if (selectedDate !== 'all' && rowDate !== selectedDate) {
+                return;
+            }
+
+            const statusSelect = tr.querySelector('select[name$="-status"]');
+            const statusCode = statusSelect ? statusSelect.value : '';
+            // Cancelled reservations do NOT occupy tables
+            if (statusCode === 'cancelled') {
+                return;
+            }
+
             const select = tr.querySelector('select[name$="-table_number"]');
             const nameEl = tr.querySelector('.field-name a') || tr.querySelector('.field-name');
             const name = nameEl ? nameEl.textContent.trim() : 'Гість';
-            const dateEl = tr.querySelector('.field-display_date');
             const timeEl = tr.querySelector('.field-display_time');
-            const dateTime = (dateEl ? dateEl.textContent.trim() : '') + ' ' + (timeEl ? timeEl.textContent.trim() : '');
+            const dateTime = rowDate + (timeEl ? ' ' + timeEl.textContent.trim() : '');
             const guestsEl = tr.querySelector('.field-guests');
             const guests = guestsEl ? guestsEl.textContent.trim() : '2';
-            const statusSelect = tr.querySelector('select[name$="-status"]');
-            const status = statusSelect ? (statusSelect.options[statusSelect.selectedIndex]?.text || '') : '';
+            const statusText = statusSelect ? (statusSelect.options[statusSelect.selectedIndex]?.text || '') : '';
 
             if (select && select.value) {
                 const tNum = parseInt(select.value, 10);
                 if (!bookedTables.has(tNum)) {
-                    bookedTables.set(tNum, { name, dateTime, guests, status, tr });
+                    bookedTables.set(tNum, { name, dateTime, guests, status: statusText, tr });
                 }
             } else {
                 unassignedCount++;
@@ -145,7 +283,6 @@ document.addEventListener('DOMContentLoaded', function() {
         let bookedCount = 0;
         let freeCount = 0;
 
-        // Update each table on SVG (1 through 12)
         for (let i = 1; i <= 12; i++) {
             const grp = svg.querySelector('#table-' + i);
             if (!grp) continue;
@@ -155,7 +292,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
             grp.classList.remove('is-booked', 'is-free', 'is-selected');
 
-            // Find or create SVG title element for tooltip
             let titleEl = grp.querySelector('title');
             if (!titleEl) {
                 titleEl = document.createElementNS('http://www.w3.org/2000/svg', 'title');
@@ -165,11 +301,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (isBooked && info) {
                 bookedCount++;
                 grp.classList.add('is-booked');
-                titleEl.textContent = `🔴 Стіл №${i} — Зайнято: ${info.name} (${info.dateTime}, ${info.guests} ос. [${info.status}])`;
+                titleEl.textContent = `Стіл №${i} — Зайнято: ${info.name} (${info.dateTime}, ${info.guests} ос. [${info.status}])`;
             } else {
                 freeCount++;
                 grp.classList.add('is-free');
-                titleEl.textContent = `🟢 Стіл №${i} — Вільно. Клікніть, щоб призначити цей столик.`;
+                const dateLabel = selectedDate !== 'all' ? ` на ${selectedDate}` : '';
+                titleEl.textContent = `Стіл №${i} — Вільно${dateLabel}. Клікніть, щоб призначити обраному гостю.`;
             }
 
             // If active row has this table selected, mark as is-selected
@@ -187,7 +324,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function setActiveRow(tr) {
-        tableEl.querySelectorAll('tbody tr').forEach(r => r.classList.remove('active-assign-row'));
+        rows.forEach(r => r.classList.remove('active-assign-row'));
         activeRow = tr;
         if (tr) {
             tr.classList.add('active-assign-row');
@@ -195,24 +332,42 @@ document.addEventListener('DOMContentLoaded', function() {
             const name = nameEl ? nameEl.textContent.trim() : 'Гість';
             const dateEl = tr.querySelector('.field-display_date');
             const timeEl = tr.querySelector('.field-display_time');
-            const dt = (dateEl ? dateEl.textContent.trim() : '') + ' ' + (timeEl ? timeEl.textContent.trim() : '');
-            if (targetLabel) {
-                targetLabel.textContent = `${name} (${dt})`;
+            const dStr = dateEl ? dateEl.textContent.trim() : '';
+            const tStr = timeEl ? timeEl.textContent.trim() : '';
+
+            // Auto-switch date dropdown to match this guest's date
+            if (dStr && dateSelect && dateSelect.value !== dStr) {
+                if (Array.from(dateSelect.options).some(o => o.value === dStr)) {
+                    dateSelect.value = dStr;
+                }
             }
+
+            if (targetLabel) {
+                targetLabel.textContent = `${name} (${dStr} ${tStr}) — тепер клікніть столик на схемі`;
+            }
+            if (btnCancelTarget) btnCancelTarget.style.display = 'inline-block';
         } else {
             if (targetLabel) {
-                targetLabel.textContent = 'оберіть рядок гостя нижче або клікніть столик для призначення першому вільному';
+                targetLabel.textContent = 'оберіть рядок гостя у таблиці нижче';
             }
+            if (btnCancelTarget) btnCancelTarget.style.display = 'none';
         }
         syncState();
     }
 
-    // Attach click listener to table rows
-    tableEl.querySelectorAll('tbody tr').forEach(tr => {
+    if (btnCancelTarget) {
+        btnCancelTarget.addEventListener('click', function(e) {
+            e.stopPropagation();
+            setActiveRow(null);
+        });
+    }
+
+    // Attach click listeners to rows
+    rows.forEach(tr => {
         tr.addEventListener('click', function(e) {
-            if (e.target.tagName === 'A' || e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') {
-                return;
-            }
+            // Ignore click if user clicked a link
+            if (e.target.tagName === 'A') return;
+            // If user clicked the select or checkbox directly, still set active row
             setActiveRow(this);
         });
 
@@ -228,43 +383,41 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Attach click listener to SVG tables
+    // Attach click listeners to SVG tables
     svg.querySelectorAll('.table-group').forEach(grp => {
         grp.addEventListener('click', function() {
             const tableId = this.getAttribute('data-table');
             if (!tableId) return;
 
-            let targetTr = activeRow;
-
-            // If no row is explicitly clicked, find the first unassigned row
-            if (!targetTr) {
-                const rows = Array.from(tableEl.querySelectorAll('tbody tr'));
-                targetTr = rows.find(r => {
-                    const sel = r.querySelector('select[name$="-table_number"]');
-                    return sel && !sel.value;
-                }) || rows[0];
-            }
-
-            if (!targetTr) {
-                showToast('У таблиці немає доступних бронювань');
+            // RULE 1: If NO row is explicitly selected, NEVER assign automatically!
+            if (!activeRow) {
+                const selectedDate = dateSelect ? dateSelect.value : '';
+                const isBooked = this.classList.contains('is-booked');
+                if (isBooked) {
+                    const titleText = this.querySelector('title')?.textContent || '';
+                    showToast(titleText, false);
+                } else {
+                    const dateInfo = selectedDate && selectedDate !== 'all' ? ` на ${selectedDate}` : '';
+                    showToast(`Стіл №${tableId} вільний${dateInfo}. Оберіть гостя у таблиці, щоб призначити йому цей столик.`, false);
+                }
                 return;
             }
 
-            const select = targetTr.querySelector('select[name$="-table_number"]');
+            // Target row is explicitly activeRow
+            const select = activeRow.querySelector('select[name$="-table_number"]');
             if (select) {
                 select.value = tableId;
                 select.dispatchEvent(new Event('change', { bubbles: true }));
 
-                const nameEl = targetTr.querySelector('.field-name a') || targetTr.querySelector('.field-name');
+                const nameEl = activeRow.querySelector('.field-name a') || activeRow.querySelector('.field-name');
                 const name = nameEl ? nameEl.textContent.trim() : 'гостя';
 
-                setActiveRow(targetTr);
+                activeRow.classList.remove('row-just-assigned');
+                void activeRow.offsetWidth; // trigger reflow
+                activeRow.classList.add('row-just-assigned');
 
-                targetTr.classList.remove('row-just-assigned');
-                void targetTr.offsetWidth; // trigger reflow
-                targetTr.classList.add('row-just-assigned');
-
-                showToast(`✅ Стіл №${tableId} призначено для ${name}! Натисніть «Зберегти»`);
+                showToast(`Стіл №${tableId} призначено для ${name}. Натисніть «Зберегти»`);
+                syncState();
             }
         });
     });

@@ -4,7 +4,10 @@
 {% block field_sets %}
 <details class="admin-floorplan-panel" open style="margin-bottom: 22px; background: radial-gradient(circle at 50% 20%, #151f2d 0%, #0d141e 100%); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 12px; padding: 14px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
     <summary style="cursor: pointer; font-weight: 600; color: #f5d372; font-size: 15px; outline: none; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; user-select: none;">
-        <span>🗺️ Схема зали ресторану (12 столиків) — призначення столика</span>
+        <div style="display: flex; align-items: center; gap: 8px;">
+            {% include "_eiffel_icon.html" with icon_size="17px" icon_fill="#f5d372" %}
+            <span>Схема зали ресторану (12 столиків) — призначення столика</span>
+        </div>
         <span id="form-selected-table-badge" style="font-size: 12px; padding: 3px 10px; border-radius: 8px; background: rgba(212, 175, 55, 0.2); color: #f5d372; border: 1px solid rgba(212, 175, 55, 0.4);">
             Оберіть столик на схемі або у полі форми нижче
         </span>
@@ -14,7 +17,7 @@
             {% include "reservations/_floor_plan_svg.html" %}
         </div>
         <p style="text-align: center; color: #94a3b8; font-size: 12px; margin: 10px 0 0;">
-            💡 Клікніть на столик на схемі, щоб призначити його для цього гостя. Значення у полі форми «Номер столика» оновиться автоматично.
+            Клікніть на столик на схемі, щоб призначити його для цього гостя. Значення у полі форми «Номер столика» оновиться автоматично.
         </p>
     </div>
 </details>
