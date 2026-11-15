@@ -29,8 +29,10 @@ class DishAdmin(admin.ModelAdmin[Dish]):
         "category",
         "price",
         "weight_grams",
+        "display_spiciness",
         "is_available",
         "is_chef_special",
+        "display_tags",
         "display_image",
     )
     list_editable = ("price", "is_available", "is_chef_special")
@@ -39,6 +41,9 @@ class DishAdmin(admin.ModelAdmin[Dish]):
     prepopulated_fields = {"slug": ("title",)}
     readonly_fields = ("created_at", "updated_at")
     actions = ("make_available", "make_unavailable")
+
+    def get_queryset(self, request: HttpRequest) -> QuerySet[Dish]:
+        return super().get_queryset(request).prefetch_related("tags", "category")
 
     fieldsets = (
         (None, {"fields": ("title", "slug", "category", "description", "image")}),
@@ -49,6 +54,19 @@ class DishAdmin(admin.ModelAdmin[Dish]):
             {"fields": ("created_at", "updated_at"), "classes": ("collapse",)},
         ),
     )
+
+    @admin.display(description="Гострота")
+    def display_spiciness(self, obj: Dish) -> str:
+        if obj.spiciness == 1:
+            return "🌶️ Пікантне"
+        if obj.spiciness == 2:
+            return "🌶️🌶️ Гостре"
+        return "—"
+
+    @admin.display(description="Теги")
+    def display_tags(self, obj: Dish) -> str:
+        tags = [t.name for t in obj.tags.all()]
+        return ", ".join(tags) if tags else "—"
 
     @admin.display(description="Мініатюра")
     def display_image(self, obj: Dish) -> SafeString | str:
