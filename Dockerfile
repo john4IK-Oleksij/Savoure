@@ -15,6 +15,11 @@ COPY . .
 # Collect static files via WhiteNoise
 RUN python manage.py collectstatic --noinput
 
+# Pre-populate media dishes so uploaded images are baked in and never lost
+RUN mkdir -p media/dishes media/dishes/2026/11 && \
+    cp static/dish-list/* media/dishes/ && \
+    cp static/dish-list/* media/dishes/2026/11/
+
 EXPOSE 8000
 
 # sh -c ensures the dynamic $PORT provided by Railway is properly expanded by the shell
