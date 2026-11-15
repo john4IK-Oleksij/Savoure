@@ -9,7 +9,16 @@ from reservations.models import ContactMessage, NewsletterSubscriber, Reservatio
 class ReservationForm(forms.ModelForm):
     class Meta:
         model = Reservation
-        fields = ("name", "email", "phone", "date", "time", "guests", "special_request")
+        fields = (
+            "name",
+            "email",
+            "phone",
+            "date",
+            "time",
+            "guests",
+            "table_number",
+            "special_request",
+        )
         widgets = {
             "name": forms.TextInput(
                 attrs={
@@ -53,6 +62,12 @@ class ReservationForm(forms.ModelForm):
                     "max": "20",
                     "value": "2",
                     "required": "required",
+                }
+            ),
+            "table_number": forms.Select(
+                attrs={
+                    "class": "contact__input contact__select",
+                    "id": "table_number",
                 }
             ),
             "special_request": forms.Textarea(

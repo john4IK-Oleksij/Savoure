@@ -14,9 +14,10 @@ def reserve(request: HttpRequest) -> HttpResponse:
             reservation = form.save()
             d_str = reservation.date.strftime("%d.%m.%Y")
             t_str = reservation.time.strftime("%H:%M")
+            t_info = f" (Стіл №{reservation.table_number})" if reservation.table_number else ""
             messages.success(
                 request,
-                f"Дякуємо, {reservation.name}! Ваше бронювання на {d_str} о {t_str} прийнято. "
+                f"Дякуємо, {reservation.name}! Бронювання на {d_str} о {t_str}{t_info} прийнято. "
                 "Менеджер ресторану зателефонує вам для підтвердження.",
             )
             return redirect("reservations:reserve")

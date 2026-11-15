@@ -1,0 +1,238 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 650" width="100%" height="100%" class="savoure-floorplan-svg" id="restaurant-map" role="img" aria-label="План розміщення столиків ресторану Savoure">
+  <defs>
+    <!-- Background styling -->
+    <radialGradient id="hallGlow" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#182333" />
+      <stop offset="100%" stop-color="#0a0e14" />
+    </radialGradient>
+
+    <!-- Table styling gradients -->
+    <linearGradient id="tableDefault" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <linearGradient id="tableSelected" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5d372" />
+      <stop offset="100%" stop-color="#c59b27" />
+    </linearGradient>
+
+    <linearGradient id="pianoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a3342" />
+      <stop offset="100%" stop-color="#131922" />
+    </linearGradient>
+
+    <linearGradient id="windowLight" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="rgba(110, 180, 255, 0.22)" />
+      <stop offset="100%" stop-color="rgba(110, 180, 255, 0)" />
+    </linearGradient>
+
+    <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Hall Floor & Outer Architecture -->
+  <rect width="1000" height="650" class="floor-bg" rx="16" />
+  
+  <!-- Outer Walls & Zones -->
+  <rect x="25" y="25" width="950" height="600" rx="12" class="wall-outer" />
+
+  <!-- TOP PANORAMIC WINDOWS (Semi-circular curved glass facade) -->
+  <path d="M 120 180 Q 500 20 880 180" class="window-arc" />
+  <path d="M 120 180 Q 500 20 880 180 L 880 230 Q 500 80 120 230 Z" fill="url(#windowLight)" />
+  <text x="500" y="65" text-anchor="middle" class="window-label">✨ ПАНОРАМНІ ВІКНА • VIEW OF PARIS</text>
+
+  <!-- STAGE & GRAND PIANO (Left Side) -->
+  <g id="stage-zone" transform="translate(45, 230)">
+    <rect x="0" y="0" width="130" height="190" rx="10" fill="#141c26" stroke="#475569" stroke-width="2" />
+    <path d="M 130 30 Q 150 95 130 160" stroke="#d4af37" stroke-dasharray="4 4" fill="none" opacity="0.6" />
+    <text x="65" y="25" text-anchor="middle" class="arch-label" fill="#d4af37" font-size="10">LIVE STAGE</text>
+    
+    <!-- Grand Piano Shape -->
+    <g transform="translate(25, 45)">
+      <path d="M 10 15 C 10 5, 65 5, 75 25 C 85 45, 80 90, 60 100 C 40 105, 10 95, 10 70 Z" fill="url(#pianoGrad)" stroke="#d4af37" stroke-width="2" />
+      <rect x="12" y="25" width="10" height="45" fill="#f8fafc" stroke="#0f172a" stroke-width="1" rx="1" />
+      <rect x="12" y="32" width="6" height="5" fill="#0f172a" />
+      <rect x="12" y="42" width="6" height="5" fill="#0f172a" />
+      <rect x="12" y="52" width="6" height="5" fill="#0f172a" />
+      <circle cx="2" cy="47" r="7" fill="#334155" stroke="#94a3b8" />
+      <text x="45" y="65" text-anchor="middle" fill="#94a3b8" font-size="9" font-family="serif">Рояль</text>
+    </g>
+  </g>
+
+  <!-- BAR & WINE CELLAR (Right Side) -->
+  <g id="wine-bar" transform="translate(865, 230)">
+    <rect x="0" y="0" width="100" height="230" rx="8" fill="#141c26" stroke="#475569" stroke-width="2" />
+    <text x="50" y="30" text-anchor="middle" class="arch-label" fill="#d4af37" font-size="10">WINE CELLAR</text>
+    <line x1="20" y1="50" x2="80" y2="50" stroke="#334155" stroke-width="2" />
+    <line x1="20" y1="80" x2="80" y2="80" stroke="#334155" stroke-width="2" />
+    <line x1="20" y1="110" x2="80" y2="110" stroke="#334155" stroke-width="2" />
+    <line x1="20" y1="140" x2="80" y2="140" stroke="#334155" stroke-width="2" />
+    <text x="50" y="195" text-anchor="middle" fill="#64748b" font-size="11">Сомельє / Бар</text>
+  </g>
+
+  <!-- ENTRANCE & RECEPTION (Bottom Center) -->
+  <g id="entrance" transform="translate(420, 580)">
+    <path d="M 0 35 L 50 15 L 110 15 L 160 35" stroke="#94a3b8" stroke-width="3" fill="none" />
+    <text x="80" y="10" text-anchor="middle" class="arch-label">ГОЛОВНИЙ ВХІД &amp; RECEPTION</text>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- 12 TABLES SETUP (MAX 6 SEATS PER TABLE)                  -->
+  <!-- ======================================================== -->
+
+  <!-- TABLE 1: Window Left Arc (2-4 persons) -->
+  <g class="table-group" id="table-1" data-table="1" data-title="Стіл №1 — Біля вікна (до 4 ос.)" transform="translate(195, 175)" tabindex="0" role="button" aria-label="Стіл №1, біля вікна, до 4 осіб">
+    <rect x="-38" y="-9" width="10" height="18" class="chair" />
+    <rect x="28" y="-9" width="10" height="18" class="chair" />
+    <rect x="-9" y="-38" width="18" height="10" class="chair" />
+    <rect x="-9" y="28" width="18" height="10" class="chair" />
+    <circle cx="0" cy="0" r="28" class="table-surface" />
+    <text x="0" y="-4" class="table-num">1</text>
+    <text x="0" y="12" class="table-capacity">до 4 ос.</text>
+  </g>
+
+  <!-- TABLE 2: Window Left-Center Arc (2-4 persons) -->
+  <g class="table-group" id="table-2" data-table="2" data-title="Стіл №2 — Біля вікна (до 4 ос.)" transform="translate(305, 120)" tabindex="0" role="button" aria-label="Стіл №2, біля вікна, до 4 осіб">
+    <rect x="-38" y="-9" width="10" height="18" class="chair" />
+    <rect x="28" y="-9" width="10" height="18" class="chair" />
+    <rect x="-9" y="-38" width="18" height="10" class="chair" />
+    <rect x="-9" y="28" width="18" height="10" class="chair" />
+    <circle cx="0" cy="0" r="28" class="table-surface" />
+    <text x="0" y="-4" class="table-num">2</text>
+    <text x="0" y="12" class="table-capacity">до 4 ос.</text>
+  </g>
+
+  <!-- TABLE 3: Prime Center-Left Window (4-6 persons, Rectangular) -->
+  <g class="table-group" id="table-3" data-table="3" data-title="Стіл №3 — Панорама VIP (до 6 ос.)" transform="translate(425, 95)" tabindex="0" role="button" aria-label="Стіл №3, панорама VIP, до 6 осіб">
+    <rect x="-35" y="-36" width="18" height="10" class="chair" />
+    <rect x="-9" y="-36" width="18" height="10" class="chair" />
+    <rect x="17" y="-36" width="18" height="10" class="chair" />
+    <rect x="-35" y="26" width="18" height="10" class="chair" />
+    <rect x="-9" y="26" width="18" height="10" class="chair" />
+    <rect x="17" y="26" width="18" height="10" class="chair" />
+    <rect x="-45" y="-22" width="90" height="44" rx="10" class="table-surface" />
+    <text x="0" y="-4" class="table-num">3</text>
+    <text x="0" y="12" class="table-capacity">до 6 ос.</text>
+  </g>
+
+  <!-- TABLE 4: Prime Center-Right Window (4-6 persons, Rectangular) -->
+  <g class="table-group" id="table-4" data-table="4" data-title="Стіл №4 — Панорама VIP (до 6 ос.)" transform="translate(575, 95)" tabindex="0" role="button" aria-label="Стіл №4, панорама VIP, до 6 осіб">
+    <rect x="-35" y="-36" width="18" height="10" class="chair" />
+    <rect x="-9" y="-36" width="18" height="10" class="chair" />
+    <rect x="17" y="-36" width="18" height="10" class="chair" />
+    <rect x="-35" y="26" width="18" height="10" class="chair" />
+    <rect x="-9" y="26" width="18" height="10" class="chair" />
+    <rect x="17" y="26" width="18" height="10" class="chair" />
+    <rect x="-45" y="-22" width="90" height="44" rx="10" class="table-surface" />
+    <text x="0" y="-4" class="table-num">4</text>
+    <text x="0" y="12" class="table-capacity">до 6 ос.</text>
+  </g>
+
+  <!-- TABLE 5: Window Right-Center Arc (2-4 persons) -->
+  <g class="table-group" id="table-5" data-table="5" data-title="Стіл №5 — Біля вікна (до 4 ос.)" transform="translate(695, 120)" tabindex="0" role="button" aria-label="Стіл №5, біля вікна, до 4 осіб">
+    <rect x="-38" y="-9" width="10" height="18" class="chair" />
+    <rect x="28" y="-9" width="10" height="18" class="chair" />
+    <rect x="-9" y="-38" width="18" height="10" class="chair" />
+    <rect x="-9" y="28" width="18" height="10" class="chair" />
+    <circle cx="0" cy="0" r="28" class="table-surface" />
+    <text x="0" y="-4" class="table-num">5</text>
+    <text x="0" y="12" class="table-capacity">до 4 ос.</text>
+  </g>
+
+  <!-- TABLE 6: Window Right Arc (2-4 persons) -->
+  <g class="table-group" id="table-6" data-table="6" data-title="Стіл №6 — Біля вікна (до 4 ос.)" transform="translate(805, 175)" tabindex="0" role="button" aria-label="Стіл №6, біля вікна, до 4 осіб">
+    <rect x="-38" y="-9" width="10" height="18" class="chair" />
+    <rect x="28" y="-9" width="10" height="18" class="chair" />
+    <rect x="-9" y="-38" width="18" height="10" class="chair" />
+    <rect x="-9" y="28" width="18" height="10" class="chair" />
+    <circle cx="0" cy="0" r="28" class="table-surface" />
+    <text x="0" y="-4" class="table-num">6</text>
+    <text x="0" y="12" class="table-capacity">до 4 ос.</text>
+  </g>
+
+  <!-- TABLE 7: East Wall Panoramic Corner (4-6 persons) -->
+  <g class="table-group" id="table-7" data-table="7" data-title="Стіл №7 — Східне крило (до 6 ос.)" transform="translate(790, 310)" tabindex="0" role="button" aria-label="Стіл №7, східне крило, до 6 осіб">
+    <rect x="-42" y="-10" width="10" height="20" class="chair" />
+    <rect x="32" y="-10" width="10" height="20" class="chair" />
+    <rect x="-24" y="-40" width="18" height="10" class="chair" />
+    <rect x="6" y="-40" width="18" height="10" class="chair" />
+    <rect x="-24" y="30" width="18" height="10" class="chair" />
+    <rect x="6" y="30" width="18" height="10" class="chair" />
+    <ellipse cx="0" cy="0" rx="36" ry="28" class="table-surface" />
+    <text x="0" y="-4" class="table-num">7</text>
+    <text x="0" y="12" class="table-capacity">до 6 ос.</text>
+  </g>
+
+  <!-- TABLE 8: West Wall Near Piano (2-4 persons, Romantic/Music) -->
+  <g class="table-group" id="table-8" data-table="8" data-title="Стіл №8 — Біля сцени / рояля (до 4 ос.)" transform="translate(210, 310)" tabindex="0" role="button" aria-label="Стіл №8, біля рояля, до 4 осіб">
+    <rect x="-38" y="-9" width="10" height="18" class="chair" />
+    <rect x="28" y="-9" width="10" height="18" class="chair" />
+    <rect x="-9" y="-38" width="18" height="10" class="chair" />
+    <rect x="-9" y="28" width="18" height="10" class="chair" />
+    <circle cx="0" cy="0" r="28" class="table-surface" />
+    <text x="0" y="-4" class="table-num">8</text>
+    <text x="0" y="12" class="table-capacity">до 4 ос.</text>
+  </g>
+
+  <!-- TABLE 9: Grand Center Left (4-6 persons, Large Round Table) -->
+  <g class="table-group" id="table-9" data-table="9" data-title="Стіл №9 — Центр зали, круглий (до 6 ос.)" transform="translate(380, 260)" tabindex="0" role="button" aria-label="Стіл №9, центр зали, до 6 осіб">
+    <rect x="-10" y="-48" width="20" height="10" class="chair" />
+    <rect x="-10" y="38" width="20" height="10" class="chair" />
+    <rect x="34" y="-22" width="10" height="20" class="chair" transform="rotate(30, 39, -12)" />
+    <rect x="34" y="12" width="10" height="20" class="chair" transform="rotate(-30, 39, 22)" />
+    <rect x="-44" y="-22" width="10" height="20" class="chair" transform="rotate(-30, -39, -12)" />
+    <rect x="-44" y="12" width="10" height="20" class="chair" transform="rotate(30, -39, 22)" />
+    <circle cx="0" cy="0" r="36" class="table-surface" />
+    <text x="0" y="-4" class="table-num">9</text>
+    <text x="0" y="14" class="table-capacity">до 6 ос.</text>
+  </g>
+
+  <!-- TABLE 10: Grand Center Right (4-6 persons, Large Round Table) -->
+  <g class="table-group" id="table-10" data-table="10" data-title="Стіл №10 — Центр зали, круглий (до 6 ос.)" transform="translate(620, 260)" tabindex="0" role="button" aria-label="Стіл №10, центр зали, до 6 осіб">
+    <rect x="-10" y="-48" width="20" height="10" class="chair" />
+    <rect x="-10" y="38" width="20" height="10" class="chair" />
+    <rect x="34" y="-22" width="10" height="20" class="chair" transform="rotate(30, 39, -12)" />
+    <rect x="34" y="12" width="10" height="20" class="chair" transform="rotate(-30, 39, 22)" />
+    <rect x="-44" y="-22" width="10" height="20" class="chair" transform="rotate(-30, -39, -12)" />
+    <rect x="-44" y="12" width="10" height="20" class="chair" transform="rotate(30, -39, 22)" />
+    <circle cx="0" cy="0" r="36" class="table-surface" />
+    <text x="0" y="-4" class="table-num">10</text>
+    <text x="0" y="14" class="table-capacity">до 6 ос.</text>
+  </g>
+
+  <!-- TABLE 11: Cozy Center-South Left (2-4 persons) -->
+  <g class="table-group" id="table-11" data-table="11" data-title="Стіл №11 — Камінна зона (до 4 ос.)" transform="translate(360, 420)" tabindex="0" role="button" aria-label="Стіл №11, камінна зона, до 4 осіб">
+    <rect x="-38" y="-9" width="10" height="18" class="chair" />
+    <rect x="28" y="-9" width="10" height="18" class="chair" />
+    <rect x="-9" y="-38" width="18" height="10" class="chair" />
+    <rect x="-9" y="28" width="18" height="10" class="chair" />
+    <circle cx="0" cy="0" r="28" class="table-surface" />
+    <text x="0" y="-4" class="table-num">11</text>
+    <text x="0" y="12" class="table-capacity">до 4 ос.</text>
+  </g>
+
+  <!-- TABLE 12: Cozy Center-South Right (2-4 persons) -->
+  <g class="table-group" id="table-12" data-table="12" data-title="Стіл №12 — Камінна зона (до 4 ос.)" transform="translate(640, 420)" tabindex="0" role="button" aria-label="Стіл №12, камінна зона, до 4 осіб">
+    <rect x="-38" y="-9" width="10" height="18" class="chair" />
+    <rect x="28" y="-9" width="10" height="18" class="chair" />
+    <rect x="-9" y="-38" width="18" height="10" class="chair" />
+    <rect x="-9" y="28" width="18" height="10" class="chair" />
+    <circle cx="0" cy="0" r="28" class="table-surface" />
+    <text x="0" y="-4" class="table-num">12</text>
+    <text x="0" y="12" class="table-capacity">до 4 ос.</text>
+  </g>
+
+  <!-- LUXURY LEGEND -->
+  <g id="map-legend" transform="translate(60, 570)">
+    <circle cx="10" cy="10" r="8" fill="#1e293b" stroke="#d4af37" stroke-width="2" />
+    <text x="26" y="14" fill="#cbd5e1" font-size="11" font-family="sans-serif">Вільний столик</text>
+
+    <circle cx="140" cy="10" r="8" fill="#f5d372" stroke="#ffffff" stroke-width="2" />
+    <text x="156" y="14" fill="#cbd5e1" font-size="11" font-family="sans-serif">Ваш вибір</text>
+
+    <text x="270" y="14" fill="#94a3b8" font-size="11" font-style="italic">💡 Клікніть на столик на схемі для вибору</text>
+  </g>
+</svg>

@@ -59,6 +59,45 @@
                <label class="contact__label" for="guests">Number of Guests</label>
             </div>
 
+            <!-- Interactive Restaurant Floor Plan -->
+            <div class="floorplan-section">
+               <div class="floorplan-header">
+                  <div class="floorplan-title-box">
+                     <span class="floorplan-icon">⚜</span>
+                     <h3 class="floorplan-title">План зали ресторану Savoure</h3>
+                  </div>
+                  <div id="floorplan-status" class="floorplan-status">
+                     <span class="status-dot"></span>
+                     <span id="floorplan-status-text">Оберіть столик на схемі або зі списку</span>
+                  </div>
+               </div>
+
+               <!-- Interactive SVG Map -->
+               <div class="floorplan-container" id="floorplan-container">
+                  {% include "reservations/_floor_plan_svg.html" %}
+               </div>
+
+               <!-- Dropdown Selector (Two-way synchronized) -->
+               <div class="floorplan-select-box">
+                  <label class="floorplan-select-label" for="table_number">Обраний столик:</label>
+                  <select class="contact__input contact__select" id="table_number" name="table_number">
+                     <option value="">✨ Будь-який вільний столик (на розсуд ресторану)</option>
+                     <option value="1">Стіл №1 — Біля вікна (до 4 ос.)</option>
+                     <option value="2">Стіл №2 — Біля вікна (до 4 ос.)</option>
+                     <option value="3">Стіл №3 — Панорама VIP (до 6 ос.)</option>
+                     <option value="4">Стіл №4 — Панорама VIP (до 6 ос.)</option>
+                     <option value="5">Стіл №5 — Біля вікна (до 4 ос.)</option>
+                     <option value="6">Стіл №6 — Біля вікна (до 4 ос.)</option>
+                     <option value="7">Стіл №7 — Східне крило (до 6 ос.)</option>
+                     <option value="8">Стіл №8 — Біля сцени / рояля (до 4 ос.)</option>
+                     <option value="9">Стіл №9 — Центр зали, круглий (до 6 ос.)</option>
+                     <option value="10">Стіл №10 — Центр зали, круглий (до 6 ос.)</option>
+                     <option value="11">Стіл №11 — Камінна зона (до 4 ос.)</option>
+                     <option value="12">Стіл №12 — Камінна зона (до 4 ос.)</option>
+                  </select>
+               </div>
+            </div>
+
             <div class="contact__field">
                <textarea class="contact__textarea" id="special_request" name="special_request" placeholder="Special requests, seating preferences, dietary restrictions..." rows="3"></textarea>
                <label class="contact__label" for="special_request">Special Requests</label>
@@ -75,4 +114,54 @@
 
 {% block extra_js %}
 <script type="module" crossorigin src="{% static 'js/reservation.min.js' %}"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+   const tableSelect = document.getElementById("table_number");
+   const statusText = document.getElementById("floorplan-status-text");
+   const statusDot = document.querySelector(".status-dot");
+   const tableGroups = document.querySelectorAll(".table-group");
+
+   function highlightTable(tableNum) {
+      tableGroups.forEach(g => {
+         const tId = g.getAttribute("data-table");
+         if (tId === String(tableNum)) {
+            g.classList.add("selected");
+            const title = g.getAttribute("data-title") || `Стіл №${tId}`;
+            if (statusText) statusText.textContent = `Обрано: ${title}`;
+            if (statusDot) statusDot.style.background = "#5bd066";
+         } else {
+            g.classList.remove("selected");
+         }
+      });
+
+      if (!tableNum) {
+         if (statusText) statusText.textContent = "Оберіть столик на схемі або зі списку";
+         if (statusDot) statusDot.style.background = "#f5d372";
+      }
+   }
+
+   tableGroups.forEach(group => {
+      group.addEventListener("click", () => {
+         const tableId = group.getAttribute("data-table");
+         if (tableSelect) {
+            tableSelect.value = tableId;
+         }
+         highlightTable(tableId);
+      });
+
+      group.addEventListener("keydown", (e) => {
+         if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            group.click();
+         }
+      });
+   });
+
+   if (tableSelect) {
+      tableSelect.addEventListener("change", () => {
+         highlightTable(tableSelect.value);
+      });
+   }
+});
+</script>
 {% endblock %}
