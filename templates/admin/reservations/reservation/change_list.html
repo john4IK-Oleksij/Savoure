@@ -2,20 +2,277 @@
 {% load static %}
 
 {% block content %}
-<details class="admin-floorplan-panel" style="margin-bottom: 22px; background: radial-gradient(circle at 50% 20%, #151f2d 0%, #0d141e 100%); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 12px; padding: 14px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-    <summary style="cursor: pointer; font-weight: 600; color: #f5d372; font-size: 15px; outline: none; display: flex; align-items: center; gap: 10px; user-select: none;">
-        <span>🗺️ Схема зали ресторану (12 столиків)</span>
-        <span style="font-size: 12px; color: #94a3b8; font-weight: normal; margin-left: 8px;">— натисніть, щоб переглянути розташування столиків у залі</span>
+<details class="admin-floorplan-panel" id="admin-floorplan-details" open style="margin-bottom: 22px; background: radial-gradient(circle at 50% 20%, #151f2d 0%, #0d141e 100%); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 12px; padding: 14px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    <summary style="cursor: pointer; font-weight: 600; color: #f5d372; font-size: 15px; outline: none; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; user-select: none;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <span>🗺️ Схема зали ресторану (12 столиків) — оперативне керування</span>
+            <span style="font-size: 12px; color: #94a3b8; font-weight: normal;">— статус столиків на обрану дату</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; font-size: 12px;">
+            <span style="display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 6px; background: rgba(34, 197, 94, 0.16); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.4);">
+                🟢 Вільні: <strong id="admin-map-count-free">12</strong>
+            </span>
+            <span style="display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 6px; background: rgba(239, 68, 68, 0.16); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4);">
+                🔴 Зайняті: <strong id="admin-map-count-booked">0</strong>
+            </span>
+            <span style="display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 6px; background: rgba(212, 175, 55, 0.16); color: #f5d372; border: 1px solid rgba(212, 175, 55, 0.4);">
+                ⚠️ Без столика: <strong id="admin-map-count-unassigned">0</strong>
+            </span>
+        </div>
     </summary>
-    <div style="margin-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 14px;">
-        <div style="max-width: 920px; margin: 0 auto; border-radius: 10px; overflow: hidden; background: #0a0e14; border: 1px solid rgba(255, 255, 255, 0.1);">
+
+    <div style="margin-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 14px;">
+        <!-- Interactive Helper Toolbar -->
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; padding: 8px 12px; border-radius: 8px; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.06); font-size: 13px;">
+            <div style="color: #cbd5e1; display: flex; align-items: center; gap: 8px;">
+                <span>🎯 Цільове бронювання:</span>
+                <span id="admin-active-target-label" style="color: #f5d372; font-weight: 600;">оберіть рядок гостя нижче або клікніть столик для призначення першому вільному</span>
+            </div>
+            <div id="admin-map-toast" style="display: none; padding: 3px 10px; border-radius: 6px; background: #059669; color: #fff; font-weight: 600; font-size: 12px; box-shadow: 0 2px 10px rgba(5, 150, 105, 0.4);">
+            </div>
+        </div>
+
+        <!-- Floor Plan SVG Embed -->
+        <div style="max-width: 920px; margin: 0 auto; border-radius: 10px; overflow: hidden; background: #0a0e14; border: 1px solid rgba(255, 255, 255, 0.1); position: relative;">
             {% include "reservations/_floor_plan_svg.html" %}
         </div>
-        <p style="text-align: center; color: #94a3b8; font-size: 12px; margin: 10px 0 0;">
-            💡 Менеджер може призначити вільний столик гостю у таблиці нижче (колонка <strong>«Номер столика»</strong>) та натиснути кнопку <strong>«Зберегти»</strong>.
-        </p>
+
+        <!-- Legend and Instructions -->
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 12px; padding: 0 4px; font-size: 12px; color: #94a3b8;">
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <span style="display: inline-flex; align-items: center; gap: 6px;">
+                    <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #22c55e;"></span>
+                    Вільний (клікніть, щоб призначити)
+                </span>
+                <span style="display: inline-flex; align-items: center; gap: 6px;">
+                    <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #ef4444;"></span>
+                    Зайнятий (наведіть для деталей)
+                </span>
+                <span style="display: inline-flex; align-items: center; gap: 6px;">
+                    <span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #f5d372;"></span>
+                    Обраний столик
+                </span>
+            </div>
+            <div>
+                💡 Після призначення столика натисніть синю кнопку <strong>«Зберегти»</strong> внизу таблиці.
+            </div>
+        </div>
     </div>
 </details>
+
+<style>
+/* Active row highlight in admin table */
+#result_list tbody tr.active-assign-row {
+    background: rgba(212, 175, 55, 0.15) !important;
+    border-left: 3px solid #f5d372 !important;
+}
+#result_list tbody tr {
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+@keyframes flashAssignedRow {
+    0% { background: rgba(34, 197, 94, 0.35); }
+    100% { background: transparent; }
+}
+.row-just-assigned {
+    animation: flashAssignedRow 1.2s ease-out;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const svg = document.getElementById('restaurant-map');
+    const tableEl = document.getElementById('result_list');
+    const countFreeEl = document.getElementById('admin-map-count-free');
+    const countBookedEl = document.getElementById('admin-map-count-booked');
+    const countUnassignedEl = document.getElementById('admin-map-count-unassigned');
+    const targetLabel = document.getElementById('admin-active-target-label');
+    const toastEl = document.getElementById('admin-map-toast');
+    const detailsEl = document.getElementById('admin-floorplan-details');
+
+    if (!svg || !tableEl) return;
+
+    // Preserve open/collapsed state of floorplan
+    if (detailsEl) {
+        const savedState = localStorage.getItem('savoure_admin_floorplan_open');
+        if (savedState !== null) {
+            detailsEl.open = (savedState === 'true');
+        }
+        detailsEl.addEventListener('toggle', function() {
+            localStorage.setItem('savoure_admin_floorplan_open', detailsEl.open ? 'true' : 'false');
+        });
+    }
+
+    let activeRow = null;
+
+    function showToast(msg) {
+        if (!toastEl) return;
+        toastEl.textContent = msg;
+        toastEl.style.display = 'inline-block';
+        clearTimeout(toastEl._timer);
+        toastEl._timer = setTimeout(() => {
+            toastEl.style.display = 'none';
+        }, 4000);
+    }
+
+    function syncState() {
+        const rows = Array.from(tableEl.querySelectorAll('tbody tr'));
+        const bookedTables = new Map(); // tableId -> {name, time, guests, status, tr}
+        let unassignedCount = 0;
+
+        rows.forEach(tr => {
+            const select = tr.querySelector('select[name$="-table_number"]');
+            const nameEl = tr.querySelector('.field-name a') || tr.querySelector('.field-name');
+            const name = nameEl ? nameEl.textContent.trim() : 'Гість';
+            const dateEl = tr.querySelector('.field-display_date');
+            const timeEl = tr.querySelector('.field-display_time');
+            const dateTime = (dateEl ? dateEl.textContent.trim() : '') + ' ' + (timeEl ? timeEl.textContent.trim() : '');
+            const guestsEl = tr.querySelector('.field-guests');
+            const guests = guestsEl ? guestsEl.textContent.trim() : '2';
+            const statusSelect = tr.querySelector('select[name$="-status"]');
+            const status = statusSelect ? (statusSelect.options[statusSelect.selectedIndex]?.text || '') : '';
+
+            if (select && select.value) {
+                const tNum = parseInt(select.value, 10);
+                if (!bookedTables.has(tNum)) {
+                    bookedTables.set(tNum, { name, dateTime, guests, status, tr });
+                }
+            } else {
+                unassignedCount++;
+            }
+        });
+
+        let bookedCount = 0;
+        let freeCount = 0;
+
+        // Update each table on SVG (1 through 12)
+        for (let i = 1; i <= 12; i++) {
+            const grp = svg.querySelector('#table-' + i);
+            if (!grp) continue;
+
+            const isBooked = bookedTables.has(i);
+            const info = bookedTables.get(i);
+
+            grp.classList.remove('is-booked', 'is-free', 'is-selected');
+
+            // Find or create SVG title element for tooltip
+            let titleEl = grp.querySelector('title');
+            if (!titleEl) {
+                titleEl = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+                grp.appendChild(titleEl);
+            }
+
+            if (isBooked && info) {
+                bookedCount++;
+                grp.classList.add('is-booked');
+                titleEl.textContent = `🔴 Стіл №${i} — Зайнято: ${info.name} (${info.dateTime}, ${info.guests} ос. [${info.status}])`;
+            } else {
+                freeCount++;
+                grp.classList.add('is-free');
+                titleEl.textContent = `🟢 Стіл №${i} — Вільно. Клікніть, щоб призначити цей столик.`;
+            }
+
+            // If active row has this table selected, mark as is-selected
+            if (activeRow) {
+                const activeSelect = activeRow.querySelector('select[name$="-table_number"]');
+                if (activeSelect && parseInt(activeSelect.value, 10) === i) {
+                    grp.classList.add('is-selected');
+                }
+            }
+        }
+
+        if (countFreeEl) countFreeEl.textContent = freeCount;
+        if (countBookedEl) countBookedEl.textContent = bookedCount;
+        if (countUnassignedEl) countUnassignedEl.textContent = unassignedCount;
+    }
+
+    function setActiveRow(tr) {
+        tableEl.querySelectorAll('tbody tr').forEach(r => r.classList.remove('active-assign-row'));
+        activeRow = tr;
+        if (tr) {
+            tr.classList.add('active-assign-row');
+            const nameEl = tr.querySelector('.field-name a') || tr.querySelector('.field-name');
+            const name = nameEl ? nameEl.textContent.trim() : 'Гість';
+            const dateEl = tr.querySelector('.field-display_date');
+            const timeEl = tr.querySelector('.field-display_time');
+            const dt = (dateEl ? dateEl.textContent.trim() : '') + ' ' + (timeEl ? timeEl.textContent.trim() : '');
+            if (targetLabel) {
+                targetLabel.textContent = `${name} (${dt})`;
+            }
+        } else {
+            if (targetLabel) {
+                targetLabel.textContent = 'оберіть рядок гостя нижче або клікніть столик для призначення першому вільному';
+            }
+        }
+        syncState();
+    }
+
+    // Attach click listener to table rows
+    tableEl.querySelectorAll('tbody tr').forEach(tr => {
+        tr.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A' || e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') {
+                return;
+            }
+            setActiveRow(this);
+        });
+
+        const select = tr.querySelector('select[name$="-table_number"]');
+        if (select) {
+            select.addEventListener('change', function() {
+                setActiveRow(tr);
+                syncState();
+            });
+            select.addEventListener('focus', function() {
+                setActiveRow(tr);
+            });
+        }
+    });
+
+    // Attach click listener to SVG tables
+    svg.querySelectorAll('.table-group').forEach(grp => {
+        grp.addEventListener('click', function() {
+            const tableId = this.getAttribute('data-table');
+            if (!tableId) return;
+
+            let targetTr = activeRow;
+
+            // If no row is explicitly clicked, find the first unassigned row
+            if (!targetTr) {
+                const rows = Array.from(tableEl.querySelectorAll('tbody tr'));
+                targetTr = rows.find(r => {
+                    const sel = r.querySelector('select[name$="-table_number"]');
+                    return sel && !sel.value;
+                }) || rows[0];
+            }
+
+            if (!targetTr) {
+                showToast('У таблиці немає доступних бронювань');
+                return;
+            }
+
+            const select = targetTr.querySelector('select[name$="-table_number"]');
+            if (select) {
+                select.value = tableId;
+                select.dispatchEvent(new Event('change', { bubbles: true }));
+
+                const nameEl = targetTr.querySelector('.field-name a') || targetTr.querySelector('.field-name');
+                const name = nameEl ? nameEl.textContent.trim() : 'гостя';
+
+                setActiveRow(targetTr);
+
+                targetTr.classList.remove('row-just-assigned');
+                void targetTr.offsetWidth; // trigger reflow
+                targetTr.classList.add('row-just-assigned');
+
+                showToast(`✅ Стіл №${tableId} призначено для ${name}! Натисніть «Зберегти»`);
+            }
+        });
+    });
+
+    // Initial state sync
+    syncState();
+});
+</script>
 
 {{ block.super }}
 {% endblock %}

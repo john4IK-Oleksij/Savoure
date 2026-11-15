@@ -18,7 +18,7 @@ class ReservationAdmin(admin.ModelAdmin[Reservation]):
         "table_number",
         "display_special_request",
         "status",
-        "created_at",
+        "display_created_at",
     )
     list_editable = ("status", "table_number")
     list_filter = ("status", "table_number", "date")
@@ -50,6 +50,10 @@ class ReservationAdmin(admin.ModelAdmin[Reservation]):
     @admin.display(ordering="time", description="Час")
     def display_time(self, obj: Reservation) -> str:
         return obj.time.strftime("%H:%M")
+
+    @admin.display(ordering="created_at", description="Створено")
+    def display_created_at(self, obj: Reservation) -> str:
+        return obj.created_at.strftime("%d.%m.%Y %H:%M")
 
     @admin.display(description="Побажання / Подія")
     def display_special_request(self, obj: Reservation) -> SafeString:

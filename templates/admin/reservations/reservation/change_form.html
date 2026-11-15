@@ -2,16 +2,72 @@
 {% load static %}
 
 {% block field_sets %}
-<details style="margin-bottom: 22px; background: radial-gradient(circle at 50% 20%, #151f2d 0%, #0d141e 100%); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 12px; padding: 14px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-    <summary style="cursor: pointer; font-weight: 600; color: #f5d372; font-size: 15px; outline: none; user-select: none;">
-        🗺️ Схема зали ресторану (12 столиків) — перегляд розміщення для призначення столика
+<details class="admin-floorplan-panel" open style="margin-bottom: 22px; background: radial-gradient(circle at 50% 20%, #151f2d 0%, #0d141e 100%); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 12px; padding: 14px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    <summary style="cursor: pointer; font-weight: 600; color: #f5d372; font-size: 15px; outline: none; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; user-select: none;">
+        <span>🗺️ Схема зали ресторану (12 столиків) — призначення столика</span>
+        <span id="form-selected-table-badge" style="font-size: 12px; padding: 3px 10px; border-radius: 8px; background: rgba(212, 175, 55, 0.2); color: #f5d372; border: 1px solid rgba(212, 175, 55, 0.4);">
+            Оберіть столик на схемі або у полі форми нижче
+        </span>
     </summary>
-    <div style="margin-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 14px;">
+    <div style="margin-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 14px;">
         <div style="max-width: 900px; margin: 0 auto; border-radius: 10px; overflow: hidden; background: #0a0e14; border: 1px solid rgba(255, 255, 255, 0.1);">
             {% include "reservations/_floor_plan_svg.html" %}
         </div>
+        <p style="text-align: center; color: #94a3b8; font-size: 12px; margin: 10px 0 0;">
+            💡 Клікніть на столик на схемі, щоб призначити його для цього гостя. Значення у полі форми «Номер столика» оновиться автоматично.
+        </p>
     </div>
 </details>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const tableSelect = document.getElementById('id_table_number');
+    const badge = document.getElementById('form-selected-table-badge');
+    const svg = document.getElementById('restaurant-map');
+    if (!svg || !tableSelect) return;
+
+    function highlight(val) {
+        svg.querySelectorAll('.table-group').forEach(g => {
+            g.classList.remove('is-selected');
+        });
+        if (val) {
+            const grp = svg.querySelector('#table-' + val);
+            if (grp) grp.classList.add('is-selected');
+            if (badge) {
+                const optText = tableSelect.options[tableSelect.selectedIndex]?.text || ('Стіл №' + val);
+                badge.textContent = 'Обрано: ' + optText;
+                badge.style.background = 'rgba(34, 197, 94, 0.2)';
+                badge.style.color = '#4ade80';
+                badge.style.borderColor = 'rgba(34, 197, 94, 0.5)';
+            }
+        } else {
+            if (badge) {
+                badge.textContent = 'Столик не призначено (на розсуд ресторану)';
+                badge.style.background = 'rgba(212, 175, 55, 0.2)';
+                badge.style.color = '#f5d372';
+                badge.style.borderColor = 'rgba(212, 175, 55, 0.4)';
+            }
+        }
+    }
+
+    highlight(tableSelect.value);
+
+    tableSelect.addEventListener('change', function() {
+        highlight(this.value);
+    });
+
+    svg.querySelectorAll('.table-group').forEach(grp => {
+        grp.addEventListener('click', function() {
+            const tId = this.getAttribute('data-table');
+            if (tId) {
+                tableSelect.value = tId;
+                highlight(tId);
+                tableSelect.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        });
+    });
+});
+</script>
 
 {{ block.super }}
 {% endblock %}

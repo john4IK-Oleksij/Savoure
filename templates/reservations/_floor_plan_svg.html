@@ -31,6 +31,55 @@
       <feGaussianBlur stdDeviation="4" result="blur" />
       <feComposite in="SourceGraphic" in2="blur" operator="over" />
     </filter>
+
+    <style>
+      .floor-bg { fill: url(#hallGlow); }
+      .wall-outer { stroke: #2b394f; stroke-width: 4; fill: none; }
+      .window-arc { stroke: #60a5fa; stroke-width: 6; stroke-dasharray: 18 6; fill: none; opacity: 0.85; }
+      .window-label { fill: #93c5fd; font-family: 'Cinzel', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, serif, sans-serif; font-size: 13px; letter-spacing: 3px; }
+      .arch-label { fill: #64748b; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; }
+
+      .table-group { cursor: pointer; outline: none; transition: transform 0.2s ease, opacity 0.2s ease; }
+      .table-surface { fill: url(#tableDefault); stroke: #d4af37; stroke-width: 2; transition: all 0.2s ease; }
+      .chair { fill: #1e293b; stroke: #94a3b8; stroke-width: 1.5; rx: 3; transition: all 0.2s ease; }
+      .table-num { fill: #f8fafc; font-family: 'Playfair Display', Georgia, serif, sans-serif; font-size: 17px; font-weight: 700; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+      .table-capacity { fill: #94a3b8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+      .table-frame { fill: transparent; stroke: rgba(212, 175, 55, 0.35); stroke-width: 1.5; stroke-dasharray: 4 3; rx: 10; transition: all 0.2s ease; }
+      .table-chk-box { fill: rgba(20, 28, 38, 0.95); stroke: rgba(212, 175, 55, 0.5); stroke-width: 1.2; rx: 3; opacity: 0.7; transition: all 0.2s ease; }
+      .table-chk-mark { stroke: #0a0e14; stroke-width: 2.2; fill: none; opacity: 0; stroke-linecap: round; stroke-linejoin: round; transition: opacity 0.2s ease; }
+
+      /* Table Hover State */
+      .table-group:hover .table-surface { stroke: #f5d372; stroke-width: 2.5; filter: drop-shadow(0 0 6px rgba(245, 211, 114, 0.5)); }
+      .table-group:hover .table-frame { stroke: rgba(245, 211, 114, 0.85); stroke-dasharray: none; fill: rgba(245, 211, 114, 0.05); }
+      .table-group:hover .chair { stroke: #f5d372; }
+
+      /* Table Selected State */
+      .table-group.is-selected .table-surface { fill: url(#tableSelected) !important; stroke: #ffffff !important; stroke-width: 2.5 !important; filter: url(#goldGlow) !important; }
+      .table-group.is-selected .table-num { fill: #0a0e14 !important; font-weight: 800 !important; }
+      .table-group.is-selected .table-capacity { fill: #1e293b !important; font-weight: 700 !important; }
+      .table-group.is-selected .chair { fill: #f5d372 !important; stroke: #ffffff !important; }
+      .table-group.is-selected .table-frame { stroke: #f5d372 !important; stroke-width: 2 !important; stroke-dasharray: none !important; fill: rgba(245, 211, 114, 0.12) !important; }
+      .table-group.is-selected .table-chk-box { fill: #f5d372 !important; stroke: #ffffff !important; opacity: 1 !important; }
+      .table-group.is-selected .table-chk-mark { stroke: #0a0e14 !important; opacity: 1 !important; }
+
+      /* Table Booked / Occupied State (🔴 Red/Wine) */
+      .table-group.is-booked .table-surface { fill: #3f151e; stroke: #ef4444; stroke-width: 2.2; }
+      .table-group.is-booked .chair { fill: #2c0f16; stroke: #f87171; }
+      .table-group.is-booked .table-frame { stroke: rgba(239, 68, 68, 0.7); stroke-dasharray: none; fill: rgba(239, 68, 68, 0.12); }
+      .table-group.is-booked .table-num { fill: #fecaca; font-weight: 800; }
+      .table-group.is-booked .table-capacity { fill: #f87171; font-weight: 600; }
+      .table-group.is-booked .table-chk-box { fill: #ef4444; stroke: #ffffff; opacity: 1; }
+      .table-group.is-booked .table-chk-mark { stroke: #ffffff; opacity: 1; }
+
+      /* Table Free / Available State (🟢 Fresh Green) */
+      .table-group.is-free .table-surface { stroke: #22c55e; stroke-width: 2; }
+      .table-group.is-free .chair { stroke: #4ade80; }
+      .table-group.is-free .table-frame { stroke: rgba(34, 197, 94, 0.5); stroke-dasharray: 4 3; }
+      .table-group.is-free .table-num { fill: #bbf7d0; font-weight: 700; }
+      .table-group.is-free .table-capacity { fill: #4ade80; }
+      .table-group.is-free:hover .table-surface { stroke: #4ade80; stroke-width: 2.5; filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.6)); }
+      .table-group.is-free:hover .table-frame { stroke: #22c55e; stroke-dasharray: none; }
+    </style>
   </defs>
 
   <!-- Hall Floor & Outer Architecture -->
