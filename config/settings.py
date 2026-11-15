@@ -165,10 +165,24 @@ DEFAULT_AUTO_FIELD: str = "django.db.models.BigAutoField"
 # Production security headers
 if not DEBUG:
     SECURE_PROXY_SSL_HEADER: tuple[str, str] = ("HTTP_X_FORWARDED_PROTO", "https")
+    _ssl_redirect = os.getenv("SECURE_SSL_REDIRECT", "True").lower()
+    SECURE_SSL_REDIRECT: bool = _ssl_redirect in ("true", "1", "yes")
     SECURE_BROWSER_XSS_FILTER: bool = True
     SECURE_CONTENT_TYPE_NOSNIFF: bool = True
     X_FRAME_OPTIONS: str = "DENY"
     SESSION_COOKIE_SECURE: bool = True
+    SESSION_COOKIE_HTTPONLY: bool = True
     CSRF_COOKIE_SECURE: bool = True
     SESSION_COOKIE_SAMESITE: str = "Lax"
     CSRF_COOKIE_SAMESITE: str = "Lax"
+    SECURE_HSTS_SECONDS: int = 31536000  # 1 year HSTS
+    SECURE_HSTS_INCLUDE_SUBDOMAINS: bool = True
+    SECURE_HSTS_PRELOAD: bool = True
+
+    if SECRET_KEY.startswith("django-insecure-"):
+        import warnings
+        warnings.warn(
+            "CRITICAL SECURITY WARNING: Production is running with default/insecure SECRET_KEY! "
+            "Please set a strong SECRET_KEY in your Railway Variables.",
+            stacklevel=2,
+        )
