@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 from typing import Any
 
+import dj_database_url
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -83,13 +84,33 @@ WSGI_APPLICATION: str = "config.wsgi.application"
 
 
 # Database
-# Using SQLite for fast development; ready for PostgreSQL swap via DATABASE_URL
-DATABASES: dict[str, dict[str, Any]] = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+# If DATABASE_URL, MYSQL_URL, or MYSQLHOST is set (e.g. on Railway), use MySQL.
+# Otherwise, fall back to local SQLite for development.
+db_url: str = os.getenv("DATABASE_URL") or os.getenv("MYSQL_URL") or ""
+
+if not db_url and os.getenv("MYSQLHOST"):
+    mysql_user: str = os.getenv("MYSQLUSER", "root")
+    mysql_password: str = os.getenv("MYSQLPASSWORD", "")
+    mysql_host: str = os.getenv("MYSQLHOST", "localhost")
+    mysql_port: str = os.getenv("MYSQLPORT", "3306")
+    mysql_db: str = os.getenv("MYSQLDATABASE", "railway")
+    db_url = f"mysql://{mysql_user}:{mysql_password}@{mysql_host}:{mysql_port}/{mysql_db}"
+
+if db_url:
+    DATABASES: dict[str, dict[str, Any]] = {
+        "default": dj_database_url.parse(
+            db_url,
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
     }
-}
+else:
+    DATABASES: dict[str, dict[str, Any]] = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
 
 
 # Password validation

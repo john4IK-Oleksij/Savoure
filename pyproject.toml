@@ -3,8 +3,11 @@ name = "savoure"
 version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = [
+    "cryptography>=50.0.2",
+    "dj-database-url>=3.1.2",
     "django-stubs-ext>=6.1.2",
     "gunicorn>=27.0.1",
+    "pymysql>=1.2.4",
     "whitenoise>=6.12.0",
 ]
 
