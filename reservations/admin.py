@@ -203,6 +203,44 @@ class ContactMessageAdmin(admin.ModelAdmin[ContactMessage]):
 
 @admin.register(NewsletterSubscriber)
 class NewsletterSubscriberAdmin(admin.ModelAdmin[NewsletterSubscriber]):
-    list_display = ("email", "subscribed_at")
+    list_display = (
+        "display_email",
+        "display_subscribed_at",
+        "display_status",
+    )
     search_fields = ("email",)
     readonly_fields = ("subscribed_at",)
+    ordering = ("-subscribed_at",)
+    date_hierarchy = "subscribed_at"
+    list_per_page = 25
+
+    @admin.display(description="Email підписника", ordering="email")
+    def display_email(self, obj: NewsletterSubscriber) -> SafeString:
+        return format_html(
+            '<a href="mailto:{0}" style="font-weight:600;color:#f5d372;text-decoration:none;'
+            'display:inline-flex;align-items:center;gap:6px;">'
+            '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" '
+            'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
+            'stroke-linecap="round" stroke-linejoin="round">'
+            '<rect width="20" height="16" x="2" y="4" rx="2"/>'
+            '<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>'
+            '</svg>'
+            '<span>{0}</span>'
+            '</a>',
+            obj.email,
+        )
+
+    @admin.display(description="Дата та час підписки", ordering="subscribed_at")
+    def display_subscribed_at(self, obj: NewsletterSubscriber) -> str:
+        return f"{obj.subscribed_at.strftime('%d.%m.%Y')}, {obj.subscribed_at.strftime('%H:%M')}"
+
+    @admin.display(description="Статус")
+    def display_status(self, obj: NewsletterSubscriber) -> SafeString:
+        return format_html(
+            '<span style="display:inline-flex;align-items:center;gap:5px;padding:3px 10px;'
+            'border-radius:10px;background:rgba(91,208,102,0.14);color:#86efac;'
+            'font-size:12px;font-weight:600;border:1px solid rgba(91,208,102,0.35);">'
+            '{0} Активна'
+            '</span>',
+            _EIFFEL_ICON_SVG,
+        )

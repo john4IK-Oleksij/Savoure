@@ -1,10 +1,11 @@
 from django.contrib import messages
-from django.db import IntegrityError
-from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
+from django.views.decorators.http import require_POST
 
 from reservations.forms import ContactForm, NewsletterForm, ReservationForm
+from reservations.models import NewsletterSubscriber
 
 
 def reserve(request: HttpRequest) -> HttpResponse:
@@ -57,17 +58,41 @@ def contact_submit(request: HttpRequest) -> HttpResponseRedirect:
     return redirect("core:home")
 
 
-def newsletter_subscribe(request: HttpRequest) -> HttpResponseRedirect:
-    if request.method == "POST":
-        form = NewsletterForm(request.POST)
-        if form.is_valid():
-            try:
-                form.save()
-                messages.success(request, "Дякуємо за підписку на новини ресторану Savoure!")
-            except IntegrityError:
-                messages.info(request, "Цей email уже підписаний на наші новини.")
+@require_POST
+def newsletter_subscribe(request: HttpRequest) -> HttpResponse:
+    is_ajax = (
+        request.headers.get("x-requested-with") == "XMLHttpRequest"
+        or "application/json" in request.headers.get("Accept", "")
+    )
+    email = request.POST.get("email", "").strip().lower()
+    form = NewsletterForm({"email": email})
+
+    if form.is_valid():
+        _, created = NewsletterSubscriber.objects.get_or_create(email=email)
+        if created:
+            msg = "Дякуємо за підписку! Ви успішно приєдналися до спільноти Savoure Privilège."
+            status_type = "success"
         else:
-            messages.error(request, "Введіть коректну адресу електронної пошти.")
+            msg = "Цей email уже підписаний на розсилку Savoure."
+            status_type = "info"
+
+        if is_ajax:
+            return JsonResponse({"status": status_type, "message": msg})
+        if status_type == "success":
+            messages.success(request, msg)
+        else:
+            messages.info(request, msg)
+    else:
+        if email and NewsletterSubscriber.objects.filter(email=email).exists():
+            msg = "Цей email уже підписаний на розсилку Savoure."
+            if is_ajax:
+                return JsonResponse({"status": "info", "message": msg})
+            messages.info(request, msg)
+        else:
+            msg = "Будь ласка, введіть коректну адресу електронної пошти."
+            if is_ajax:
+                return JsonResponse({"status": "error", "message": msg}, status=400)
+            messages.error(request, msg)
 
     referer = request.META.get("HTTP_REFERER")
     if referer:

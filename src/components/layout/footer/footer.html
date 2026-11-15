@@ -3,15 +3,78 @@
 		<div class="footer__top">
 			<div class="footer__head">
 				<h2 class="footer__title">Explore Our French-Inspired Dishes</h2>
-				<a href="our-menu.html" class="btn footer__btn" aria-label="View Menu">
-					View Menu
-					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-						<path d="M16.95 7.05078L7.05 16.9508" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-							stroke-linejoin="round" />
-						<path d="M10 7L16.95 7.049L17 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-							stroke-linejoin="round" />
-					</svg>
-				</a>
+				<div class="footer__subscribe">
+					<form class="footer__subscribe-form" method="post" action="/reservations/newsletter/" data-newsletter-form>
+						<div class="footer__subscribe-input-wrap">
+							<span class="footer__subscribe-icon" aria-hidden="true">
+								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<rect width="20" height="16" x="2" y="4" rx="2"></rect>
+									<path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+								</svg>
+							</span>
+							<input 
+								type="email" 
+								name="email" 
+								class="footer__subscribe-input" 
+								placeholder="Enter your email" 
+								required 
+								autocomplete="email"
+								aria-label="Email address for newsletter subscription"
+							>
+						</div>
+						<button type="submit" class="btn footer__subscribe-btn" aria-label="Subscribe to newsletter">
+							<span>Subscribe</span>
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+								<line x1="22" y1="2" x2="11" y2="13"></line>
+								<polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+							</svg>
+						</button>
+					</form>
+
+					<!-- Privileges popup / hover window -->
+					<div class="footer__subscribe-perks">
+						<button type="button" class="footer__subscribe-perks-trigger" id="footerPerksTrigger" aria-expanded="false" aria-controls="footerPerksPopup">
+							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								<circle cx="12" cy="12" r="10"></circle>
+								<line x1="12" y1="16" x2="12" y2="12"></line>
+								<line x1="12" y1="8" x2="12.01" y2="8"></line>
+							</svg>
+							<span>Що дає підписка? (Привілеї гостя)</span>
+						</button>
+
+						<div class="footer__subscribe-popup" id="footerPerksPopup" role="tooltip">
+							<div class="footer__subscribe-popup-arrow"></div>
+							<div class="footer__subscribe-popup-header">
+								<div class="footer__subscribe-popup-title">
+									<span class="footer__subscribe-popup-badge">Savoure Privilège</span>
+									<h4>Привілеї для підписників ресторану</h4>
+								</div>
+								<button type="button" class="footer__subscribe-popup-close" id="footerPerksClose" aria-label="Закрити підказку">&times;</button>
+							</div>
+							<ul class="footer__subscribe-popup-list">
+								<li>
+									<span class="footer__subscribe-popup-icon">🍷</span>
+									<div><strong>Винні дегустації:</strong> персональні запрошення на закриті дегустації рідкісних вин із приватного льоху та вечори із сомельє.</div>
+								</li>
+								<li>
+									<span class="footer__subscribe-popup-icon">👨‍🍳</span>
+									<div><strong>Сезонні сети шефа:</strong> ранній доступ до оновлень авторського меню, трюфельних та морських гастрономічних тижнів.</div>
+								</li>
+								<li>
+									<span class="footer__subscribe-popup-icon">🎁</span>
+									<div><strong>Компліменти до свят:</strong> особливі персональні сюрпризи та частування до Дня народження, весілля чи річниці.</div>
+								</li>
+								<li>
+									<span class="footer__subscribe-popup-icon">✨</span>
+									<div><strong>Пріоритет бронювання:</strong> гарантоване першочергове бронювання улюблених столиків біля панорамних вікон.</div>
+								</li>
+							</ul>
+							<div class="footer__subscribe-popup-note">
+								<span>🔒 Жодного спаму. Лише найважливіші гастрономічні новини 1–2 рази на місяць. Відписатися можна в будь-який момент.</span>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="footer__menu menu-footer">
 				<ul class="menu-footer__list">
