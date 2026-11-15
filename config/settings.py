@@ -5,7 +5,7 @@ Production-ready template aligned with senior engineering roadmap.
 
 import os
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 import dj_database_url
 from dotenv import load_dotenv
@@ -96,21 +96,24 @@ if not db_url and os.getenv("MYSQLHOST"):
     mysql_db: str = os.getenv("MYSQLDATABASE", "railway")
     db_url = f"mysql://{mysql_user}:{mysql_password}@{mysql_host}:{mysql_port}/{mysql_db}"
 
+_default_db: dict[str, Any] = {
+    "ENGINE": "django.db.backends.sqlite3",
+    "NAME": BASE_DIR / "db.sqlite3",
+}
+
 if db_url:
-    DATABASES: dict[str, dict[str, Any]] = {
-        "default": dj_database_url.parse(
+    _default_db = cast(
+        dict[str, Any],
+        dj_database_url.parse(
             db_url,
             conn_max_age=600,
             conn_health_checks=True,
-        )
-    }
-else:
-    DATABASES: dict[str, dict[str, Any]] = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-        }
-    }
+        ),
+    )
+
+DATABASES: dict[str, dict[str, Any]] = {
+    "default": _default_db,
+}
 
 
 # Password validation
