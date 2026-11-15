@@ -18,8 +18,20 @@ class CategoryAdmin(admin.ModelAdmin[Category]):
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin[Tag]):
-    list_display = ("name", "badge_color")
+    list_display = ("name", "badge_color", "display_preview")
+    list_editable = ("badge_color",)
     search_fields = ("name",)
+
+    @admin.display(description="Попередній перегляд")
+    def display_preview(self, obj: Tag) -> SafeString:
+        return format_html(
+            '<span style="display:inline-block;padding:2px 10px;border-radius:12px;'
+            'background:rgba(255,255,255,0.08);color:{};font-weight:600;'
+            'border:1px solid {};">{}</span>',
+            obj.badge_color,
+            obj.badge_color,
+            obj.name,
+        )
 
 
 @admin.register(Dish)
