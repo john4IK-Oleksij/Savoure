@@ -1,7 +1,7 @@
 from typing import Final
 
 from django.contrib import admin, messages
-from django.contrib.admin.actions import delete_selected
+from django.contrib.admin.actions import delete_selected as django_delete_selected
 from django.contrib.auth.admin import GroupAdmin
 from django.contrib.auth.models import Group
 from django.db.models import QuerySet
@@ -11,11 +11,7 @@ from django.utils.safestring import SafeString
 
 PROTECTED_SYSTEM_GROUPS: Final[frozenset[str]] = frozenset({"Chef", "Manager"})
 
-# Unregister default Django Group admin and register Savoure protected Group admin
-admin.site.unregister(Group)
 
-
-@admin.register(Group)
 class CustomGroupAdmin(GroupAdmin):
     list_display = (
         "name",
@@ -26,6 +22,9 @@ class CustomGroupAdmin(GroupAdmin):
     search_fields = ("name",)
     ordering = ("name",)
     actions = ("delete_selected",)
+
+    def get_queryset(self, request: HttpRequest) -> QuerySet[Group]:
+        return super().get_queryset(request).prefetch_related("user_set", "permissions")
 
     @admin.display(description="Тип ролі")
     def display_group_type(self, obj: Group) -> SafeString:
@@ -84,4 +83,11 @@ class CustomGroupAdmin(GroupAdmin):
                 level=messages.ERROR,
             )
             return None
-        return delete_selected(self, request, queryset)
+        return django_delete_selected(self, request, queryset)
+
+
+# Safely replace default GroupAdmin with Savoure CustomGroupAdmin
+if admin.site.is_registered(Group):
+    admin.site.unregister(Group)
+
+admin.site.register(Group, CustomGroupAdmin)
