@@ -14,6 +14,6 @@
          <span class="dishcard__line"></span>
          <span class="dishcard__price">${{ dish.price|floatformat:0 }}</span>
       </div>
-      <p class="dishcard__description">{{ dish.description }}</p>
+      <p class="dishcard__description">{{ dish.description }}{% if dish.weight_grams %} (вага {{ dish.weight_grams }} г){% endif %}</p>
    </div>
 </div>
