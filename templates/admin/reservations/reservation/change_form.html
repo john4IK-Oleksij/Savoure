@@ -1,0 +1,17 @@
+{% extends "admin/change_form.html" %}
+{% load static %}
+
+{% block field_sets %}
+<details style="margin-bottom: 22px; background: radial-gradient(circle at 50% 20%, #151f2d 0%, #0d141e 100%); border: 1px solid rgba(212, 175, 55, 0.4); border-radius: 12px; padding: 14px 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    <summary style="cursor: pointer; font-weight: 600; color: #f5d372; font-size: 15px; outline: none; user-select: none;">
+        🗺️ Схема зали ресторану (12 столиків) — перегляд розміщення для призначення столика
+    </summary>
+    <div style="margin-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 14px;">
+        <div style="max-width: 900px; margin: 0 auto; border-radius: 10px; overflow: hidden; background: #0a0e14; border: 1px solid rgba(255, 255, 255, 0.1);">
+            {% include "reservations/_floor_plan_svg.html" %}
+        </div>
+    </div>
+</details>
+
+{{ block.super }}
+{% endblock %}
