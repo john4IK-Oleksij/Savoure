@@ -4,7 +4,7 @@
 (function () {
   "use strict";
 
-  const AUTO_DISMISS_MS = 5000;
+  const AUTO_DISMISS_MS = 7000;
 
   function initToast(toast) {
     if (!toast || toast.dataset.toastInit === "true") return;

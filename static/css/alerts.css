@@ -750,6 +750,7 @@
   position: relative;
   display: inline-block;
   align-self: flex-start;
+  padding-bottom: 6px;
 }
 
 @media (max-width: 767.98px) {
@@ -761,7 +762,7 @@
 .footer__subscribe-perks-trigger {
   background: none;
   border: none;
-  padding: 4px 0;
+  padding: 6px 8px 6px 0;
   color: #cbd5e1;
   font-size: 12.5px;
   display: inline-flex;
@@ -807,6 +808,18 @@
   pointer-events: none;
 }
 
+/* Invisible Bridge connecting trigger to popup so hover is never lost */
+.footer__subscribe-popup::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 24px;
+  background: transparent;
+  pointer-events: auto;
+}
+
 /* Arrow */
 .footer__subscribe-popup-arrow {
   position: absolute;
@@ -817,6 +830,7 @@
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
   border-top: 8px solid rgba(220, 169, 99, 0.6);
+  pointer-events: none;
 }
 
 @media (max-width: 767.98px) {
@@ -835,6 +849,7 @@
 
 /* Hover trigger state */
 .footer__subscribe-perks:hover .footer__subscribe-popup,
+.footer__subscribe-popup:hover,
 .footer__subscribe-popup.is-open {
   opacity: 1;
   visibility: visible;

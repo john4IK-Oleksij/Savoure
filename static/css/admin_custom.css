@@ -1,0 +1,37 @@
+/* ==========================================================================
+   SAVOURE Backstage — Custom Luxury Admin Styling
+   ========================================================================== */
+
+/* Subtle Rose/Pink Highlight for Unavailable Dishes (Stop-list) */
+#result_list tbody tr:has(.field-is_available input[type="checkbox"]:not(:checked)) {
+  background-color: rgba(244, 63, 94, 0.12) !important;
+  border-left: 3px solid #f43f5e !important;
+  transition: background-color 0.2s ease;
+}
+
+#result_list tbody tr:has(.field-is_available input[type="checkbox"]:not(:checked)):hover {
+  background-color: rgba(244, 63, 94, 0.18) !important;
+}
+
+#result_list tbody tr:has(.field-is_available input[type="checkbox"]:not(:checked)) th.field-title a,
+#result_list tbody tr:has(.field-is_available input[type="checkbox"]:not(:checked)) th a {
+  color: #fda4af !important;
+}
+
+#result_list tbody tr:has(.field-is_available input[type="checkbox"]:not(:checked)) td {
+  border-bottom: 1px solid rgba(244, 63, 94, 0.2) !important;
+}
+
+/* Fallback class */
+#result_list tbody tr.dish-unavailable {
+  background-color: rgba(244, 63, 94, 0.12) !important;
+  border-left: 3px solid #f43f5e !important;
+}
+
+#result_list tbody tr.dish-unavailable:hover {
+  background-color: rgba(244, 63, 94, 0.18) !important;
+}
+
+#result_list tbody tr.dish-unavailable th a {
+  color: #fda4af !important;
+}

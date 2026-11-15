@@ -52,7 +52,6 @@ class DishAdmin(admin.ModelAdmin[Dish]):
     search_fields = ("title", "description", "category__name")
     prepopulated_fields = {"slug": ("title",)}
     readonly_fields = ("created_at", "updated_at")
-    actions = ("make_available", "make_unavailable")
 
     def get_queryset(self, request: HttpRequest) -> QuerySet[Dish]:
         return super().get_queryset(request).prefetch_related("tags", "category")
@@ -95,13 +94,3 @@ class DishAdmin(admin.ModelAdmin[Dish]):
                 obj.image.url,
             )
         return "—"
-
-    @admin.action(description="Позначити як доступні")
-    def make_available(self, request: HttpRequest, queryset: QuerySet[Dish]) -> None:
-        count = queryset.update(is_available=True)
-        self.message_user(request, f"Оновлено страв у меню: {count}")
-
-    @admin.action(description="Зняти з меню (поставити на стоп)")
-    def make_unavailable(self, request: HttpRequest, queryset: QuerySet[Dish]) -> None:
-        count = queryset.update(is_available=False)
-        self.message_user(request, f"Поставлено на стоп страв: {count}")

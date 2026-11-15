@@ -1,11 +1,41 @@
 {% extends "admin/base.html" %}
-{% load static %}
+{% load i18n static %}
 
 {% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:"SAVOURE Backstage" }}{% endblock %}
 
 {% block extrahead %}
     {{ block.super }}
     <link rel="icon" href="{% static 'assets/img/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/admin_custom.css' %}">
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        function updateUnavailableRows() {
+            document.querySelectorAll("#result_list tbody tr").forEach(function (row) {
+                var cb = row.querySelector(".field-is_available input[type='checkbox']");
+                if (cb) {
+                    if (!cb.checked) {
+                        row.classList.add("dish-unavailable");
+                    } else {
+                        row.classList.remove("dish-unavailable");
+                    }
+                }
+            });
+        }
+        updateUnavailableRows();
+        document.addEventListener("change", function (e) {
+            if (e.target && e.target.matches(".field-is_available input[type='checkbox']")) {
+                var row = e.target.closest("tr");
+                if (row) {
+                    if (!e.target.checked) {
+                        row.classList.add("dish-unavailable");
+                    } else {
+                        row.classList.remove("dish-unavailable");
+                    }
+                }
+            }
+        });
+    });
+    </script>
 {% endblock %}
 
 {% block branding %}
@@ -18,6 +48,26 @@
 {% if user.is_anonymous %}
   {% include "admin/color_theme_toggle.html" %}
 {% endif %}
+{% endblock %}
+
+{% block userlinks %}
+    {% if site_url %}
+        <a href="{{ site_url }}" target="_blank" rel="noopener noreferrer">{% translate 'View site' %}</a> /
+    {% endif %}
+    {% if user.is_active and user.is_staff %}
+        {% url 'django-admindocs-docroot' as docsroot %}
+        {% if docsroot %}
+            <a href="{{ docsroot }}">{% translate 'Documentation' %}</a> /
+        {% endif %}
+    {% endif %}
+    {% if user.has_usable_password %}
+    <a href="{% url 'admin:password_change' %}">{% translate 'Change password' %}</a> /
+    {% endif %}
+    <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
+        {% csrf_token %}
+        <button type="submit">{% translate 'Log out' %}</button>
+    </form>
+    {% include "admin/color_theme_toggle.html" %}
 {% endblock %}
 
 {% block nav-global %}{% endblock %}
