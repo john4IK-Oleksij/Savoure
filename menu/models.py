@@ -1,4 +1,5 @@
 from decimal import Decimal
+from typing import TYPE_CHECKING
 
 from django.core.validators import MinValueValidator
 from django.db import models
@@ -74,12 +75,15 @@ class Dish(models.Model):
         related_name="dishes",
         verbose_name="Категорія",
     )
-    tags = models.ManyToManyField(
-        Tag,
-        blank=True,
-        related_name="dishes",
-        verbose_name="Теги / Особливості",
-    )
+    if TYPE_CHECKING:
+        tags: models.Manager[Tag]
+    else:
+        tags = models.ManyToManyField(
+            Tag,
+            blank=True,
+            related_name="dishes",
+            verbose_name="Теги / Особливості",
+        )
 
     created_at = models.DateTimeField("Створено", auto_now_add=True)
     updated_at = models.DateTimeField("Оновлено", auto_now=True)

@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.db.models import QuerySet
 from django.http import HttpRequest
 from django.utils.html import format_html
-from django.utils.safestring import SafeString
+from django.utils.safestring import SafeString, mark_safe
 
 from menu.models import Category, Dish, Tag
 
@@ -58,15 +58,21 @@ class DishAdmin(admin.ModelAdmin[Dish]):
     @admin.display(description="Гострота")
     def display_spiciness(self, obj: Dish) -> str:
         if obj.spiciness == 1:
-            return "🌶️ Пікантне"
+            return "🌶️"
         if obj.spiciness == 2:
-            return "🌶️🌶️ Гостре"
+            return "🌶️🌶️"
         return "—"
 
     @admin.display(description="Теги")
-    def display_tags(self, obj: Dish) -> str:
-        tags = [t.name for t in obj.tags.all()]
-        return ", ".join(tags) if tags else "—"
+    def display_tags(self, obj: Dish) -> SafeString:
+        tags: list[Tag] = list(obj.tags.all())
+        if not tags:
+            return mark_safe('<span style="color:#718096;">—</span>')
+        badges: list[str] = [
+            f'<span style="color:{t.badge_color};font-weight:600;">{t.name}</span>'
+            for t in tags
+        ]
+        return mark_safe(", ".join(badges))
 
     @admin.display(description="Мініатюра")
     def display_image(self, obj: Dish) -> SafeString | str:
