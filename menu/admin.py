@@ -31,12 +31,14 @@ class DishAdmin(admin.ModelAdmin[Dish]):
         "weight_grams",
         "is_available",
         "is_chef_special",
+        "display_tags",
         "display_image",
     )
     list_editable = ("price", "is_available", "is_chef_special")
     list_filter = ("is_available", "is_chef_special", "category", "tags")
     search_fields = ("title", "description", "category__name")
     prepopulated_fields = {"slug": ("title",)}
+    filter_horizontal = ("tags",)
     readonly_fields = ("created_at", "updated_at")
     actions = ("make_available", "make_unavailable")
 
@@ -49,6 +51,21 @@ class DishAdmin(admin.ModelAdmin[Dish]):
             {"fields": ("created_at", "updated_at"), "classes": ("collapse",)},
         ),
     )
+
+    @admin.display(description="Теги")
+    def display_tags(self, obj: Dish) -> SafeString:
+        tags = obj.tags.all()
+        if not tags:
+            return format_html('<span style="color:#718096;">—</span>')
+        badges = [
+            (
+                f'<span style="background:{t.badge_color}22;border:1px solid {t.badge_color};'
+                f'color:{t.badge_color};padding:2px 8px;border-radius:10px;'
+                f'font-size:11px;font-weight:600;">{t.name}</span>'
+            )
+            for t in tags
+        ]
+        return format_html(" ".join(badges))
 
     @admin.display(description="Мініатюра")
     def display_image(self, obj: Dish) -> SafeString | str:
