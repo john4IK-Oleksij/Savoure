@@ -19,7 +19,7 @@
             <span class="dishcard__badge dishcard__badge--hot">🌶️🌶️ Hot</span>
          {% endif %}
          {% for tag in dish.tags.all %}
-            <span class="dishcard__badge dishcard__badge--tag">{{ tag.name }}</span>
+            <span class="dishcard__badge dishcard__badge--tag dishcard__badge--{{ tag.name|lower|slugify }}">{{ tag.name }}</span>
          {% endfor %}
       </div>
       <div class="dishcard__head">
