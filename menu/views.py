@@ -1,5 +1,6 @@
 from typing import Any
 
+from django.db.models import Prefetch
 from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render
 
@@ -7,26 +8,25 @@ from menu.models import Category, Dish
 
 
 def dish_list(request: HttpRequest) -> HttpResponse:
-    categories = Category.objects.all().order_by("order", "name")
+    available_dishes_prefetch = Prefetch(
+        "dishes",
+        queryset=Dish.objects.filter(is_available=True).prefetch_related("tags"),
+    )
+    categories = (
+        Category.objects.all()
+        .prefetch_related(available_dishes_prefetch)
+        .order_by("order", "name")
+    )
     all_dishes = (
         Dish.objects.filter(is_available=True)
         .select_related("category")
         .prefetch_related("tags")
     )
 
-    appetizers = all_dishes.filter(category__slug="appetizer")
-    main_courses = all_dishes.filter(category__slug="main")
-    desserts = all_dishes.filter(category__slug="dessert")
-    beverages = all_dishes.filter(category__slug="beverage")
-
     context: dict[str, Any] = {
         "active_nav": "menu",
         "categories": categories,
         "all_dishes": all_dishes,
-        "appetizers": appetizers,
-        "main_courses": main_courses,
-        "desserts": desserts,
-        "beverages": beverages,
     }
     return render(request, "menu/our-menu.html", context)
 

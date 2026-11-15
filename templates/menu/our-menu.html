@@ -24,10 +24,9 @@
          <h2 class="today__title">Today Menu</h2>
          <nav data-fls-tabs-titles class="today-tab__navigation">
             <button data-tab="all" class="today-tab__title --tab-active" aria-label="Show all menu">All Menu</button>
-            <button data-tab="appetizer" class="today-tab__title" aria-label="Show appetizers">Appetizer</button>
-            <button data-tab="main" class="today-tab__title" aria-label="Show main courses">Main Course</button>
-            <button data-tab="dessert" class="today-tab__title" aria-label="Show desserts">Dessert</button>
-            <button data-tab="beverage" class="today-tab__title" aria-label="Show beverages">Beverage</button>
+            {% for category in categories %}
+               <button data-tab="{{ category.slug }}" class="today-tab__title" aria-label="Show {{ category.name }}">{{ category.name }}</button>
+            {% endfor %}
          </nav>
          <div data-fls-tabs-body class="today-tab__content">
             <div class="today-tab__body" data-tab-content="all">
@@ -37,34 +36,15 @@
                   <p>No dishes currently available.</p>
                {% endfor %}
             </div>
-            <div class="today-tab__body" data-tab-content="appetizer" hidden>
-               {% for dish in appetizers %}
-                  {% include "menu/_dish_card.html" with dish=dish %}
-               {% empty %}
-                  <p>No appetizers currently available.</p>
-               {% endfor %}
-            </div>
-            <div class="today-tab__body" data-tab-content="main" hidden>
-               {% for dish in main_courses %}
-                  {% include "menu/_dish_card.html" with dish=dish %}
-               {% empty %}
-                  <p>No main courses currently available.</p>
-               {% endfor %}
-            </div>
-            <div class="today-tab__body" data-tab-content="dessert" hidden>
-               {% for dish in desserts %}
-                  {% include "menu/_dish_card.html" with dish=dish %}
-               {% empty %}
-                  <p>No desserts currently available.</p>
-               {% endfor %}
-            </div>
-            <div class="today-tab__body" data-tab-content="beverage" hidden>
-               {% for dish in beverages %}
-                  {% include "menu/_dish_card.html" with dish=dish %}
-               {% empty %}
-                  <p>No beverages currently available.</p>
-               {% endfor %}
-            </div>
+            {% for category in categories %}
+               <div class="today-tab__body" data-tab-content="{{ category.slug }}" hidden>
+                  {% for dish in category.dishes.all %}
+                     {% include "menu/_dish_card.html" with dish=dish %}
+                  {% empty %}
+                     <p>No dishes currently available in this category.</p>
+                  {% endfor %}
+               </div>
+            {% endfor %}
          </div>
       </div>
    </div>
