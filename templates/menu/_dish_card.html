@@ -4,7 +4,9 @@
       {% if dish.image %}
          <img src="{{ dish.image.url }}" alt="{{ dish.title }}" loading="lazy">
       {% else %}
-         <img src="{% static 'dish-list/dishimage-01.jpg' %}" alt="{{ dish.title }}" loading="lazy">
+         <div class="dishcard__placeholder" aria-hidden="true">
+            <span class="dishcard__placeholder-icon">🍽️</span>
+         </div>
       {% endif %}
    </div>
    <div class="dishcard__content">
