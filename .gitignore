@@ -21,3 +21,8 @@ staticfiles/
 
 # IDE
 .idea/
+.vscode/
+
+# Archive & sources
+src/
+_backup_*.zip
