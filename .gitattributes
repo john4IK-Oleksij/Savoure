@@ -1,0 +1,3 @@
+# GitHub Linguist overrides
+# Treat static assets and vendor bundles as vendored so GitHub reflects Python as the primary language
+static/** linguist-vendored
